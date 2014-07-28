@@ -66,7 +66,7 @@ pars.each(function(idx, it) {
 		break;
 	  case 'bad':
 		p.css('background-color', 'red');
-		p.append($('<abbr>').css('color', 'red').text(' ✖ ').attr('title', currentAnn.reason));
+		p.append($('<abbr>').css('color', 'black').text(' ✖ ').attr('title', currentAnn.reason));
 		break;
 	  default:
 		console.log('ERROR: Unknown verdict:', currentAnn.verdict);
