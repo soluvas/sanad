@@ -84,6 +84,15 @@
       </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
     <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="sanad-jpa.ecore#//Hadith"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="sanad-jpa.ecore#//Hadith/articleBodies"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <joinColumn name="articlebodies_thing_id"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
       <eClass href="sanad-jpa.ecore#//Property"/>
       <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
         <entity>
@@ -99,7 +108,7 @@
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
         <eReference href="sanad-jpa.ecore#//Property/claims"/>
         <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
-          <joinColumn name="property_id"/>
+          <joinTable schema="sanad"/>
         </eReferenceAnnotations>
       </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
@@ -157,6 +166,12 @@
         <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation" description="">
           <id/>
         </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="sanad-jpa.ecore#//Testimony/claims"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany mappedBy="testimony"/>
+        </eReferenceAnnotations>
       </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
   </annotatedEPackages>

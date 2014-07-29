@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,6 +23,7 @@ public class Hadith extends Thing {
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL })
+	@JoinColumns({ @JoinColumn(name = "articlebodies_thing_id") })
 	private Set<LiteralProperty> articleBodies = new HashSet<LiteralProperty>();
 
 	/**

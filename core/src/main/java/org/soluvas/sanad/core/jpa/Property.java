@@ -3,10 +3,12 @@ package org.soluvas.sanad.core.jpa;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
@@ -30,6 +32,7 @@ public abstract class Property {
 	 */
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH })
+	@JoinTable(schema = "sanad")
 	private Set<Claim> claims = new HashSet<Claim>();
 
 	/**
@@ -41,6 +44,27 @@ public abstract class Property {
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	@Type(type = "org.hibernate.type.PostgresUUIDType")
 	private UUID id = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the property in AsciiDoc. It is derived from the
+	 * {@link Claim} or {@link Testimony}'s description. <!-- end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String description = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the property in HTML format. It is derived from the
+	 * {@link Claim} or {@link Testimony}'s {@code descriptionHtml}. <!--
+	 * end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String descriptionHtml = null;
 
 	/**
 	 * Returns the value of '<em><b>claims</b></em>' feature.
@@ -142,6 +166,70 @@ public abstract class Property {
 	}
 
 	/**
+	 * Returns the value of '<em><b>description</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the property in AsciiDoc. It is derived from the
+	 * {@link Claim} or {@link Testimony}'s description. <!-- end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>description</b></em>' feature
+	 * @generated
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * Sets the '{@link Property#getDescription() <em>description</em>}'
+	 * feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the property in AsciiDoc. It is derived from the
+	 * {@link Claim} or {@link Testimony}'s description. <!-- end-model-doc -->
+	 * 
+	 * @param newDescription
+	 *            the new value of the '{@link Property#getDescription()
+	 *            description}' feature.
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		description = newDescription;
+	}
+
+	/**
+	 * Returns the value of '<em><b>descriptionHtml</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the property in HTML format. It is derived from the
+	 * {@link Claim} or {@link Testimony}'s {@code descriptionHtml}. <!--
+	 * end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>descriptionHtml</b></em>' feature
+	 * @generated
+	 */
+	public String getDescriptionHtml() {
+		return descriptionHtml;
+	}
+
+	/**
+	 * Sets the '{@link Property#getDescriptionHtml() <em>descriptionHtml</em>}'
+	 * feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the property in HTML format. It is derived from the
+	 * {@link Claim} or {@link Testimony}'s {@code descriptionHtml}. <!--
+	 * end-model-doc -->
+	 * 
+	 * @param newDescriptionHtml
+	 *            the new value of the '{@link Property#getDescriptionHtml()
+	 *            descriptionHtml}' feature.
+	 * @generated
+	 */
+	public void setDescriptionHtml(String newDescriptionHtml) {
+		descriptionHtml = newDescriptionHtml;
+	}
+
+	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -149,6 +237,8 @@ public abstract class Property {
 	 */
 	@Override
 	public String toString() {
-		return "Property " + " [id: " + getId() + "]";
+		return "Property " + " [id: " + getId() + "]" + " [description: "
+				+ getDescription() + "]" + " [descriptionHtml: "
+				+ getDescriptionHtml() + "]";
 	}
 }

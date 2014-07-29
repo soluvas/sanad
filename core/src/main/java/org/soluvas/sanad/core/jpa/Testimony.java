@@ -1,7 +1,5 @@
 package org.soluvas.sanad.core.jpa;
 
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -16,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 /**
  * A representation of the model object '<em><b>Testimony</b></em>'. <!--
@@ -32,7 +32,7 @@ public class Testimony {
 	 * 
 	 * @generated
 	 */
-	@OneToMany(cascade = { CascadeType.ALL })
+	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "testimony")
 	private Set<Claim> claims = new HashSet<Claim>();
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -52,7 +52,7 @@ public class Testimony {
 	 * @generated
 	 */
 	@Basic()
-	private ZonedDateTime validStartTime = null;
+	private DateTime validStartTime = null;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
 	 * For a zoned date & time-sensitive statement, specify end of validity
@@ -61,7 +61,7 @@ public class Testimony {
 	 * @generated
 	 */
 	@Basic()
-	private ZonedDateTime validEndTime = null;
+	private DateTime validEndTime = null;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
 	 * For a relative/global date-sensitive statement, specify start of validity
@@ -93,7 +93,7 @@ public class Testimony {
 	 * @generated
 	 */
 	@Basic()
-	private ZonedDateTime creationTime = null;
+	private DateTime creationTime = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -115,6 +115,23 @@ public class Testimony {
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	@Type(type = "org.hibernate.type.PostgresUUIDType")
 	private UUID id = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the testimony in AsciiDoc. <!-- end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String description = null;
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the testimony in HTML format. <!-- end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String descriptionHtml = null;
 
 	/**
 	 * Returns the value of '<em><b>claims</b></em>' feature.
@@ -230,7 +247,7 @@ public class Testimony {
 	 * @return the value of '<em><b>validStartTime</b></em>' feature
 	 * @generated
 	 */
-	public ZonedDateTime getValidStartTime() {
+	public DateTime getValidStartTime() {
 		return validStartTime;
 	}
 
@@ -247,7 +264,7 @@ public class Testimony {
 	 *            validStartTime}' feature.
 	 * @generated
 	 */
-	public void setValidStartTime(ZonedDateTime newValidStartTime) {
+	public void setValidStartTime(DateTime newValidStartTime) {
 		validStartTime = newValidStartTime;
 	}
 
@@ -261,7 +278,7 @@ public class Testimony {
 	 * @return the value of '<em><b>validEndTime</b></em>' feature
 	 * @generated
 	 */
-	public ZonedDateTime getValidEndTime() {
+	public DateTime getValidEndTime() {
 		return validEndTime;
 	}
 
@@ -278,7 +295,7 @@ public class Testimony {
 	 *            validEndTime}' feature.
 	 * @generated
 	 */
-	public void setValidEndTime(ZonedDateTime newValidEndTime) {
+	public void setValidEndTime(DateTime newValidEndTime) {
 		validEndTime = newValidEndTime;
 	}
 
@@ -378,7 +395,7 @@ public class Testimony {
 	 * @return the value of '<em><b>creationTime</b></em>' feature
 	 * @generated
 	 */
-	public ZonedDateTime getCreationTime() {
+	public DateTime getCreationTime() {
 		return creationTime;
 	}
 
@@ -393,7 +410,7 @@ public class Testimony {
 	 *            creationTime}' feature.
 	 * @generated
 	 */
-	public void setCreationTime(ZonedDateTime newCreationTime) {
+	public void setCreationTime(DateTime newCreationTime) {
 		creationTime = newCreationTime;
 	}
 
@@ -437,6 +454,64 @@ public class Testimony {
 	}
 
 	/**
+	 * Returns the value of '<em><b>description</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the testimony in AsciiDoc. <!-- end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>description</b></em>' feature
+	 * @generated
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * Sets the '{@link Testimony#getDescription() <em>description</em>}'
+	 * feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the testimony in AsciiDoc. <!-- end-model-doc -->
+	 * 
+	 * @param newDescription
+	 *            the new value of the '{@link Testimony#getDescription()
+	 *            description}' feature.
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		description = newDescription;
+	}
+
+	/**
+	 * Returns the value of '<em><b>descriptionHtml</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the testimony in HTML format. <!-- end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>descriptionHtml</b></em>' feature
+	 * @generated
+	 */
+	public String getDescriptionHtml() {
+		return descriptionHtml;
+	}
+
+	/**
+	 * Sets the '{@link Testimony#getDescriptionHtml() <em>descriptionHtml</em>}
+	 * ' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Description of the testimony in HTML format. <!-- end-model-doc -->
+	 * 
+	 * @param newDescriptionHtml
+	 *            the new value of the '{@link Testimony#getDescriptionHtml()
+	 *            descriptionHtml}' feature.
+	 * @generated
+	 */
+	public void setDescriptionHtml(String newDescriptionHtml) {
+		descriptionHtml = newDescriptionHtml;
+	}
+
+	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -451,6 +526,8 @@ public class Testimony {
 				+ " [validEndDate: " + getValidEndDate() + "]" + " [personId: "
 				+ getPersonId() + "]" + " [creationTime: " + getCreationTime()
 				+ "]" + " [schemaVersion: " + getSchemaVersion() + "]"
-				+ " [id: " + getId() + "]";
+				+ " [id: " + getId() + "]" + " [description: "
+				+ getDescription() + "]" + " [descriptionHtml: "
+				+ getDescriptionHtml() + "]";
 	}
 }

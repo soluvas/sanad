@@ -3,7 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sanad-jpa" nsURI="http://www.soluvas.org/sanad/jpa/" nsPrefix="sanad-jpa">
   <eClassifiers xsi:type="ecore:EClass" name="Testimony">
     <eStructuralFeatures xsi:type="ecore:EReference" name="claims" ordered="false"
-        upperBound="-1" eType="#//Claim" containment="true">
+        upperBound="-1" eType="#//Claim" containment="true" eOpposite="#//Claim/testimony">
       <eAnnotations source="org.eclipse.emf.texo">
         <details key="java.member" value="claims"/>
       </eAnnotations>
@@ -16,7 +16,7 @@
         <details key="java.member" value="signatures"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validStartTime" eType="#//ZonedDateTime">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validStartTime" eType="ecore:EDataType http://www.soluvas.org/jpa.jpa/#//DateTime">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="For a zoned date &amp; time-sensitive statement, specify start of validity (inclusive)."/>
       </eAnnotations>
@@ -24,7 +24,7 @@
         <details key="java.member" value="validStartTime"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validEndTime" eType="#//ZonedDateTime">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validEndTime" eType="ecore:EDataType http://www.soluvas.org/jpa.jpa/#//DateTime">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="For a zoned date &amp; time-sensitive statement, specify end of validity (inclusive)."/>
       </eAnnotations>
@@ -32,7 +32,7 @@
         <details key="java.member" value="validEndTime"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validStartDate" eType="#//LocalDate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validStartDate" eType="ecore:EDataType http://www.soluvas.org/jpa.jpa/#//LocalDate">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="For a relative/global date-sensitive statement, specify start of validity (inclusive).&#xA;If both {@link #validStartTime} and {@link #validStartDate} is {@code null}, the statement is should be true since the beginning of time or is irrelevant."/>
       </eAnnotations>
@@ -40,7 +40,7 @@
         <details key="java.member" value="validStartDate"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validEndDate" eType="#//LocalDate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validEndDate" eType="ecore:EDataType http://www.soluvas.org/jpa.jpa/#//LocalDate">
       <eAnnotations source="org.eclipse.emf.texo">
         <details key="java.member" value="validEndDate"/>
       </eAnnotations>
@@ -50,7 +50,7 @@
         <details key="java.member" value="personId"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationTime" eType="#//ZonedDateTime">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationTime" eType="ecore:EDataType http://www.soluvas.org/jpa.jpa/#//DateTime">
       <eAnnotations source="org.eclipse.emf.texo">
         <details key="java.member" value="creationTime"/>
       </eAnnotations>
@@ -67,6 +67,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID">
       <eAnnotations source="org.eclipse.emf.texo">
         <details key="java.member" value="id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Description of the testimony in AsciiDoc."/>
+      </eAnnotations>
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptionHtml" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Description of the testimony in HTML format."/>
+      </eAnnotations>
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="descriptionHtml"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -174,6 +190,12 @@
         <details key="java.member" value="id"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="testimony" lowerBound="1"
+        eType="#//Testimony" eOpposite="#//Testimony/claims">
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="testimony"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralClaim" eSuperTypes="#//Claim">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="spelling" eType="#//Spelling"
@@ -182,12 +204,12 @@
         <details key="java.member" value="spelling"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Only needed if {@link transliteration} is {@code false}."/>
       </eAnnotations>
       <eAnnotations source="org.eclipse.emf.texo">
-        <details key="java.member" value="languageTag"/>
+        <details key="java.member" value="language"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -253,6 +275,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID">
       <eAnnotations source="org.eclipse.emf.texo">
         <details key="java.member" value="id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Description of the property in AsciiDoc. It is derived from the {@link Claim} or {@link Testimony}'s description."/>
+      </eAnnotations>
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptionHtml" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Description of the property in HTML format. It is derived from the {@link Claim} or {@link Testimony}'s {@code descriptionHtml}."/>
+      </eAnnotations>
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="descriptionHtml"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -448,8 +486,6 @@
     <eLiterals name="scholarly_article"/>
     <eLiterals name="hadith"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="ZonedDateTime" instanceClassName="java.time.ZonedDateTime"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="LocalDate" instanceClassName="java.time.LocalDate"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Spelling">
     <eLiterals name="official">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
