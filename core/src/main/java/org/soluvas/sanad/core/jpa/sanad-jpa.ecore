@@ -99,10 +99,10 @@
         <details key="java.member" value="authenticities"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="successivities" ordered="false"
-        upperBound="-1" eType="#//SuccessivityProperty" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successions" ordered="false"
+        upperBound="-1" eType="#//SuccessionProperty" containment="true">
       <eAnnotations source="org.eclipse.emf.texo">
-        <details key="java.member" value="successivities"/>
+        <details key="java.member" value="successions"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="authors" ordered="false"
@@ -308,7 +308,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AuthenticityClaim" eSuperTypes="#//Claim">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Claims that a Concept has the specified authenticity."/>
+      <details key="documentation" value="Claims that a Concept has the specified authenticity (sahih-ness)."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="authenticity" eType="#//Authenticity">
       <eAnnotations source="org.eclipse.emf.texo">
@@ -316,13 +316,14 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SuccessivityClaim" eSuperTypes="#//Claim">
+  <eClassifiers xsi:type="ecore:EClass" name="SuccessionClaim" eSuperTypes="#//Claim">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Claims that specified Concept has the specified successivity."/>
+      <details key="documentation" value="Claims that specified Concept has the specified succession (sanad/isnad).&#xA;mashhur/aziz/gharib implies &quot;singular&quot; ahaad (آحاد)"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="successivity" eType="#//Successivity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="succession" eType="#//Succession"
+        defaultValueLiteral="wording">
       <eAnnotations source="org.eclipse.emf.texo">
-        <details key="java.member" value="successivity"/>
+        <details key="java.member" value="succession"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -333,10 +334,14 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SuccessivityProperty" eSuperTypes="#//Property">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="successivity" eType="#//Successivity">
+  <eClassifiers xsi:type="ecore:EClass" name="SuccessionProperty" eSuperTypes="#//Property">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="sanad/isnād. mashhur/aziz/gharib implies &quot;singular&quot; ahaad (آحاد)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="succession" eType="#//Succession"
+        defaultValueLiteral="wording">
       <eAnnotations source="org.eclipse.emf.texo">
-        <details key="java.member" value="successivity"/>
+        <details key="java.member" value="succession"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -550,7 +555,36 @@
       </eAnnotations>
     </eLiterals>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Successivity"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Succession">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="sanad/isnād. mashhur/aziz/gharib implies &quot;singular&quot; ahaad (آحاد)"/>
+    </eAnnotations>
+    <eLiterals name="wording">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="mutawatir (مُتَواتِر) in wording"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="meaning">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="mutawatir only in meaning, not wording"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="triple">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="mashhur (مَشْهُوْر)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="double">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="aziz (عَزِيْز)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="single">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="gharib (غَرِيْب)"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="UUID" instanceClassName="java.util.UUID"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Purpose">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

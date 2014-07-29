@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.4
 -- Dumped by pg_dump version 9.3.4
--- Started on 2014-07-30 06:04:28 WIB
+-- Started on 2014-07-30 06:29:38 WIB
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 171 (class 1259 OID 17254)
+-- TOC entry 172 (class 1259 OID 17375)
 -- Name: claim; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -38,11 +38,11 @@ CREATE TABLE claim (
     dtype character varying(31) NOT NULL,
     id uuid NOT NULL,
     authenticity character varying(255),
-    successivity character varying(255),
     adoc character varying(255),
     html character varying(255),
     language character varying(255),
     spelling character varying(255),
+    succession character varying(255),
     kind character varying(255),
     grade character varying(255),
     scholarid character varying(255),
@@ -53,7 +53,7 @@ CREATE TABLE claim (
 ALTER TABLE sanad.claim OWNER TO postgres;
 
 --
--- TOC entry 172 (class 1259 OID 17262)
+-- TOC entry 173 (class 1259 OID 17383)
 -- Name: literal; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -70,7 +70,7 @@ CREATE TABLE literal (
 ALTER TABLE sanad.literal OWNER TO postgres;
 
 --
--- TOC entry 173 (class 1259 OID 17270)
+-- TOC entry 174 (class 1259 OID 17391)
 -- Name: property; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -84,14 +84,14 @@ CREATE TABLE property (
     spelling character varying(255),
     adoc character varying(255),
     html character varying(255),
-    successivity character varying(255),
+    succession character varying(255),
     scholarid character varying(255),
     authenticity character varying(255),
     thing_id uuid,
     transliteration_id uuid,
     literal_id uuid,
     articlebodies_thing_id uuid,
-    successivities_thing_id uuid,
+    successions_thing_id uuid,
     names_thing_id uuid,
     authors_thing_id uuid,
     authenticities_thing_id uuid
@@ -101,7 +101,7 @@ CREATE TABLE property (
 ALTER TABLE sanad.property OWNER TO postgres;
 
 --
--- TOC entry 174 (class 1259 OID 17278)
+-- TOC entry 175 (class 1259 OID 17399)
 -- Name: property_claim; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -114,7 +114,7 @@ CREATE TABLE property_claim (
 ALTER TABLE sanad.property_claim OWNER TO postgres;
 
 --
--- TOC entry 175 (class 1259 OID 17283)
+-- TOC entry 176 (class 1259 OID 17404)
 -- Name: scholar; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -127,7 +127,7 @@ CREATE TABLE scholar (
 ALTER TABLE sanad.scholar OWNER TO postgres;
 
 --
--- TOC entry 176 (class 1259 OID 17291)
+-- TOC entry 177 (class 1259 OID 17412)
 -- Name: testimony; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -149,7 +149,7 @@ CREATE TABLE testimony (
 ALTER TABLE sanad.testimony OWNER TO postgres;
 
 --
--- TOC entry 177 (class 1259 OID 17299)
+-- TOC entry 178 (class 1259 OID 17420)
 -- Name: thing; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -164,7 +164,7 @@ CREATE TABLE thing (
 ALTER TABLE sanad.thing OWNER TO postgres;
 
 --
--- TOC entry 178 (class 1259 OID 17307)
+-- TOC entry 171 (class 1259 OID 17307)
 -- Name: transliteration; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -180,7 +180,7 @@ CREATE TABLE transliteration (
 ALTER TABLE sanad.transliteration OWNER TO postgres;
 
 --
--- TOC entry 1907 (class 2606 OID 17261)
+-- TOC entry 1911 (class 2606 OID 17382)
 -- Name: claim_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -189,7 +189,7 @@ ALTER TABLE ONLY claim
 
 
 --
--- TOC entry 1909 (class 2606 OID 17269)
+-- TOC entry 1913 (class 2606 OID 17390)
 -- Name: literal_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -198,7 +198,7 @@ ALTER TABLE ONLY literal
 
 
 --
--- TOC entry 1915 (class 2606 OID 17282)
+-- TOC entry 1919 (class 2606 OID 17403)
 -- Name: property_claim_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -207,7 +207,7 @@ ALTER TABLE ONLY property_claim
 
 
 --
--- TOC entry 1913 (class 2606 OID 17277)
+-- TOC entry 1917 (class 2606 OID 17398)
 -- Name: property_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -216,7 +216,7 @@ ALTER TABLE ONLY property
 
 
 --
--- TOC entry 1917 (class 2606 OID 17290)
+-- TOC entry 1921 (class 2606 OID 17411)
 -- Name: scholar_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -225,7 +225,7 @@ ALTER TABLE ONLY scholar
 
 
 --
--- TOC entry 1919 (class 2606 OID 17298)
+-- TOC entry 1923 (class 2606 OID 17419)
 -- Name: testimony_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -234,7 +234,7 @@ ALTER TABLE ONLY testimony
 
 
 --
--- TOC entry 1921 (class 2606 OID 17306)
+-- TOC entry 1925 (class 2606 OID 17427)
 -- Name: thing_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -243,7 +243,7 @@ ALTER TABLE ONLY thing
 
 
 --
--- TOC entry 1923 (class 2606 OID 17314)
+-- TOC entry 1907 (class 2606 OID 17314)
 -- Name: transliteration_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -252,7 +252,7 @@ ALTER TABLE ONLY transliteration
 
 
 --
--- TOC entry 1911 (class 2606 OID 17316)
+-- TOC entry 1915 (class 2606 OID 17429)
 -- Name: uk_6k1t6n18eonhmc1breh1v5ul8; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -261,7 +261,7 @@ ALTER TABLE ONLY literal
 
 
 --
--- TOC entry 1925 (class 2606 OID 17318)
+-- TOC entry 1909 (class 2606 OID 17318)
 -- Name: uk_hi421u15qh6e51f6cv1uheirx; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
 --
 
@@ -270,7 +270,7 @@ ALTER TABLE ONLY transliteration
 
 
 --
--- TOC entry 1929 (class 2606 OID 17334)
+-- TOC entry 1929 (class 2606 OID 17445)
 -- Name: fk_2dq801313t4lascfhh4kqgeic; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -279,7 +279,7 @@ ALTER TABLE ONLY property
 
 
 --
--- TOC entry 1934 (class 2606 OID 17359)
+-- TOC entry 1934 (class 2606 OID 17470)
 -- Name: fk_60y74mwgnltxycmja0x9voi97; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -288,7 +288,7 @@ ALTER TABLE ONLY property
 
 
 --
--- TOC entry 1930 (class 2606 OID 17339)
+-- TOC entry 1930 (class 2606 OID 17450)
 -- Name: fk_b6a5jxrd9yeqnstygtv8dm026; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -297,7 +297,7 @@ ALTER TABLE ONLY property
 
 
 --
--- TOC entry 1928 (class 2606 OID 17329)
+-- TOC entry 1928 (class 2606 OID 17440)
 -- Name: fk_ey4nwj44mfvkelmo6lr2wx87o; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -306,7 +306,16 @@ ALTER TABLE ONLY property
 
 
 --
--- TOC entry 1927 (class 2606 OID 17324)
+-- TOC entry 1931 (class 2606 OID 17455)
+-- Name: fk_fv8vds6ki0am683jgigpbax11; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
+--
+
+ALTER TABLE ONLY property
+    ADD CONSTRAINT fk_fv8vds6ki0am683jgigpbax11 FOREIGN KEY (successions_thing_id) REFERENCES thing(id);
+
+
+--
+-- TOC entry 1927 (class 2606 OID 17435)
 -- Name: fk_k34oc9563in3vgitcdjp5oat6; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -315,7 +324,7 @@ ALTER TABLE ONLY property
 
 
 --
--- TOC entry 1933 (class 2606 OID 17354)
+-- TOC entry 1933 (class 2606 OID 17465)
 -- Name: fk_ki7bf1fn52uwnfe4e0nggcq1c; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -324,16 +333,7 @@ ALTER TABLE ONLY property
 
 
 --
--- TOC entry 1931 (class 2606 OID 17344)
--- Name: fk_lio5pirccbtiw6x5rm01uif5q; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
---
-
-ALTER TABLE ONLY property
-    ADD CONSTRAINT fk_lio5pirccbtiw6x5rm01uif5q FOREIGN KEY (successivities_thing_id) REFERENCES thing(id);
-
-
---
--- TOC entry 1932 (class 2606 OID 17349)
+-- TOC entry 1932 (class 2606 OID 17460)
 -- Name: fk_p6qoelwm0erc0h0wrgsqvtpkx; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -342,7 +342,7 @@ ALTER TABLE ONLY property
 
 
 --
--- TOC entry 1936 (class 2606 OID 17369)
+-- TOC entry 1936 (class 2606 OID 17480)
 -- Name: fk_r4bd81y83aa101v4vt41o44d7; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -351,7 +351,7 @@ ALTER TABLE ONLY property_claim
 
 
 --
--- TOC entry 1935 (class 2606 OID 17364)
+-- TOC entry 1935 (class 2606 OID 17475)
 -- Name: fk_t84muc58mlxipw8296o044uc8; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -360,7 +360,7 @@ ALTER TABLE ONLY property_claim
 
 
 --
--- TOC entry 1926 (class 2606 OID 17319)
+-- TOC entry 1926 (class 2606 OID 17430)
 -- Name: fk_t9rfahjl4n30x5nrma0g77wig; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
 --
 
@@ -368,7 +368,7 @@ ALTER TABLE ONLY claim
     ADD CONSTRAINT fk_t9rfahjl4n30x5nrma0g77wig FOREIGN KEY (testimony_id) REFERENCES testimony(id);
 
 
--- Completed on 2014-07-30 06:04:28 WIB
+-- Completed on 2014-07-30 06:29:38 WIB
 
 --
 -- PostgreSQL database dump complete

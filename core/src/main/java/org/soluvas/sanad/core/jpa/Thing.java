@@ -49,8 +49,8 @@ public abstract class Thing {
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL })
-	@JoinColumns({ @JoinColumn(name = "successivities_thing_id") })
-	private Set<SuccessivityProperty> successivities = new HashSet<SuccessivityProperty>();
+	@JoinColumns({ @JoinColumn(name = "successions_thing_id") })
+	private Set<SuccessionProperty> successions = new HashSet<SuccessionProperty>();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -235,77 +235,75 @@ public abstract class Thing {
 	}
 
 	/**
-	 * Returns the value of '<em><b>successivities</b></em>' feature.
+	 * Returns the value of '<em><b>successions</b></em>' feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @return the value of '<em><b>successivities</b></em>' feature
+	 * @return the value of '<em><b>successions</b></em>' feature
 	 * @generated
 	 */
-	public Set<SuccessivityProperty> getSuccessivities() {
-		return successivities;
+	public Set<SuccessionProperty> getSuccessions() {
+		return successions;
 	}
 
 	/**
-	 * Adds to the <em>successivities</em> feature.
+	 * Adds to the <em>successions</em> feature.
 	 *
-	 * @param successivitiesValue
+	 * @param successionsValue
 	 *            the value to add
 	 * @return true if the value is added to the collection (it was not yet
 	 *         present in the collection), false otherwise
 	 * @generated
 	 */
-	public boolean addToSuccessivities(SuccessivityProperty successivitiesValue) {
-		if (!successivities.contains(successivitiesValue)) {
-			boolean result = successivities.add(successivitiesValue);
+	public boolean addToSuccessions(SuccessionProperty successionsValue) {
+		if (!successions.contains(successionsValue)) {
+			boolean result = successions.add(successionsValue);
 			return result;
 		}
 		return false;
 	}
 
 	/**
-	 * Removes from the <em>successivities</em> feature.
+	 * Removes from the <em>successions</em> feature.
 	 *
-	 * @param successivitiesValue
+	 * @param successionsValue
 	 *            the value to remove
 	 * @return true if the value is removed from the collection (it existed in
 	 *         the collection before removing), false otherwise
 	 *
 	 * @generated
 	 */
-	public boolean removeFromSuccessivities(
-			SuccessivityProperty successivitiesValue) {
-		if (successivities.contains(successivitiesValue)) {
-			boolean result = successivities.remove(successivitiesValue);
+	public boolean removeFromSuccessions(SuccessionProperty successionsValue) {
+		if (successions.contains(successionsValue)) {
+			boolean result = successions.remove(successionsValue);
 			return result;
 		}
 		return false;
 	}
 
 	/**
-	 * Clears the <em>successivities</em> feature.
+	 * Clears the <em>successions</em> feature.
 	 * 
 	 * @generated
 	 */
-	public void clearSuccessivities() {
-		while (!successivities.isEmpty()) {
-			removeFromSuccessivities(successivities.iterator().next());
+	public void clearSuccessions() {
+		while (!successions.isEmpty()) {
+			removeFromSuccessions(successions.iterator().next());
 		}
 	}
 
 	/**
-	 * Sets the '{@link Thing#getSuccessivities() <em>successivities</em>}'
-	 * feature.
+	 * Sets the '{@link Thing#getSuccessions() <em>successions</em>}' feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param newSuccessivities
-	 *            the new value of the '{@link Thing#getSuccessivities()
-	 *            successivities}' feature.
+	 * @param newSuccessions
+	 *            the new value of the '{@link Thing#getSuccessions()
+	 *            successions}' feature.
 	 * @generated
 	 */
-	public void setSuccessivities(Set<SuccessivityProperty> newSuccessivities) {
-		successivities = newSuccessivities;
+	public void setSuccessions(Set<SuccessionProperty> newSuccessions) {
+		successions = newSuccessions;
 	}
 
 	/**

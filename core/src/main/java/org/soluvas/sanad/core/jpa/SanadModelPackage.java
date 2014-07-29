@@ -81,7 +81,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIVITY_CLASSIFIER_ID = 28;
+	public static final int SUCCESSION_CLASSIFIER_ID = 28;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -249,7 +249,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int THING_SUCCESSIVITIES_FEATURE_ID = 2;
+	public static final int THING_SUCCESSIONS_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -382,6 +382,48 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
+	public static final int SUCCESSIONPROPERTY_CLASSIFIER_ID = 13;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int SUCCESSIONPROPERTY_CLAIMS_FEATURE_ID = 0;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int SUCCESSIONPROPERTY_ID_FEATURE_ID = 1;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int SUCCESSIONPROPERTY_DESCRIPTION_FEATURE_ID = 2;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int SUCCESSIONPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int SUCCESSIONPROPERTY_SUCCESSION_FEATURE_ID = 4;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public static final int AUTHENTICITYPROPERTY_CLAIMS_FEATURE_ID = 0;
 
 	/**
@@ -404,48 +446,6 @@ public class SanadModelPackage extends ModelPackage {
 	 * @generated
 	 */
 	public static final int AUTHENTICITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int SUCCESSIVITYPROPERTY_CLASSIFIER_ID = 13;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int SUCCESSIVITYPROPERTY_SUCCESSIVITY_FEATURE_ID = 4;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int SUCCESSIVITYPROPERTY_CLAIMS_FEATURE_ID = 0;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int SUCCESSIVITYPROPERTY_ID_FEATURE_ID = 1;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int SUCCESSIVITYPROPERTY_DESCRIPTION_FEATURE_ID = 2;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int SUCCESSIVITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -648,7 +648,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int EVIDENCE_SUCCESSIVITIES_FEATURE_ID = 2;
+	public static final int EVIDENCE_SUCCESSIONS_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -760,28 +760,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIVITYCLAIM_CLASSIFIER_ID = 11;
+	public static final int SUCCESSIONCLAIM_CLASSIFIER_ID = 11;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIVITYCLAIM_ID_FEATURE_ID = 0;
+	public static final int SUCCESSIONCLAIM_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIVITYCLAIM_TESTIMONY_FEATURE_ID = 1;
+	public static final int SUCCESSIONCLAIM_TESTIMONY_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIVITYCLAIM_SUCCESSIVITY_FEATURE_ID = 2;
+	public static final int SUCCESSIONCLAIM_SUCCESSION_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1040,7 +1040,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_SUCCESSIVITIES_FEATURE_ID = 2;
+	public static final int CREATIVEWORK_SUCCESSIONS_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1096,7 +1096,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_SUCCESSIVITIES_FEATURE_ID = 2;
+	public static final int HADITH_SUCCESSIONS_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1197,8 +1197,8 @@ public class SanadModelPackage extends ModelPackage {
 				AuthenticityProperty.class,
 				modelPackage.getAuthenticityPropertyEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
-				SuccessivityProperty.class,
-				modelPackage.getSuccessivityPropertyEClass(), modelPackage);
+				SuccessionProperty.class,
+				modelPackage.getSuccessionPropertyEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
 				SpellingProperty.class,
 				modelPackage.getSpellingPropertyEClass(), modelPackage);
@@ -1216,8 +1216,8 @@ public class SanadModelPackage extends ModelPackage {
 				AuthenticityClaim.class,
 				modelPackage.getAuthenticityClaimEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
-				SuccessivityClaim.class,
-				modelPackage.getSuccessivityClaimEClass(), modelPackage);
+				SuccessionClaim.class, modelPackage.getSuccessionClaimEClass(),
+				modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
 				NarratorClaim.class, modelPackage.getNarratorClaimEClass(),
 				modelPackage);
@@ -1241,9 +1241,8 @@ public class SanadModelPackage extends ModelPackage {
 		ModelResolver.getInstance().registerClassModelMapping(
 				Authenticity.class, modelPackage.getAuthenticityEEnum(),
 				modelPackage);
-		ModelResolver.getInstance().registerClassModelMapping(
-				Successivity.class, modelPackage.getSuccessivityEEnum(),
-				modelPackage);
+		ModelResolver.getInstance().registerClassModelMapping(Succession.class,
+				modelPackage.getSuccessionEEnum(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
 				NarratorGrade.class, modelPackage.getNarratorGradeEEnum(),
 				modelPackage);
@@ -1553,17 +1552,16 @@ public class SanadModelPackage extends ModelPackage {
 	}
 
 	/**
-	 * Returns the {@link EStructuralFeature} '
-	 * <em><b>Thing.successivities</b></em>'. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * Returns the {@link EStructuralFeature} '<em><b>Thing.successions</b></em>
+	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>Thing.successivities</b></em>'.
+	 *         <em><b>Thing.successions</b></em>'.
 	 * @generated
 	 */
-	public EReference getThing_Successivities() {
+	public EReference getThing_Successions() {
 		return (EReference) getThingEClass().getEAllStructuralFeatures().get(
-				THING_SUCCESSIVITIES_FEATURE_ID);
+				THING_SUCCESSIONS_FEATURE_ID);
 	}
 
 	/**
@@ -1757,31 +1755,31 @@ public class SanadModelPackage extends ModelPackage {
 	}
 
 	/**
-	 * Returns the {@link EClass} '<em><b>SuccessivityProperty</b></em>'. <!--
+	 * Returns the {@link EClass} '<em><b>SuccessionProperty</b></em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @return an instance of the {@link EClass} '
-	 *         <em><b>SuccessivityProperty</b></em>'
+	 *         <em><b>SuccessionProperty</b></em>'
 	 * @generated
 	 */
-	public EClass getSuccessivityPropertyEClass() {
+	public EClass getSuccessionPropertyEClass() {
 		return (EClass) getEPackage().getEClassifiers().get(
-				SUCCESSIVITYPROPERTY_CLASSIFIER_ID);
+				SUCCESSIONPROPERTY_CLASSIFIER_ID);
 	}
 
 	/**
 	 * Returns the {@link EStructuralFeature} '
-	 * <em><b>SuccessivityProperty.successivity</b></em>'. <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * <em><b>SuccessionProperty.succession</b></em>'. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * 
 	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>SuccessivityProperty.successivity</b></em>'.
+	 *         <em><b>SuccessionProperty.succession</b></em>'.
 	 * @generated
 	 */
-	public EAttribute getSuccessivityProperty_Successivity() {
-		return (EAttribute) getSuccessivityPropertyEClass()
+	public EAttribute getSuccessionProperty_Succession() {
+		return (EAttribute) getSuccessionPropertyEClass()
 				.getEAllStructuralFeatures().get(
-						SUCCESSIVITYPROPERTY_SUCCESSIVITY_FEATURE_ID);
+						SUCCESSIONPROPERTY_SUCCESSION_FEATURE_ID);
 	}
 
 	/**
@@ -2091,31 +2089,31 @@ public class SanadModelPackage extends ModelPackage {
 	}
 
 	/**
-	 * Returns the {@link EClass} '<em><b>SuccessivityClaim</b></em>'. <!--
+	 * Returns the {@link EClass} '<em><b>SuccessionClaim</b></em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @return an instance of the {@link EClass} '
-	 *         <em><b>SuccessivityClaim</b></em>'
+	 *         <em><b>SuccessionClaim</b></em>'
 	 * @generated
 	 */
-	public EClass getSuccessivityClaimEClass() {
+	public EClass getSuccessionClaimEClass() {
 		return (EClass) getEPackage().getEClassifiers().get(
-				SUCCESSIVITYCLAIM_CLASSIFIER_ID);
+				SUCCESSIONCLAIM_CLASSIFIER_ID);
 	}
 
 	/**
 	 * Returns the {@link EStructuralFeature} '
-	 * <em><b>SuccessivityClaim.successivity</b></em>'. <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <em><b>SuccessionClaim.succession</b></em>'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * 
 	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>SuccessivityClaim.successivity</b></em>'.
+	 *         <em><b>SuccessionClaim.succession</b></em>'.
 	 * @generated
 	 */
-	public EAttribute getSuccessivityClaim_Successivity() {
-		return (EAttribute) getSuccessivityClaimEClass()
+	public EAttribute getSuccessionClaim_Succession() {
+		return (EAttribute) getSuccessionClaimEClass()
 				.getEAllStructuralFeatures().get(
-						SUCCESSIVITYCLAIM_SUCCESSIVITY_FEATURE_ID);
+						SUCCESSIONCLAIM_SUCCESSION_FEATURE_ID);
 	}
 
 	/**
@@ -2503,16 +2501,16 @@ public class SanadModelPackage extends ModelPackage {
 	}
 
 	/**
-	 * Returns the EEnum '<em><b>Successivity</b></em>'. <!-- begin-user-doc -->
+	 * Returns the EEnum '<em><b>Succession</b></em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return an instance of the EEnum representing '
-	 *         <em><b>Successivity</b></em>'
+	 * @return an instance of the EEnum representing '<em><b>Succession</b></em>
+	 *         '
 	 * @generated
 	 */
-	public EEnum getSuccessivityEEnum() {
+	public EEnum getSuccessionEEnum() {
 		return (EEnum) getEPackage().getEClassifiers().get(
-				SUCCESSIVITY_CLASSIFIER_ID);
+				SUCCESSION_CLASSIFIER_ID);
 	}
 
 	/**
@@ -2597,8 +2595,8 @@ public class SanadModelPackage extends ModelPackage {
 			return LiteralProperty.class;
 		case AUTHENTICITYPROPERTY_CLASSIFIER_ID:
 			return AuthenticityProperty.class;
-		case SUCCESSIVITYPROPERTY_CLASSIFIER_ID:
-			return SuccessivityProperty.class;
+		case SUCCESSIONPROPERTY_CLASSIFIER_ID:
+			return SuccessionProperty.class;
 		case SPELLINGPROPERTY_CLASSIFIER_ID:
 			return SpellingProperty.class;
 		case LITERALCLAIM_CLASSIFIER_ID:
@@ -2611,8 +2609,8 @@ public class SanadModelPackage extends ModelPackage {
 			return ThingProperty.class;
 		case AUTHENTICITYCLAIM_CLASSIFIER_ID:
 			return AuthenticityClaim.class;
-		case SUCCESSIVITYCLAIM_CLASSIFIER_ID:
-			return SuccessivityClaim.class;
+		case SUCCESSIONCLAIM_CLASSIFIER_ID:
+			return SuccessionClaim.class;
 		case NARRATORCLAIM_CLASSIFIER_ID:
 			return NarratorClaim.class;
 		case PERSONPROPERTY_CLASSIFIER_ID:
@@ -2631,8 +2629,8 @@ public class SanadModelPackage extends ModelPackage {
 			return ThingKind.class;
 		case AUTHENTICITY_CLASSIFIER_ID:
 			return Authenticity.class;
-		case SUCCESSIVITY_CLASSIFIER_ID:
-			return Successivity.class;
+		case SUCCESSION_CLASSIFIER_ID:
+			return Succession.class;
 		case NARRATORGRADE_CLASSIFIER_ID:
 			return NarratorGrade.class;
 		case CONCEPTKIND_CLASSIFIER_ID:

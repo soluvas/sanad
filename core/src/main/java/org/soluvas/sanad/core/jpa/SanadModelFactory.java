@@ -49,8 +49,8 @@ public class SanadModelFactory implements ModelFactory {
 			return createLiteralProperty();
 		case SanadModelPackage.AUTHENTICITYPROPERTY_CLASSIFIER_ID:
 			return createAuthenticityProperty();
-		case SanadModelPackage.SUCCESSIVITYPROPERTY_CLASSIFIER_ID:
-			return createSuccessivityProperty();
+		case SanadModelPackage.SUCCESSIONPROPERTY_CLASSIFIER_ID:
+			return createSuccessionProperty();
 		case SanadModelPackage.SPELLINGPROPERTY_CLASSIFIER_ID:
 			return createSpellingProperty();
 		case SanadModelPackage.LITERALCLAIM_CLASSIFIER_ID:
@@ -63,8 +63,8 @@ public class SanadModelFactory implements ModelFactory {
 			return createThingProperty();
 		case SanadModelPackage.AUTHENTICITYCLAIM_CLASSIFIER_ID:
 			return createAuthenticityClaim();
-		case SanadModelPackage.SUCCESSIVITYCLAIM_CLASSIFIER_ID:
-			return createSuccessivityClaim();
+		case SanadModelPackage.SUCCESSIONCLAIM_CLASSIFIER_ID:
+			return createSuccessionClaim();
 		case SanadModelPackage.NARRATORCLAIM_CLASSIFIER_ID:
 			return createNarratorClaim();
 		case SanadModelPackage.PERSONPROPERTY_CLASSIFIER_ID:
@@ -127,8 +127,8 @@ public class SanadModelFactory implements ModelFactory {
 		case SanadModelPackage.AUTHENTICITYPROPERTY_CLASSIFIER_ID:
 			modelObject = new AuthenticityPropertyModelObject();
 			break;
-		case SanadModelPackage.SUCCESSIVITYPROPERTY_CLASSIFIER_ID:
-			modelObject = new SuccessivityPropertyModelObject();
+		case SanadModelPackage.SUCCESSIONPROPERTY_CLASSIFIER_ID:
+			modelObject = new SuccessionPropertyModelObject();
 			break;
 		case SanadModelPackage.SPELLINGPROPERTY_CLASSIFIER_ID:
 			modelObject = new SpellingPropertyModelObject();
@@ -148,8 +148,8 @@ public class SanadModelFactory implements ModelFactory {
 		case SanadModelPackage.AUTHENTICITYCLAIM_CLASSIFIER_ID:
 			modelObject = new AuthenticityClaimModelObject();
 			break;
-		case SanadModelPackage.SUCCESSIVITYCLAIM_CLASSIFIER_ID:
-			modelObject = new SuccessivityClaimModelObject();
+		case SanadModelPackage.SUCCESSIONCLAIM_CLASSIFIER_ID:
+			modelObject = new SuccessionClaimModelObject();
 			break;
 		case SanadModelPackage.NARRATORCLAIM_CLASSIFIER_ID:
 			modelObject = new NarratorClaimModelObject();
@@ -241,11 +241,11 @@ public class SanadModelFactory implements ModelFactory {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @return an instance of the model object representing the EClass
-	 *         SuccessivityProperty
+	 *         SuccessionProperty
 	 * @generated
 	 */
-	public SuccessivityProperty createSuccessivityProperty() {
-		return new SuccessivityProperty();
+	public SuccessionProperty createSuccessionProperty() {
+		return new SuccessionProperty();
 	}
 
 	/**
@@ -327,11 +327,11 @@ public class SanadModelFactory implements ModelFactory {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @return an instance of the model object representing the EClass
-	 *         SuccessivityClaim
+	 *         SuccessionClaim
 	 * @generated
 	 */
-	public SuccessivityClaim createSuccessivityClaim() {
-		return new SuccessivityClaim();
+	public SuccessionClaim createSuccessionClaim() {
+		return new SuccessionClaim();
 	}
 
 	/**
@@ -441,8 +441,8 @@ public class SanadModelFactory implements ModelFactory {
 			return createThingKindFromString(value);
 		case SanadModelPackage.AUTHENTICITY_CLASSIFIER_ID:
 			return createAuthenticityFromString(value);
-		case SanadModelPackage.SUCCESSIVITY_CLASSIFIER_ID:
-			return createSuccessivityFromString(value);
+		case SanadModelPackage.SUCCESSION_CLASSIFIER_ID:
+			return createSuccessionFromString(value);
 		case SanadModelPackage.NARRATORGRADE_CLASSIFIER_ID:
 			return createNarratorGradeFromString(value);
 		case SanadModelPackage.CONCEPTKIND_CLASSIFIER_ID:
@@ -477,8 +477,8 @@ public class SanadModelFactory implements ModelFactory {
 			return convertThingKindToString((ThingKind) value);
 		case SanadModelPackage.AUTHENTICITY_CLASSIFIER_ID:
 			return convertAuthenticityToString((Authenticity) value);
-		case SanadModelPackage.SUCCESSIVITY_CLASSIFIER_ID:
-			return convertSuccessivityToString((Successivity) value);
+		case SanadModelPackage.SUCCESSION_CLASSIFIER_ID:
+			return convertSuccessionToString((Succession) value);
 		case SanadModelPackage.NARRATORGRADE_CLASSIFIER_ID:
 			return convertNarratorGradeToString((NarratorGrade) value);
 		case SanadModelPackage.CONCEPTKIND_CLASSIFIER_ID:
@@ -636,7 +636,7 @@ public class SanadModelFactory implements ModelFactory {
 	}
 
 	/**
-	 * Converts the EDataType: Successivity to a String. <!-- begin-user-doc -->
+	 * Converts the EDataType: Succession to a String. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
 	 * @param value
@@ -645,7 +645,7 @@ public class SanadModelFactory implements ModelFactory {
 	 *         returned
 	 * @generated
 	 */
-	public String convertSuccessivityToString(Successivity value) {
+	public String convertSuccessionToString(Succession value) {
 		if (value == null) {
 			return null;
 		}
@@ -653,7 +653,7 @@ public class SanadModelFactory implements ModelFactory {
 	}
 
 	/**
-	 * Creates an instance of the EDataType: Successivity from a String. <!--
+	 * Creates an instance of the EDataType: Succession from a String. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @param value
@@ -662,11 +662,11 @@ public class SanadModelFactory implements ModelFactory {
 	 *         returned
 	 * @generated
 	 */
-	public Successivity createSuccessivityFromString(String value) {
+	public Succession createSuccessionFromString(String value) {
 		if (value == null) {
 			return null;
 		}
-		return Successivity.get(value);
+		return Succession.get(value);
 	}
 
 	/**
@@ -1074,8 +1074,8 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getNames();
 			case SanadModelPackage.THING_AUTHENTICITIES_FEATURE_ID:
 				return getTarget().getAuthenticities();
-			case SanadModelPackage.THING_SUCCESSIVITIES_FEATURE_ID:
-				return getTarget().getSuccessivities();
+			case SanadModelPackage.THING_SUCCESSIONS_FEATURE_ID:
+				return getTarget().getSuccessions();
 			case SanadModelPackage.THING_AUTHORS_FEATURE_ID:
 				return getTarget().getAuthors();
 			case SanadModelPackage.THING_ID_FEATURE_ID:
@@ -1104,9 +1104,8 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget()
 						.setAuthenticities((Set<AuthenticityProperty>) value);
 				return;
-			case SanadModelPackage.THING_SUCCESSIVITIES_FEATURE_ID:
-				getTarget()
-						.setSuccessivities((Set<SuccessivityProperty>) value);
+			case SanadModelPackage.THING_SUCCESSIONS_FEATURE_ID:
+				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.THING_AUTHORS_FEATURE_ID:
 				getTarget().setAuthors((Set<Property>) value);
@@ -1141,9 +1140,8 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().addToAuthenticities(
 						(AuthenticityProperty) value);
 
-			case SanadModelPackage.THING_SUCCESSIVITIES_FEATURE_ID:
-				return getTarget().addToSuccessivities(
-						(SuccessivityProperty) value);
+			case SanadModelPackage.THING_SUCCESSIONS_FEATURE_ID:
+				return getTarget().addToSuccessions((SuccessionProperty) value);
 
 			case SanadModelPackage.THING_AUTHORS_FEATURE_ID:
 				return getTarget().addToAuthors((Property) value);
@@ -1169,9 +1167,9 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().removeFromAuthenticities(
 						(AuthenticityProperty) value);
 
-			case SanadModelPackage.THING_SUCCESSIVITIES_FEATURE_ID:
-				return getTarget().removeFromSuccessivities(
-						(SuccessivityProperty) value);
+			case SanadModelPackage.THING_SUCCESSIONS_FEATURE_ID:
+				return getTarget().removeFromSuccessions(
+						(SuccessionProperty) value);
 
 			case SanadModelPackage.THING_AUTHORS_FEATURE_ID:
 				return getTarget().removeFromAuthors((Property) value);
@@ -1509,8 +1507,7 @@ public class SanadModelFactory implements ModelFactory {
 	}
 
 	/**
-	 * The adapter/wrapper for the EClass '<em><b>SuccessivityProperty</b></em>
-	 * '.
+	 * The adapter/wrapper for the EClass '<em><b>SuccessionProperty</b></em>'.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1519,14 +1516,14 @@ public class SanadModelFactory implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	public static class SuccessivityPropertyModelObject<E extends SuccessivityProperty>
+	public static class SuccessionPropertyModelObject<E extends SuccessionProperty>
 			extends PropertyModelObject<E> {
 		/**
 		 * @generated
 		 */
 		@Override
 		public EClass eClass() {
-			return SanadModelPackage.INSTANCE.getSuccessivityPropertyEClass();
+			return SanadModelPackage.INSTANCE.getSuccessionPropertyEClass();
 		}
 
 		/**
@@ -1544,16 +1541,16 @@ public class SanadModelFactory implements ModelFactory {
 		public Object eGet(EStructuralFeature eStructuralFeature) {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_CLAIMS_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONPROPERTY_CLAIMS_FEATURE_ID:
 				return getTarget().getClaims();
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_ID_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONPROPERTY_ID_FEATURE_ID:
 				return getTarget().getId();
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_DESCRIPTION_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONPROPERTY_DESCRIPTION_FEATURE_ID:
 				return getTarget().getDescription();
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONPROPERTY_DESCRIPTIONHTML_FEATURE_ID:
 				return getTarget().getDescriptionHtml();
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_SUCCESSIVITY_FEATURE_ID:
-				return getTarget().getSuccessivity();
+			case SanadModelPackage.SUCCESSIONPROPERTY_SUCCESSION_FEATURE_ID:
+				return getTarget().getSuccession();
 			default:
 				return super.eGet(eStructuralFeature);
 			}
@@ -1567,20 +1564,20 @@ public class SanadModelFactory implements ModelFactory {
 		public void eSet(EStructuralFeature eStructuralFeature, Object value) {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_CLAIMS_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONPROPERTY_CLAIMS_FEATURE_ID:
 				getTarget().setClaims((Set<Claim>) value);
 				return;
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_ID_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONPROPERTY_ID_FEATURE_ID:
 				getTarget().setId((UUID) value);
 				return;
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_DESCRIPTION_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONPROPERTY_DESCRIPTION_FEATURE_ID:
 				getTarget().setDescription((String) value);
 				return;
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONPROPERTY_DESCRIPTIONHTML_FEATURE_ID:
 				getTarget().setDescriptionHtml((String) value);
 				return;
-			case SanadModelPackage.SUCCESSIVITYPROPERTY_SUCCESSIVITY_FEATURE_ID:
-				getTarget().setSuccessivity((Successivity) value);
+			case SanadModelPackage.SUCCESSIONPROPERTY_SUCCESSION_FEATURE_ID:
+				getTarget().setSuccession((Succession) value);
 				return;
 			default:
 				super.eSet(eStructuralFeature, value);
@@ -2091,8 +2088,8 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getNames();
 			case SanadModelPackage.EVIDENCE_AUTHENTICITIES_FEATURE_ID:
 				return getTarget().getAuthenticities();
-			case SanadModelPackage.EVIDENCE_SUCCESSIVITIES_FEATURE_ID:
-				return getTarget().getSuccessivities();
+			case SanadModelPackage.EVIDENCE_SUCCESSIONS_FEATURE_ID:
+				return getTarget().getSuccessions();
 			case SanadModelPackage.EVIDENCE_AUTHORS_FEATURE_ID:
 				return getTarget().getAuthors();
 			case SanadModelPackage.EVIDENCE_ID_FEATURE_ID:
@@ -2121,9 +2118,8 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget()
 						.setAuthenticities((Set<AuthenticityProperty>) value);
 				return;
-			case SanadModelPackage.EVIDENCE_SUCCESSIVITIES_FEATURE_ID:
-				getTarget()
-						.setSuccessivities((Set<SuccessivityProperty>) value);
+			case SanadModelPackage.EVIDENCE_SUCCESSIONS_FEATURE_ID:
+				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.EVIDENCE_AUTHORS_FEATURE_ID:
 				getTarget().setAuthors((Set<Property>) value);
@@ -2378,7 +2374,7 @@ public class SanadModelFactory implements ModelFactory {
 	}
 
 	/**
-	 * The adapter/wrapper for the EClass '<em><b>SuccessivityClaim</b></em>'.
+	 * The adapter/wrapper for the EClass '<em><b>SuccessionClaim</b></em>'.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -2387,14 +2383,14 @@ public class SanadModelFactory implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	public static class SuccessivityClaimModelObject<E extends SuccessivityClaim>
+	public static class SuccessionClaimModelObject<E extends SuccessionClaim>
 			extends ClaimModelObject<E> {
 		/**
 		 * @generated
 		 */
 		@Override
 		public EClass eClass() {
-			return SanadModelPackage.INSTANCE.getSuccessivityClaimEClass();
+			return SanadModelPackage.INSTANCE.getSuccessionClaimEClass();
 		}
 
 		/**
@@ -2412,12 +2408,12 @@ public class SanadModelFactory implements ModelFactory {
 		public Object eGet(EStructuralFeature eStructuralFeature) {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
-			case SanadModelPackage.SUCCESSIVITYCLAIM_ID_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONCLAIM_ID_FEATURE_ID:
 				return getTarget().getId();
-			case SanadModelPackage.SUCCESSIVITYCLAIM_TESTIMONY_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONCLAIM_TESTIMONY_FEATURE_ID:
 				return getTarget().getTestimony();
-			case SanadModelPackage.SUCCESSIVITYCLAIM_SUCCESSIVITY_FEATURE_ID:
-				return getTarget().getSuccessivity();
+			case SanadModelPackage.SUCCESSIONCLAIM_SUCCESSION_FEATURE_ID:
+				return getTarget().getSuccession();
 			default:
 				return super.eGet(eStructuralFeature);
 			}
@@ -2430,14 +2426,14 @@ public class SanadModelFactory implements ModelFactory {
 		public void eSet(EStructuralFeature eStructuralFeature, Object value) {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
-			case SanadModelPackage.SUCCESSIVITYCLAIM_ID_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONCLAIM_ID_FEATURE_ID:
 				getTarget().setId((UUID) value);
 				return;
-			case SanadModelPackage.SUCCESSIVITYCLAIM_TESTIMONY_FEATURE_ID:
+			case SanadModelPackage.SUCCESSIONCLAIM_TESTIMONY_FEATURE_ID:
 				getTarget().setTestimony((Testimony) value);
 				return;
-			case SanadModelPackage.SUCCESSIVITYCLAIM_SUCCESSIVITY_FEATURE_ID:
-				getTarget().setSuccessivity((Successivity) value);
+			case SanadModelPackage.SUCCESSIONCLAIM_SUCCESSION_FEATURE_ID:
+				getTarget().setSuccession((Succession) value);
 				return;
 			default:
 				super.eSet(eStructuralFeature, value);
@@ -3140,8 +3136,8 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getNames();
 			case SanadModelPackage.CREATIVEWORK_AUTHENTICITIES_FEATURE_ID:
 				return getTarget().getAuthenticities();
-			case SanadModelPackage.CREATIVEWORK_SUCCESSIVITIES_FEATURE_ID:
-				return getTarget().getSuccessivities();
+			case SanadModelPackage.CREATIVEWORK_SUCCESSIONS_FEATURE_ID:
+				return getTarget().getSuccessions();
 			case SanadModelPackage.CREATIVEWORK_AUTHORS_FEATURE_ID:
 				return getTarget().getAuthors();
 			case SanadModelPackage.CREATIVEWORK_ID_FEATURE_ID:
@@ -3170,9 +3166,8 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget()
 						.setAuthenticities((Set<AuthenticityProperty>) value);
 				return;
-			case SanadModelPackage.CREATIVEWORK_SUCCESSIVITIES_FEATURE_ID:
-				getTarget()
-						.setSuccessivities((Set<SuccessivityProperty>) value);
+			case SanadModelPackage.CREATIVEWORK_SUCCESSIONS_FEATURE_ID:
+				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.CREATIVEWORK_AUTHORS_FEATURE_ID:
 				getTarget().setAuthors((Set<Property>) value);
@@ -3257,8 +3252,8 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getNames();
 			case SanadModelPackage.HADITH_AUTHENTICITIES_FEATURE_ID:
 				return getTarget().getAuthenticities();
-			case SanadModelPackage.HADITH_SUCCESSIVITIES_FEATURE_ID:
-				return getTarget().getSuccessivities();
+			case SanadModelPackage.HADITH_SUCCESSIONS_FEATURE_ID:
+				return getTarget().getSuccessions();
 			case SanadModelPackage.HADITH_AUTHORS_FEATURE_ID:
 				return getTarget().getAuthors();
 			case SanadModelPackage.HADITH_ID_FEATURE_ID:
@@ -3289,9 +3284,8 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget()
 						.setAuthenticities((Set<AuthenticityProperty>) value);
 				return;
-			case SanadModelPackage.HADITH_SUCCESSIVITIES_FEATURE_ID:
-				getTarget()
-						.setSuccessivities((Set<SuccessivityProperty>) value);
+			case SanadModelPackage.HADITH_SUCCESSIONS_FEATURE_ID:
+				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.HADITH_AUTHORS_FEATURE_ID:
 				getTarget().setAuthors((Set<Property>) value);

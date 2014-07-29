@@ -77,9 +77,9 @@
         </eReferenceAnnotations>
       </annotatedEStructuralFeatures>
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
-        <eReference href="sanad-jpa.ecore#//Thing/successivities"/>
+        <eReference href="sanad-jpa.ecore#//Thing/successions"/>
         <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
-          <joinColumn name="successivities_thing_id"/>
+          <joinColumn name="successions_thing_id"/>
         </eReferenceAnnotations>
       </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
