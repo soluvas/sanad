@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:modelannotations="http://www.eclipse.org/emf/texo/modelgenerator/modelannotations">
+  <annotatedEPackages>
+    <ePackage href="sanad-jpa.ecore#/"/>
+    <ePackageAnnotations xsi:type="modelannotations:EPackageModelGenAnnotation" name="sanad-jpa" packagePath="org.soluvas.sanad.core.jpa" modelClassesPackagePath="org.soluvas.sanad.core.jpa" qualifiedClassName="org.soluvas.sanad.jpa.Sanad-jpaModelPackage" simpleClassName="SanadModelPackage" simpleModelFactoryClassName="SanadModelFactory" ecoreFileName="sanad-jpa.ecore" daoClassesPackagePath="org.soluvas.sanad.jpa.dao" daoRootClass="org.eclipse.emf.texo.server.store.BaseDao"/>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

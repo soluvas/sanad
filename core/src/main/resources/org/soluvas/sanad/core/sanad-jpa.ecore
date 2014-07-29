@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sanad-jpa" nsURI="http://www.soluvas.org/sanad/jpa/" nsPrefix="sanad-jpa">
+  <eClassifiers xsi:type="ecore:EClass" name="Testimony">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="claims" ordered="false"
+        upperBound="-1" eType="#//Claim" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="signatures" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="GPG signatures of the JSON representation of the testimony, excluding {@link #signature} field.&#xA;At least the person and the server must sign the testimony."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validStartTime" eType="#//ZonedDateTime">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For a zoned date &amp; time-sensitive statement, specify start of validity (inclusive)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validEndTime" eType="#//ZonedDateTime">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For a zoned date &amp; time-sensitive statement, specify end of validity (inclusive)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validStartDate" eType="#//LocalDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For a relative/global date-sensitive statement, specify start of validity (inclusive).&#xA;If both {@link #validStartTime} and {@link #validStartDate} is {@code null}, the statement is should be true since the beginning of time or is irrelevant."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validEndDate" eType="#//LocalDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="personId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationTime" eType="#//ZonedDateTime"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        changeable="false" defaultValueLiteral="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schema version determines the exact mechanism to produce the signatures."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Thing" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="names" ordered="false"
+        upperBound="-1" eType="#//LiteralProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticities" ordered="false"
+        upperBound="-1" eType="#//AuthenticityProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successivities" ordered="false"
+        upperBound="-1" eType="#//SuccessivityProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authors" ordered="false"
+        upperBound="-1" eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="slug" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Slug which is based on initial name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canonicalSlug" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Canonical slug which is based on initial name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="html" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in HTML format."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spellings" ordered="false"
+        upperBound="-1" eType="#//SpellingProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Normalized text."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeronym" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Numeronym of the text, in order to improve privacy during query."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Claim" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LiteralClaim" eSuperTypes="#//Claim">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spelling" eType="#//Spelling"
+        defaultValueLiteral="casual"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Only needed if {@link transliteration} is {@code false}."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="html" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in HTML format."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThingClaim" eSuperTypes="#//Claim">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//ThingKind">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A Thing's kind cannot be revised. To revise a Thing, claim a new Thing using the new kind then revoke the old Thing."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConceptKind">
+    <eLiterals name="article"/>
+    <eLiterals name="scholarly_article"/>
+    <eLiterals name="hadith"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ZonedDateTime" instanceClassName="java.time.ZonedDateTime"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="LocalDate" instanceClassName="java.time.LocalDate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Evidence" eSuperTypes="#//Thing">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="i.e. book cover, screenshot. An evidence can still be faked, so an evidence's authenticity can be proven independently.&#xA;An evidence can be used to support one or more claims."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Spelling">
+    <eLiterals name="official">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Officially supported spelling by authority."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="formal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Formal spelling, but not officially endorsed."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="casual">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Casual spelling which is understandable."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="wrong">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Wrong spelling, but with same intended meaning."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="misleading">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The spelling conveys an antonym or a contrary idea."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LiteralProperty" eSuperTypes="#//Property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="html" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in HTML format."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyKind">
+    <eLiterals name="literal"/>
+    <eLiterals name="resource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ThingKind">
+    <eLiterals name="creative_work"/>
+    <eLiterals name="article"/>
+    <eLiterals name="blog_posting"/>
+    <eLiterals name="news_article"/>
+    <eLiterals name="scholarly_article"/>
+    <eLiterals name="medical_scholarly_article"/>
+    <eLiterals name="hadith"/>
+    <eLiterals name="tech_article"/>
+    <eLiterals name="api_reference"/>
+    <eLiterals name="answer"/>
+    <eLiterals name="blog"/>
+    <eLiterals name="book"/>
+    <eLiterals name="comment"/>
+    <eLiterals name="question"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="claims" ordered="false"
+        upperBound="-1" eType="#//Claim">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of Claims which proves this property."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThingProperty" eSuperTypes="#//Property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="thingKind" eType="#//ThingKind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thing" lowerBound="1" eType="#//Thing"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticityClaim" eSuperTypes="#//Claim">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Claims that a Concept has the specified authenticity."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="authenticity" eType="#//Authenticity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SuccessivityClaim" eSuperTypes="#//Claim">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Claims that specified Concept has the specified successivity."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="successivity" eType="#//Successivity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Authenticity">
+    <eLiterals name="authentic">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ṣaḥīḥ (صَحِيْح)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="good">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ḥasan (حَسَن)"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="weak">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ḍaʻīf (ضَعِيْف)"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Successivity"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="UUID" instanceClassName="java.util.UUID"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AuthenticityProperty" eSuperTypes="#//Property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="authenticity" eType="#//Authenticity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SuccessivityProperty" eSuperTypes="#//Property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="successivity" eType="#//Successivity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Purpose">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Matan."/>
+    </eAnnotations>
+    <eLiterals name="good"/>
+    <eLiterals name="bad"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NarratorClaim" eSuperTypes="#//Claim">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Claims the article is narrated by a {@link Scholar}."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scholarId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="grade" eType="#//NarratorGrade"
+        defaultValueLiteral="unknown"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NarratorGrade">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The narrators of ahadith were broken up into &lt;a href=&quot;http://muslimscholars.info/faq.htm&quot;>different grades, ranks or levels&lt;/a> based on whether or not ahadith could be accepted from them. Ibn Hajar al-'Asqalani placed the narrators into twelve ranks. The ranks as named and categorized by Ibn Hajar are widely accepted but not universal."/>
+    </eAnnotations>
+    <eLiterals name="companion">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Companions: The first generation of Muslims did not need testimony to their knowledge or character as Allah the Most High has already done so in the Qur'an."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="trustworthiest">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Awthaqun Nas (Thiqa Thiqa): These are the trustworthiest of people outside of the first generation of Muslims and this is the highest rank. They were learned scholars who were also of the most upright moral characters."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="trustworthy">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Thiqat: These narrators are trustworthy in all areas including good retentive memory, but not to a superlative degree like those in the second rank."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="truthful">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Saduq: truthful but less than rank three."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="honest">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Saduq Yahim: Those who are trustworthy but who sometimes made mistakes in narrating ahadith, or have some delusion."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="acceptable">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Maqbool/Layyin: Those who are accepted or acceptable. They transmitted a smaller number of ahadith, and we do not have proof against their reliability (or for them to be extraordinarily sound)."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="uncertain">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Majhool al-haal/Mastur (not Thiqa): Those whose situation is not precisely known. He had students who transmitted ahadith from him, but he does not have tawtheeq, or a testimony of trustworthiness, from the scholars of ahadith. There is nothing wrong with him from that which is apparent, but we don't really know anything about him."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="weak">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Da'eef or weak: This means that there is nobody speaking positively on his behalf, and some of the scholars have spoken against him."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="unknown">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Majhool or unknown: This is not the same as majhool al-haal. The majhool al-haal had more than one student narrate from him; the majhool is narrated from by only one individual, and we know nothing of him or his honesty."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="abandoned">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Matruk or abandoned: This rank covers a few categories of narrators. This includes the one who committed many mistakes, the one who has detailed criticisms against him from the scholars, or one who did not meet the requirement for moral character. Also included here are the ones upon major sins (the fasiq) and the one who is unintelligent."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="accused">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Muttaham bi'l kadhib: The one who was accused of lying and/or making up fake ahadith. The ahadith he narrates are considered batil."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="liar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Kadhdhaab, waddaa': This is the one who is actually called a liar or fabricator. Being labeled with such a title is not the same as merely being accused of committing those acts in some instances. The ahadith he narrates are considered mawdu' or fabricated."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Scholar">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Lower-underscore ID. For user-defined scholars, ID must be prepended by server ID in order to deterministically avoid conflict in federated environment."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PersonProperty" eSuperTypes="#//Property">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The property refers to a {@link Person}."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="personId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScholarProperty" eSuperTypes="#//Property">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The property refers to a {@link Scholar} which did not participate in the Sanad system or was already deceased at the time of creation."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scholarId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transliteration">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Transliteration's body cannot be revised, it can only be claimed for spelling.&#xA;&#xA;Note: An authentic transliteration may be based on a non-authentic thing. In this case, the transliteration is sound (linguistically), however its meaning is not sound."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="html" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in HTML format."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spellings" ordered="false"
+        upperBound="-1" eType="#//SpellingProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Normalized text."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeronym" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Numeronym of the text, in order to improve privacy during query."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransliterationClaim" eSuperTypes="#//Claim">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="html" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="If a literal/translation, in HTML format."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spelling" eType="#//Spelling"
+        defaultValueLiteral="casual"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpellingProperty" eSuperTypes="#//Property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spelling" eType="#//Spelling"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CreativeWork" eSuperTypes="#//Thing"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Hadith" eSuperTypes="#//Thing">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="articleBodies" ordered="false"
+        upperBound="-1" eType="#//LiteralProperty" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

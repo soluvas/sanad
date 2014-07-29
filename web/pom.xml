@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.soluvas.sanad</groupId>
+		<artifactId>org.soluvas.sanad.parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>org.soluvas.sanad.web</artifactId>
+	<packaging>jar</packaging>
+	<name>Sanad Web</name>
+	<description>Common web components for all Sanad modules.</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.soluvas.sanad</groupId>
+			<artifactId>org.soluvas.sanad.core</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.soluvas</groupId>
+			<artifactId>org.soluvas.ldap</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.soluvas</groupId>
+			<artifactId>org.soluvas.web.login</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.soluvas</groupId>
+			<artifactId>org.soluvas.web.bootstrap</artifactId>
+		</dependency>
+		
+		<!-- 		<dependency> -->
+<!-- 		    <groupId>com.vaynberg.wicket.select2</groupId> -->
+<!-- 		    <artifactId>wicket-select2</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.wicket</groupId> -->
+<!-- 			<artifactId>wicket-datetime</artifactId> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.ecore</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.common</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+		</dependency>
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<!-- testing -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
+	</build>
+
+</project>

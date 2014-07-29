@@ -1,0 +1,37 @@
+<configuration scan="true" scanPeriod="15 seconds">
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.apache.directory.shared" level="INFO" />
+	<logger name="id.co" level="DEBUG" />
+	<logger name="org.soluvas" level="DEBUG" />
+	<logger name="com.soluvas" level="DEBUG" />
+	<logger name="org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider" level="WARN"/>
+	<logger name="org.springframework.context.annotation.ClassPathBeanDefinitionScanner" level="WARN"/>
+	<logger name="org.soluvas.web.site.EmfModel" level="DEBUG"/>
+	<logger name="org.skife.jdbi" level="DEBUG"/>
+	<logger name="org.apache.wicket.model.LoadableDetachableModel" level="INFO"/>
+	<!-- https://issues.apache.org/jira/browse/SHIRO-461 -->
+	<logger name="org.apache.shiro.realm.AuthorizingRealm" level="WARN"/>
+	<logger name="org.apache.wicket.atmosphere.EventBus" level="WARN"/>
+	<logger name="org.apache.wicket.atmosphere.AtmosphereBehavior" level="WARN"/>
+	<logger name="org.springframework.web.context.support.AnnotationConfigWebApplicationContext" level="WARN"/>
+	<logger name="net.sf.ehcache" level="DEBUG"/>
+	<logger name="org.springframework.cache.annotation" level="DEBUG"/>
+	<logger name="org.springframework.cache.interceptor" level="TRACE"/>
+	<logger name="org.hibernate.SQL" level="DEBUG"/>
+	<logger name="org.hibernate.type" level="INFO"/>
+	<logger name="org.hibernate.tool.hbm2ddl" level="DEBUG"/>
+	<logger name="liquibase" level="DEBUG"/>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
