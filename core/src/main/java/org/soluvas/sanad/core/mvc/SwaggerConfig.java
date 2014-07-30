@@ -1,7 +1,11 @@
 package org.soluvas.sanad.core.mvc;
 
+import java.util.UUID;
+
 import javax.inject.Inject;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +31,8 @@ public class SwaggerConfig {
 	@Bean
 	public SwaggerSpringMvcPlugin swaggerSpringMvcPlugin() {
 		return new SwaggerSpringMvcPlugin(springSwaggerConfig)
-			.apiInfo(apiInfo());
+			.apiInfo(apiInfo())
+			.ignoredParameterTypes(UUID.class, DateTime.class, LocalDate.class);
 	}
 	
 	private ApiInfo apiInfo() {

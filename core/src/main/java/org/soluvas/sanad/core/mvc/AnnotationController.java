@@ -1,8 +1,7 @@
 package org.soluvas.sanad.core.mvc;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,9 +31,9 @@ public class AnnotationController {
 			.getLogger(AnnotationController.class);
 	
 	public static class AnnotationResource extends ResourceSupport {
-		public Map<String, AnnotationSection> sections;
+		public List<AnnotationSection> sections;
 
-		public AnnotationResource(Map<String, AnnotationSection> sections) {
+		public AnnotationResource(List<AnnotationSection> sections) {
 			super();
 			this.sections = sections;
 		}
@@ -61,7 +60,7 @@ public class AnnotationController {
 		@RequestParam(value="normalized", required=true) List<String> upNormalizeds) {
 		log.debug("Annotation requested for: {}", upNormalizeds);
 		
-		LinkedHashMap<String, AnnotationSection> sections = new LinkedHashMap<>();
+		List<AnnotationSection> sections = new ArrayList<>();
 		for (int i = 0; i < upNormalizeds.size(); i++) {
 			String upNormalized = upNormalizeds.get(i);
 			String escapedNormalized = upNormalized.replace("%", "\\%").replace("_", "\\_");
@@ -75,7 +74,7 @@ public class AnnotationController {
 					.setMaxResults(10)
 					.getResultList();
 			log.debug("{} transliterations for '{}': {}", tls.size(), upNormalized, tls);
-			sections.put("s" + i, new AnnotationSection(tls));
+			sections.add(new AnnotationSection(tls));
 		}
 		AnnotationResource annotationResp = new AnnotationResource(sections);
 		return annotationResp;
