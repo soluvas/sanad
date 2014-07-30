@@ -32,6 +32,17 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+		    <groupId>com.jayway.jsonpath</groupId>
+		    <artifactId>json-path</artifactId>
+		    <version>0.9.1</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.mangofactory</groupId>
+		    <artifactId>swagger-springmvc</artifactId>
+		    <version>0.8.5</version>
+		</dependency>
+		<dependency>
 	        <groupId>org.springframework.hateoas</groupId>
 	        <artifactId>spring-hateoas</artifactId>
 	        <version>0.15.0.RELEASE</version>

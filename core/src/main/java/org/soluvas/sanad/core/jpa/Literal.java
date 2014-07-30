@@ -334,9 +334,9 @@ public class Literal {
 	 */
 	@Override
 	public String toString() {
-		return "Literal " + " [languageTag: " + getLanguageTag() + "]"
-				+ " [adoc: " + getAdoc() + "]" + " [html: " + getHtml() + "]"
-				+ " [normalized: " + getNormalized() + "]" + " [numeronym: "
-				+ getNumeronym() + "]" + " [id: " + getId() + "]";
+		return "Literal " + " [id: " + getId() + "]" + " [normalized: "
+				+ getNormalized() + "]" + " [numeronym: " + getNumeronym()
+				+ "]" + " [languageTag: " + getLanguageTag() + "]" + " [adoc: "
+				+ getAdoc() + "]" + " [html: " + getHtml() + "]";
 	}
 }

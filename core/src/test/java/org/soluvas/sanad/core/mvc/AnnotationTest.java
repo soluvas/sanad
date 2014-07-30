@@ -2,6 +2,7 @@ package org.soluvas.sanad.core.mvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import javax.inject.Inject;
@@ -63,7 +64,9 @@ public class AnnotationTest {
 		log.info("Type: {}", result.getResponse().getContentType());
 		log.info("Content: {}", result.getResponse().getContentAsString());
 		actions.andExpect(status().isOk())
-			.andExpect(content().contentType("application/json;charset=UTF-8"));
+			.andExpect(content().contentType("application/json;charset=UTF-8"))
+			.andExpect(jsonPath("$.transliterations").isArray())
+			.andExpect(jsonPath("$.spelling").value("formal"));
 	}
 	
 }

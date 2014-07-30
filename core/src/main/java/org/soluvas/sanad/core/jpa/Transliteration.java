@@ -312,9 +312,9 @@ public class Transliteration {
 	 */
 	@Override
 	public String toString() {
-		return "Transliteration " + " [adoc: " + getAdoc() + "]" + " [html: "
-				+ getHtml() + "]" + " [normalized: " + getNormalized() + "]"
-				+ " [numeronym: " + getNumeronym() + "]" + " [id: " + getId()
+		return "Transliteration " + " [id: " + getId() + "]" + " [normalized: "
+				+ getNormalized() + "]" + " [numeronym: " + getNumeronym()
+				+ "]" + " [adoc: " + getAdoc() + "]" + " [html: " + getHtml()
 				+ "]";
 	}
 }

@@ -2,8 +2,13 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sanad-jpa" nsURI="http://www.soluvas.org/sanad/jpa/" nsPrefix="sanad-jpa">
   <eClassifiers xsi:type="ecore:EClass" name="Testimony">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="claims" ordered="false"
-        upperBound="-1" eType="#//Claim" containment="true" eOpposite="#//Claim/testimony"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        changeable="false" defaultValueLiteral="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Schema version determines the exact mechanism to produce the signatures."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="signatures" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="GPG signatures of the JSON representation of the testimony, excluding {@link #signature} field.&#xA;At least the person and the server must sign the testimony."/>
@@ -27,13 +32,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="validEndDate" eType="ecore:EDataType ../../../../../../../../org.soluvas.jpa/src/main/resources/org/soluvas/jpa/jpa.ecore#//LocalDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="personId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationTime" eType="ecore:EDataType ../../../../../../../../org.soluvas.jpa/src/main/resources/org/soluvas/jpa/jpa.ecore#//DateTime"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
-        changeable="false" defaultValueLiteral="1">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Schema version determines the exact mechanism to produce the signatures."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Description of the testimony in AsciiDoc."/>
@@ -44,16 +42,10 @@
         <details key="documentation" value="Description of the testimony in HTML format."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="claims" ordered="false"
+        upperBound="-1" eType="#//Claim" containment="true" eOpposite="#//Claim/testimony"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Thing" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="names" ordered="false"
-        upperBound="-1" eType="#//LiteralProperty" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticities" ordered="false"
-        upperBound="-1" eType="#//AuthenticityProperty" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="successions" ordered="false"
-        upperBound="-1" eType="#//SuccessionProperty" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="authors" ordered="false"
-        upperBound="-1" eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="slug" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -66,8 +58,27 @@
         <details key="documentation" value="Canonical slug which is based on initial name."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="names" ordered="false"
+        upperBound="-1" eType="#//LiteralProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authenticities" ordered="false"
+        upperBound="-1" eType="#//AuthenticityProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successions" ordered="false"
+        upperBound="-1" eType="#//SuccessionProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authors" ordered="false"
+        upperBound="-1" eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Normalized text."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeronym" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Numeronym of the text, in order to improve privacy during query."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -81,17 +92,6 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="spellings" ordered="false"
         upperBound="-1" eType="#//SpellingProperty" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Normalized text."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeronym" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Numeronym of the text, in order to improve privacy during query."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Claim" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
@@ -194,12 +194,6 @@
     <eLiterals name="question"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="claims" ordered="false"
-        upperBound="-1" eType="#//Claim">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The set of Claims which proves this property."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -209,6 +203,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptionHtml" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Description of the property in HTML format. It is derived from the {@link Claim} or {@link Testimony}'s {@code descriptionHtml}."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="claims" ordered="false"
+        upperBound="-1" eType="#//Claim">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of Claims which proves this property."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -392,6 +392,18 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Transliteration's body cannot be revised, it can only be claimed for spelling.&#xA;&#xA;Note: An authentic transliteration may be based on a non-authentic thing. In this case, the transliteration is sound (linguistically), however its meaning is not sound."/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Normalized text."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeronym" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Numeronym of the text, in order to improve privacy during query."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
@@ -404,18 +416,6 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="spellings" ordered="false"
         upperBound="-1" eType="#//SpellingProperty" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Normalized text."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeronym" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Numeronym of the text, in order to improve privacy during query."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TransliterationClaim" eSuperTypes="#//Claim">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">

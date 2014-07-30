@@ -519,15 +519,14 @@ public class Testimony {
 	 */
 	@Override
 	public String toString() {
-		return "Testimony " + " [signatures: " + getSignatures() + "]"
-				+ " [validStartTime: " + getValidStartTime() + "]"
+		return "Testimony " + " [id: " + getId() + "]" + " [schemaVersion: "
+				+ getSchemaVersion() + "]" + " [signatures: " + getSignatures()
+				+ "]" + " [validStartTime: " + getValidStartTime() + "]"
 				+ " [validEndTime: " + getValidEndTime() + "]"
 				+ " [validStartDate: " + getValidStartDate() + "]"
 				+ " [validEndDate: " + getValidEndDate() + "]" + " [personId: "
 				+ getPersonId() + "]" + " [creationTime: " + getCreationTime()
-				+ "]" + " [schemaVersion: " + getSchemaVersion() + "]"
-				+ " [id: " + getId() + "]" + " [description: "
-				+ getDescription() + "]" + " [descriptionHtml: "
-				+ getDescriptionHtml() + "]";
+				+ "]" + " [description: " + getDescription() + "]"
+				+ " [descriptionHtml: " + getDescriptionHtml() + "]";
 	}
 }

@@ -123,84 +123,84 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_CLAIMS_FEATURE_ID = 0;
+	public static final int TESTIMONY_CLAIMS_FEATURE_ID = 11;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_SIGNATURES_FEATURE_ID = 1;
+	public static final int TESTIMONY_SIGNATURES_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_VALIDSTARTTIME_FEATURE_ID = 2;
+	public static final int TESTIMONY_VALIDSTARTTIME_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_VALIDENDTIME_FEATURE_ID = 3;
+	public static final int TESTIMONY_VALIDENDTIME_FEATURE_ID = 4;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_VALIDSTARTDATE_FEATURE_ID = 4;
+	public static final int TESTIMONY_VALIDSTARTDATE_FEATURE_ID = 5;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_VALIDENDDATE_FEATURE_ID = 5;
+	public static final int TESTIMONY_VALIDENDDATE_FEATURE_ID = 6;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_PERSONID_FEATURE_ID = 6;
+	public static final int TESTIMONY_PERSONID_FEATURE_ID = 7;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_CREATIONTIME_FEATURE_ID = 7;
+	public static final int TESTIMONY_CREATIONTIME_FEATURE_ID = 8;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_SCHEMAVERSION_FEATURE_ID = 8;
+	public static final int TESTIMONY_SCHEMAVERSION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_ID_FEATURE_ID = 9;
+	public static final int TESTIMONY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_DESCRIPTION_FEATURE_ID = 10;
+	public static final int TESTIMONY_DESCRIPTION_FEATURE_ID = 9;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_DESCRIPTIONHTML_FEATURE_ID = 11;
+	public static final int TESTIMONY_DESCRIPTIONHTML_FEATURE_ID = 10;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -235,49 +235,49 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int THING_NAMES_FEATURE_ID = 0;
+	public static final int THING_NAMES_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THING_AUTHENTICITIES_FEATURE_ID = 1;
+	public static final int THING_AUTHENTICITIES_FEATURE_ID = 4;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THING_SUCCESSIONS_FEATURE_ID = 2;
+	public static final int THING_SUCCESSIONS_FEATURE_ID = 5;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THING_AUTHORS_FEATURE_ID = 3;
+	public static final int THING_AUTHORS_FEATURE_ID = 6;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THING_ID_FEATURE_ID = 4;
+	public static final int THING_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THING_SLUG_FEATURE_ID = 5;
+	public static final int THING_SLUG_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THING_CANONICALSLUG_FEATURE_ID = 6;
+	public static final int THING_CANONICALSLUG_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -305,28 +305,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int LITERALPROPERTY_CLAIMS_FEATURE_ID = 0;
+	public static final int LITERALPROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERALPROPERTY_ID_FEATURE_ID = 1;
+	public static final int LITERALPROPERTY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERALPROPERTY_DESCRIPTION_FEATURE_ID = 2;
+	public static final int LITERALPROPERTY_DESCRIPTION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERALPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+	public static final int LITERALPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -340,28 +340,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int PROPERTY_CLAIMS_FEATURE_ID = 0;
+	public static final int PROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int PROPERTY_ID_FEATURE_ID = 1;
+	public static final int PROPERTY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int PROPERTY_DESCRIPTION_FEATURE_ID = 2;
+	public static final int PROPERTY_DESCRIPTION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int PROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+	public static final int PROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -389,28 +389,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIONPROPERTY_CLAIMS_FEATURE_ID = 0;
+	public static final int SUCCESSIONPROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIONPROPERTY_ID_FEATURE_ID = 1;
+	public static final int SUCCESSIONPROPERTY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIONPROPERTY_DESCRIPTION_FEATURE_ID = 2;
+	public static final int SUCCESSIONPROPERTY_DESCRIPTION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIONPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+	public static final int SUCCESSIONPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -424,28 +424,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int AUTHENTICITYPROPERTY_CLAIMS_FEATURE_ID = 0;
+	public static final int AUTHENTICITYPROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int AUTHENTICITYPROPERTY_ID_FEATURE_ID = 1;
+	public static final int AUTHENTICITYPROPERTY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int AUTHENTICITYPROPERTY_DESCRIPTION_FEATURE_ID = 2;
+	public static final int AUTHENTICITYPROPERTY_DESCRIPTION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int AUTHENTICITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+	public static final int AUTHENTICITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -459,49 +459,49 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_LANGUAGETAG_FEATURE_ID = 0;
+	public static final int LITERAL_LANGUAGETAG_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_ADOC_FEATURE_ID = 1;
+	public static final int LITERAL_ADOC_FEATURE_ID = 4;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_HTML_FEATURE_ID = 2;
+	public static final int LITERAL_HTML_FEATURE_ID = 5;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_SPELLINGS_FEATURE_ID = 3;
+	public static final int LITERAL_SPELLINGS_FEATURE_ID = 6;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_NORMALIZED_FEATURE_ID = 4;
+	public static final int LITERAL_NORMALIZED_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_NUMERONYM_FEATURE_ID = 5;
+	public static final int LITERAL_NUMERONYM_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_ID_FEATURE_ID = 6;
+	public static final int LITERAL_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -522,28 +522,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SPELLINGPROPERTY_CLAIMS_FEATURE_ID = 0;
+	public static final int SPELLINGPROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SPELLINGPROPERTY_ID_FEATURE_ID = 1;
+	public static final int SPELLINGPROPERTY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SPELLINGPROPERTY_DESCRIPTION_FEATURE_ID = 2;
+	public static final int SPELLINGPROPERTY_DESCRIPTION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SPELLINGPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+	public static final int SPELLINGPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -634,49 +634,49 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int EVIDENCE_NAMES_FEATURE_ID = 0;
+	public static final int EVIDENCE_NAMES_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int EVIDENCE_AUTHENTICITIES_FEATURE_ID = 1;
+	public static final int EVIDENCE_AUTHENTICITIES_FEATURE_ID = 4;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int EVIDENCE_SUCCESSIONS_FEATURE_ID = 2;
+	public static final int EVIDENCE_SUCCESSIONS_FEATURE_ID = 5;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int EVIDENCE_AUTHORS_FEATURE_ID = 3;
+	public static final int EVIDENCE_AUTHORS_FEATURE_ID = 6;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int EVIDENCE_ID_FEATURE_ID = 4;
+	public static final int EVIDENCE_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int EVIDENCE_SLUG_FEATURE_ID = 5;
+	public static final int EVIDENCE_SLUG_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int EVIDENCE_CANONICALSLUG_FEATURE_ID = 6;
+	public static final int EVIDENCE_CANONICALSLUG_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -704,28 +704,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int THINGPROPERTY_CLAIMS_FEATURE_ID = 0;
+	public static final int THINGPROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THINGPROPERTY_ID_FEATURE_ID = 1;
+	public static final int THINGPROPERTY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THINGPROPERTY_DESCRIPTION_FEATURE_ID = 2;
+	public static final int THINGPROPERTY_DESCRIPTION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int THINGPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+	public static final int THINGPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -858,28 +858,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int PERSONPROPERTY_CLAIMS_FEATURE_ID = 0;
+	public static final int PERSONPROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int PERSONPROPERTY_ID_FEATURE_ID = 1;
+	public static final int PERSONPROPERTY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int PERSONPROPERTY_DESCRIPTION_FEATURE_ID = 2;
+	public static final int PERSONPROPERTY_DESCRIPTION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int PERSONPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+	public static final int PERSONPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -900,28 +900,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SCHOLARPROPERTY_CLAIMS_FEATURE_ID = 0;
+	public static final int SCHOLARPROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SCHOLARPROPERTY_ID_FEATURE_ID = 1;
+	public static final int SCHOLARPROPERTY_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SCHOLARPROPERTY_DESCRIPTION_FEATURE_ID = 2;
+	public static final int SCHOLARPROPERTY_DESCRIPTION_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int SCHOLARPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 3;
+	public static final int SCHOLARPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -935,42 +935,42 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_ADOC_FEATURE_ID = 0;
+	public static final int TRANSLITERATION_ADOC_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_HTML_FEATURE_ID = 1;
+	public static final int TRANSLITERATION_HTML_FEATURE_ID = 4;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_SPELLINGS_FEATURE_ID = 2;
+	public static final int TRANSLITERATION_SPELLINGS_FEATURE_ID = 5;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_NORMALIZED_FEATURE_ID = 3;
+	public static final int TRANSLITERATION_NORMALIZED_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_NUMERONYM_FEATURE_ID = 4;
+	public static final int TRANSLITERATION_NUMERONYM_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_ID_FEATURE_ID = 5;
+	public static final int TRANSLITERATION_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1026,49 +1026,49 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_NAMES_FEATURE_ID = 0;
+	public static final int CREATIVEWORK_NAMES_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_AUTHENTICITIES_FEATURE_ID = 1;
+	public static final int CREATIVEWORK_AUTHENTICITIES_FEATURE_ID = 4;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_SUCCESSIONS_FEATURE_ID = 2;
+	public static final int CREATIVEWORK_SUCCESSIONS_FEATURE_ID = 5;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_AUTHORS_FEATURE_ID = 3;
+	public static final int CREATIVEWORK_AUTHORS_FEATURE_ID = 6;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_ID_FEATURE_ID = 4;
+	public static final int CREATIVEWORK_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_SLUG_FEATURE_ID = 5;
+	public static final int CREATIVEWORK_SLUG_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_CANONICALSLUG_FEATURE_ID = 6;
+	public static final int CREATIVEWORK_CANONICALSLUG_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1082,49 +1082,49 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_NAMES_FEATURE_ID = 0;
+	public static final int HADITH_NAMES_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_AUTHENTICITIES_FEATURE_ID = 1;
+	public static final int HADITH_AUTHENTICITIES_FEATURE_ID = 4;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_SUCCESSIONS_FEATURE_ID = 2;
+	public static final int HADITH_SUCCESSIONS_FEATURE_ID = 5;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_AUTHORS_FEATURE_ID = 3;
+	public static final int HADITH_AUTHORS_FEATURE_ID = 6;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_ID_FEATURE_ID = 4;
+	public static final int HADITH_ID_FEATURE_ID = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_SLUG_FEATURE_ID = 5;
+	public static final int HADITH_SLUG_FEATURE_ID = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_CANONICALSLUG_FEATURE_ID = 6;
+	public static final int HADITH_CANONICALSLUG_FEATURE_ID = 2;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
