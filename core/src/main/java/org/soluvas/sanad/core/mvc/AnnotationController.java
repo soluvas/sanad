@@ -63,14 +63,14 @@ public class AnnotationController {
 		List<AnnotationSection> sections = new ArrayList<>();
 		for (int i = 0; i < upNormalizeds.size(); i++) {
 			String upNormalized = upNormalizeds.get(i);
-			String escapedNormalized = upNormalized.replace("%", "\\%").replace("_", "\\_");
+//			String escapedNormalized = upNormalized.replace("%", "\\%").replace("_", "\\_");
 			// no need to use ILIKE because already normalized
 			List<Transliteration> tls = em.createQuery(
 					"SELECT t FROM Transliteration t"
 					+ " LEFT JOIN FETCH t.spellings ss LEFT JOIN FETCH ss.claims"
-					+ " WHERE normalized LIKE '%' || :escapedNormalized || '%' ESCAPE '\\'",
+					+ " WHERE :upNormalized LIKE '%' || normalized || '%' ESCAPE '\\'",
 					Transliteration.class)
-					.setParameter("escapedNormalized", escapedNormalized)
+					.setParameter("upNormalized", upNormalized)
 					.setMaxResults(10)
 					.getResultList();
 			log.debug("{} transliterations for '{}': {}", tls.size(), upNormalized, tls);
