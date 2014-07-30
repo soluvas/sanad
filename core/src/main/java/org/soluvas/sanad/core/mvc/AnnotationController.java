@@ -12,6 +12,7 @@ import org.soluvas.sanad.core.jpa.Transliteration;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +39,7 @@ public class AnnotationController {
 		
 	}
 	
-	public static class AnnotationSection extends ResourceSupport {
+	public static class AnnotationSection {
 		public List<Transliteration> transliterations;
 
 		public AnnotationSection(List<Transliteration> transliterations) {
@@ -51,6 +52,7 @@ public class AnnotationController {
 	EntityManager em;
 	
 	@RequestMapping("/annotation")
+	@Transactional
 	public ResponseEntity<AnnotationResource> annotation(
 		@RequestParam(value="normalized", required=true) String upNormalized) {
 		log.debug("Annotation requested for: {}", upNormalized);
@@ -58,7 +60,9 @@ public class AnnotationController {
 		String escapedNormalized = upNormalized.replace("%", "\\%").replace("_", "\\_");
 		// no need to use ILIKE because already normalized
 		List<Transliteration> tls = em.createQuery(
-				"SELECT t FROM Transliteration t WHERE normalized LIKE '%' || :escapedNormalized || '%' ESCAPE '\\'",
+				"SELECT t FROM Transliteration t"
+				+ " LEFT JOIN FETCH t.spellings ss LEFT JOIN FETCH ss.claims"
+				+ " WHERE normalized LIKE '%' || :escapedNormalized || '%' ESCAPE '\\'",
 				Transliteration.class)
 				.setParameter("escapedNormalized", escapedNormalized)
 				.setMaxResults(10)
