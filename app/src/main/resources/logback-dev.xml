@@ -1,0 +1,57 @@
+<configuration scan="true" scanPeriod="15 seconds">
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	    <!-- deny all events with a level below WARN -->
+	    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+	      <level>DEBUG</level>
+	    </filter>
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} | %-5.5p | %-16.16t | %-32.32c{1} | %-32.32C %4L | %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="multiplex" class="de.huxhorn.lilith.logback.appender.ClassicMultiplexSocketAppender">
+	    <Compressing>true</Compressing>
+	    <!-- will automatically use correct default port -->
+	    <!-- Default port for compressed is 10000 and uncompressed 10001 -->
+	    <ReconnectionDelay>10000</ReconnectionDelay>
+	    <IncludeCallerData>true</IncludeCallerData>
+	    <RemoteHosts>localhost</RemoteHosts>
+	    <!-- Alternatively:
+	    <RemoteHost>localhost</RemoteHost>
+	    <RemoteHost>10.200.55.13</RemoteHost>
+	    -->
+	    <!--
+	    Optional:
+	    <CreatingUUID>false</CreatingUUID>
+	    -->
+	</appender>
+
+	<logger name="org.apache.directory.shared" level="INFO" />
+	<logger name="id.co" level="DEBUG" />
+	<logger name="org.soluvas.sanad" level="DEBUG" />
+	<logger name="org.soluvas" level="DEBUG" />
+	<logger name="com.soluvas" level="DEBUG" />
+	<logger name="org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider" level="WARN"/>
+	<logger name="org.apache.wicket.atmosphere.AtmosphereBehavior" level="WARN"/>
+	<logger name="org.hibernate.SQL" level="DEBUG"/>
+<!-- 	<logger name="org.hibernate.type" level="DEBUG"/> -->
+	<logger name="org.hibernate.tool.hbm2ddl" level="DEBUG"/>
+	<logger name="liquibase" level="DEBUG"/>
+<!-- 	<logger name="org.apache.http.wire" level="DEBUG"/> -->
+<!-- 	<logger name="org.apache.http.headers" level="DEBUG"/> -->
+	<logger name="org.apache.http.conn" level="DEBUG"/>
+<!-- 	<logger name="org.apache.http.impl.conn" level="DEBUG"/> -->
+<!-- 	<logger name="org.apache.http.impl.conn.PoolingClientConnectionManager" level="INFO"/> -->
+	<logger name="org.apache.shiro" level="DEBUG"/>
+<!-- 	<logger name="org.quartz" level="DEBUG"/> -->
+	<logger name="org.ektorp.http.StdHttpClient" level="TRACE"/>
+
+	<root level="INFO">
+ 		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="multiplex"/>
+	</root>
+
+</configuration>

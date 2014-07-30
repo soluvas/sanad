@@ -22,6 +22,7 @@
 	<logger name="org.apache.wicket.atmosphere.EventBus" level="WARN"/>
 	<logger name="org.apache.wicket.atmosphere.AtmosphereBehavior" level="WARN"/>
 	<logger name="org.springframework.web.context.support.AnnotationConfigWebApplicationContext" level="WARN"/>
+	<logger name="org.springframework.web.servlet.mvc" level="DEBUG"/>
 	<logger name="net.sf.ehcache" level="DEBUG"/>
 	<logger name="org.springframework.cache.annotation" level="DEBUG"/>
 	<logger name="org.springframework.cache.interceptor" level="TRACE"/>

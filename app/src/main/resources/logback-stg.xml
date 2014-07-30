@@ -1,0 +1,63 @@
+<configuration scan="true" scanPeriod="15 seconds">
+
+	<!-- appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"> 
+		<encoder> <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern> 
+		</encoder> </appender -->
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- On Windows machines setting withJansi to true enables ANSI
+		    color code interpretation by the Jansi library. This requires
+		    org.fusesource.jansi:jansi:1.8 on the class path.  Note that
+		    Unix-based operating systems such as Linux and Mac OS X
+		    support ANSI color codes by default. -->
+		<withJansi>true</withJansi>
+		<file>${user.home}/sanad_sanad_stg/log/hub.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${user.home}/sanad_sanad_stg/log/hub.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%magenta(%d{HH:mm:ss.SSS}) | %highlight(%-5level) | %magenta(%-16.16thread) | %cyan(%-32.32logger{1}) | %msg%n</pattern>
+			<!--pattern>%magenta(%d{HH:mm:ss.SSS}) | %highlight(%-5level) | %magenta(%-16.16thread) | %cyan(%-32.32logger{1}) | %cyan(%-32.32class) %yellow(%4line) | %msg%n</pattern-->
+			<!-- pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern -->
+		</encoder>
+	</appender>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+	<appender-ref ref="FILE" />
+    </appender>
+
+	<appender name="LE" class="com.logentries.logback.LogentriesAppender">
+	    <!-- deny all events with a level below WARN -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<Debug>False</Debug>
+		<Token>*</Token>
+		<Ssl>False</Ssl>
+		<facility>USER</facility>
+		<layout>
+			<pattern>%d{HH:mm:ss.SSS} | %-5.5p | %-16.16t | %-32.32c{1} | %-32.32C %4L | %m%n</pattern>
+		</layout>
+	</appender>
+
+	<logger name="org.apache.directory.shared" level="INFO" />
+	<logger name="id.co" level="INFO" />
+	<logger name="org.soluvas.sanad" level="INFO" />
+	<logger name="org.soluvas" level="INFO" />
+	<logger name="com.soluvas" level="INFO" />
+	<logger name="org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider"
+		level="WARN" />
+	<logger name="org.apache.wicket.atmosphere.AtmosphereBehavior" level="WARN"/>
+<!-- 	<logger name="org.ektorp.http.StdHttpClient" level="TRACE"/> -->
+
+	<root level="INFO">
+		<!-- appender-ref ref="STDOUT" / -->
+		<appender-ref ref="ASYNC" />
+		<appender-ref ref="LE" />
+	</root>
+
+</configuration>
