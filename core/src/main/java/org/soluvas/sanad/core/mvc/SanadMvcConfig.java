@@ -12,8 +12,12 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.mangofactory.swagger.plugin.EnableSwagger;
 
 /**
  * @author ceefour
@@ -22,12 +26,25 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @Import(SanadConfig.class)
 @ComponentScan("org.soluvas.sanad.core.mvc")
-@EnableWebMvc
 @EnableTransactionManagement
+@EnableWebMvc
+@EnableSwagger
 public class SanadMvcConfig extends WebMvcConfigurerAdapter {
 	
 	private static final Logger log = LoggerFactory
 			.getLogger(SanadMvcConfig.class);
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler("/swagger/**")
+//			.addResourceLocations("classpath:/swagger/");
+	}
+	
+	@Override
+	public void configureDefaultServletHandling(
+			DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
 	
 	@Override
 	public void configureMessageConverters(

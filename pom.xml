@@ -37,6 +37,7 @@
 	<licenses>
 		<license>
 			<name>Eclipse Public License 1.0</name>
+			<url>http://www.spdx.org/licenses/EPL-1.0</url>
 		</license>
 	</licenses>
 
