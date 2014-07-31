@@ -7,12 +7,15 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Index;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -49,18 +52,24 @@ public class Testimony {
 	 * For a zoned date & time-sensitive statement, specify start of validity
 	 * (inclusive). <!-- end-model-doc -->
 	 * 
-	 * @generated
 	 */
 	@Basic()
+	@Index(name = "testimony_validstarttime_idx")
+	@Columns(columns = { @Column(name = "validstarttime", nullable = false),
+			@Column(name = "validstarttimezone", nullable = false) })
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
 	private DateTime validStartTime = null;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
 	 * For a zoned date & time-sensitive statement, specify end of validity
 	 * (inclusive). <!-- end-model-doc -->
 	 * 
-	 * @generated
 	 */
 	@Basic()
+	@Index(name = "testimony_validendtime_idx")
+	@Columns(columns = { @Column(name = "validendtime", nullable = false),
+			@Column(name = "validendtimezone", nullable = false) })
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
 	private DateTime validEndTime = null;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -69,16 +78,18 @@ public class Testimony {
 	 * is {@code null}, the statement is should be true since the beginning of
 	 * time or is irrelevant. <!-- end-model-doc -->
 	 * 
-	 * @generated
 	 */
 	@Basic()
+	@Index(name = "testimony_validstartdate_idx")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate validStartDate = null;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
 	 */
 	@Basic()
+	@Index(name = "testimony_validenddate_idx")
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate validEndDate = null;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -90,9 +101,12 @@ public class Testimony {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
 	 */
 	@Basic()
+	@Index(name = "testimony_creationtime_idx")
+	@Columns(columns = { @Column(name = "creationtime", nullable = false),
+			@Column(name = "creationtimezone", nullable = false) })
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
 	private DateTime creationTime = null;
 
 	/**

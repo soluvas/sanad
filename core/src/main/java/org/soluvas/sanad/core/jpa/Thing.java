@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -15,16 +16,16 @@ import javax.persistence.JoinColumns;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Index;
-
 /**
  * A representation of the model object '<em><b>Thing</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  * 
- * @generated
  */
 @Entity()
-@Table(schema = "sanad")
+@Table(schema = "sanad", indexes={
+		@Index(name="thing_slug_idx", columnList="slug"),
+		@Index(name="thing_name_idx", columnList="name"),
+})
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Thing {
 
@@ -35,7 +36,7 @@ public abstract class Thing {
 	 */
 	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumns({ @JoinColumn(name = "names_thing_id") })
-	private Set<LiteralProperty> names = new HashSet<LiteralProperty>();
+	private Set<Literal> names = new HashSet<Literal>();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -62,7 +63,7 @@ public abstract class Thing {
 	 */
 	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumns({ @JoinColumn(name = "authors_thing_id") })
-	private Set<Property> authors = new HashSet<Property>();
+	private Set<LegalEntityProperty> authors = new HashSet<LegalEntityProperty>();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -72,12 +73,18 @@ public abstract class Thing {
 	 * @generated
 	 */
 	@Basic()
-	@Index(name = "thing_name_idx")
 	private String name = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A
+	 * Thing's ID is usually an UUID representation. However, for things that
+	 * have a distinct and universal meaning, e.g. Holy Quran Chapters, it's
+	 * better to assign distinct human-readable IDs. Human-readable IDs use the
+	 * pattern {@code [a-z][a-z0-9_]+}. Note that UUID representations use the
+	 * '-' character. IDs need to be unique for all things. <!-- end-model-doc
+	 * -->
 	 * 
+	 * @generated
 	 */
 	@Id()
 	private String id = null;
@@ -89,7 +96,6 @@ public abstract class Thing {
 	 * @generated
 	 */
 	@Basic()
-	@Index(name = "thing_slug_idx")
 	private String slug = null;
 
 	/**
@@ -110,7 +116,7 @@ public abstract class Thing {
 	 * @return the value of '<em><b>names</b></em>' feature
 	 * @generated
 	 */
-	public Set<LiteralProperty> getNames() {
+	public Set<Literal> getNames() {
 		return names;
 	}
 
@@ -123,7 +129,7 @@ public abstract class Thing {
 	 *         present in the collection), false otherwise
 	 * @generated
 	 */
-	public boolean addToNames(LiteralProperty namesValue) {
+	public boolean addToNames(Literal namesValue) {
 		if (!names.contains(namesValue)) {
 			boolean result = names.add(namesValue);
 			return result;
@@ -141,7 +147,7 @@ public abstract class Thing {
 	 *
 	 * @generated
 	 */
-	public boolean removeFromNames(LiteralProperty namesValue) {
+	public boolean removeFromNames(Literal namesValue) {
 		if (names.contains(namesValue)) {
 			boolean result = names.remove(namesValue);
 			return result;
@@ -169,7 +175,7 @@ public abstract class Thing {
 	 *            the new value of the '{@link Thing#getNames() names}' feature.
 	 * @generated
 	 */
-	public void setNames(Set<LiteralProperty> newNames) {
+	public void setNames(Set<Literal> newNames) {
 		names = newNames;
 	}
 
@@ -327,7 +333,7 @@ public abstract class Thing {
 	 * @return the value of '<em><b>authors</b></em>' feature
 	 * @generated
 	 */
-	public Set<Property> getAuthors() {
+	public Set<LegalEntityProperty> getAuthors() {
 		return authors;
 	}
 
@@ -340,7 +346,7 @@ public abstract class Thing {
 	 *         present in the collection), false otherwise
 	 * @generated
 	 */
-	public boolean addToAuthors(Property authorsValue) {
+	public boolean addToAuthors(LegalEntityProperty authorsValue) {
 		if (!authors.contains(authorsValue)) {
 			boolean result = authors.add(authorsValue);
 			return result;
@@ -358,7 +364,7 @@ public abstract class Thing {
 	 *
 	 * @generated
 	 */
-	public boolean removeFromAuthors(Property authorsValue) {
+	public boolean removeFromAuthors(LegalEntityProperty authorsValue) {
 		if (authors.contains(authorsValue)) {
 			boolean result = authors.remove(authorsValue);
 			return result;
@@ -387,7 +393,7 @@ public abstract class Thing {
 	 *            feature.
 	 * @generated
 	 */
-	public void setAuthors(Set<Property> newAuthors) {
+	public void setAuthors(Set<LegalEntityProperty> newAuthors) {
 		authors = newAuthors;
 	}
 

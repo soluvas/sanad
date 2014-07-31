@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.3.4
 -- Dumped by pg_dump version 9.3.4
--- Started on 2014-08-01 00:08:24 WIB
+-- Started on 2014-08-01 04:34:53 WIB
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -15,13 +15,11 @@ SET client_min_messages = warning;
 
 --
 -- TOC entry 7 (class 2615 OID 16771)
--- Name: sanad; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: sanad; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA sanad;
 
-
-ALTER SCHEMA sanad OWNER TO postgres;
 
 SET search_path = sanad, pg_catalog;
 
@@ -30,8 +28,22 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 171 (class 1259 OID 32443)
--- Name: claim; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 171 (class 1259 OID 33762)
+-- Name: authenticityproperty; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE TABLE authenticityproperty (
+    id character varying(255) NOT NULL,
+    description character varying(255),
+    descriptionhtml character varying(255),
+    authenticity character varying(255),
+    authenticities_thing_id character varying(255)
+);
+
+
+--
+-- TOC entry 172 (class 1259 OID 33770)
+-- Name: claim; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE claim (
@@ -50,11 +62,9 @@ CREATE TABLE claim (
 );
 
 
-ALTER TABLE sanad.claim OWNER TO postgres;
-
 --
--- TOC entry 172 (class 1259 OID 32451)
--- Name: creativework; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 173 (class 1259 OID 33778)
+-- Name: creativework; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE creativework (
@@ -67,11 +77,9 @@ CREATE TABLE creativework (
 );
 
 
-ALTER TABLE sanad.creativework OWNER TO postgres;
-
 --
--- TOC entry 173 (class 1259 OID 32459)
--- Name: evidence; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 174 (class 1259 OID 33786)
+-- Name: evidence; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE evidence (
@@ -82,11 +90,9 @@ CREATE TABLE evidence (
 );
 
 
-ALTER TABLE sanad.evidence OWNER TO postgres;
-
 --
--- TOC entry 174 (class 1259 OID 32467)
--- Name: hadith; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 175 (class 1259 OID 33794)
+-- Name: hadith; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE hadith (
@@ -102,11 +108,9 @@ CREATE TABLE hadith (
 );
 
 
-ALTER TABLE sanad.hadith OWNER TO postgres;
-
 --
--- TOC entry 175 (class 1259 OID 32475)
--- Name: hadithcollection; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 176 (class 1259 OID 33802)
+-- Name: hadithcollection; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE hadithcollection (
@@ -119,72 +123,54 @@ CREATE TABLE hadithcollection (
 );
 
 
-ALTER TABLE sanad.hadithcollection OWNER TO postgres;
-
 --
--- TOC entry 176 (class 1259 OID 32483)
--- Name: literal; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 177 (class 1259 OID 33810)
+-- Name: literal; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE literal (
-    id uuid NOT NULL,
+    id character varying(255) NOT NULL,
+    description character varying(255),
+    descriptionhtml character varying(255),
     adoc text,
     html text,
     inlanguage character varying(255),
     normalized text,
-    numeronym character varying(255)
+    numeronym character varying(255),
+    creativework_id character varying(255),
+    articlebodies_thing_id character varying(255),
+    names_thing_id character varying(255)
 );
 
 
-ALTER TABLE sanad.literal OWNER TO postgres;
-
 --
--- TOC entry 177 (class 1259 OID 32491)
--- Name: property; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 178 (class 1259 OID 33818)
+-- Name: personproperty; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
-CREATE TABLE property (
-    dtype character varying(31) NOT NULL,
-    id uuid NOT NULL,
+CREATE TABLE personproperty (
+    id character varying(255) NOT NULL,
     description character varying(255),
     descriptionhtml character varying(255),
-    adoc character varying(255),
-    html character varying(255),
-    succession character varying(255),
-    scholarid character varying(255),
-    authenticity character varying(255),
-    personid character varying(255),
-    thingkind character varying(255),
-    spelling character varying(255),
-    thing_id character varying(255),
-    transliteration_id uuid,
-    literal_id uuid,
-    articlebodies_thing_id character varying(255),
-    successions_thing_id character varying(255),
-    names_thing_id character varying(255),
     authors_thing_id character varying(255),
-    authenticities_thing_id character varying(255)
+    personid character varying(255) NOT NULL
 );
 
 
-ALTER TABLE sanad.property OWNER TO postgres;
-
 --
--- TOC entry 178 (class 1259 OID 32499)
--- Name: property_claim; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 179 (class 1259 OID 33826)
+-- Name: property_claim; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE property_claim (
-    property_id uuid NOT NULL,
+    property_id character varying(255) NOT NULL,
     claims_id uuid NOT NULL
 );
 
 
-ALTER TABLE sanad.property_claim OWNER TO postgres;
-
 --
--- TOC entry 179 (class 1259 OID 32504)
--- Name: quranchapter; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 180 (class 1259 OID 33831)
+-- Name: quranchapter; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE quranchapter (
@@ -195,15 +181,14 @@ CREATE TABLE quranchapter (
     author character varying(255),
     inlanguage character varying(255),
     chapternum integer,
-    namewithtashkeel character varying(255)
+    namewithtashkeel character varying(255),
+    nametransliteration_id character varying(255)
 );
 
 
-ALTER TABLE sanad.quranchapter OWNER TO postgres;
-
 --
--- TOC entry 180 (class 1259 OID 32512)
--- Name: quranverse; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 181 (class 1259 OID 33839)
+-- Name: quranverse; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE quranverse (
@@ -213,18 +198,17 @@ CREATE TABLE quranverse (
     slug character varying(255),
     author character varying(255),
     inlanguage character varying(255),
-    text text,
-    textwithouttashkeel text,
     versenum integer NOT NULL,
-    chapter_id character varying(255) NOT NULL
+    chapter_id character varying(255) NOT NULL,
+    text_id character varying(255),
+    textwithouttashkeel_id character varying(255),
+    transliteration_id character varying(255)
 );
 
 
-ALTER TABLE sanad.quranverse OWNER TO postgres;
-
 --
--- TOC entry 181 (class 1259 OID 32520)
--- Name: scholar; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 182 (class 1259 OID 33847)
+-- Name: scholar; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE scholar (
@@ -233,49 +217,115 @@ CREATE TABLE scholar (
 );
 
 
-ALTER TABLE sanad.scholar OWNER TO postgres;
+--
+-- TOC entry 183 (class 1259 OID 33855)
+-- Name: scholarproperty; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE TABLE scholarproperty (
+    id character varying(255) NOT NULL,
+    description character varying(255),
+    descriptionhtml character varying(255),
+    authors_thing_id character varying(255),
+    scholarid character varying(255)
+);
+
 
 --
--- TOC entry 182 (class 1259 OID 32528)
--- Name: testimony; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 184 (class 1259 OID 33863)
+-- Name: spellingproperty; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE TABLE spellingproperty (
+    id character varying(255) NOT NULL,
+    description character varying(255),
+    descriptionhtml character varying(255),
+    spelling character varying(255),
+    transliteration_id character varying(255),
+    literal_id character varying(255)
+);
+
+
+--
+-- TOC entry 185 (class 1259 OID 33871)
+-- Name: successionproperty; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE TABLE successionproperty (
+    id character varying(255) NOT NULL,
+    description character varying(255),
+    descriptionhtml character varying(255),
+    succession character varying(255),
+    successions_thing_id character varying(255)
+);
+
+
+--
+-- TOC entry 188 (class 1259 OID 34002)
+-- Name: testimony; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE testimony (
     id uuid NOT NULL,
-    creationtime bytea,
+    creationtime timestamp without time zone NOT NULL,
+    creationtimezone character varying(255) NOT NULL,
     description character varying(255),
     descriptionhtml character varying(255),
     personid character varying(255),
     schemaversion bigint NOT NULL,
     signatures character varying(255),
-    validenddate bytea,
-    validendtime bytea,
-    validstartdate bytea,
-    validstarttime bytea
+    validenddate date,
+    validendtime timestamp without time zone NOT NULL,
+    validendtimezone character varying(255) NOT NULL,
+    validstartdate date,
+    validstarttime timestamp without time zone NOT NULL,
+    validstarttimezone character varying(255) NOT NULL
 );
 
 
-ALTER TABLE sanad.testimony OWNER TO postgres;
+--
+-- TOC entry 186 (class 1259 OID 33887)
+-- Name: thingproperty; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE TABLE thingproperty (
+    id character varying(255) NOT NULL,
+    description character varying(255),
+    descriptionhtml character varying(255),
+    thingkind character varying(255),
+    thing_id character varying(255) NOT NULL
+);
+
 
 --
--- TOC entry 183 (class 1259 OID 32536)
--- Name: transliteration; Type: TABLE; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 187 (class 1259 OID 33895)
+-- Name: transliteration; Type: TABLE; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE TABLE transliteration (
-    id uuid NOT NULL,
+    id character varying(255) NOT NULL,
+    description character varying(255),
+    descriptionhtml character varying(255),
     adoc text,
     html text,
     normalized text,
-    numeronym character varying(255)
+    numeronym character varying(255),
+    creativework_id character varying(255)
 );
 
 
-ALTER TABLE sanad.transliteration OWNER TO postgres;
+--
+-- TOC entry 1957 (class 2606 OID 33769)
+-- Name: authenticityproperty_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY authenticityproperty
+    ADD CONSTRAINT authenticityproperty_pkey PRIMARY KEY (id);
+
 
 --
--- TOC entry 1932 (class 2606 OID 32450)
--- Name: claim_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1959 (class 2606 OID 33777)
+-- Name: claim_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY claim
@@ -283,8 +333,8 @@ ALTER TABLE ONLY claim
 
 
 --
--- TOC entry 1934 (class 2606 OID 32458)
--- Name: creativework_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1961 (class 2606 OID 33785)
+-- Name: creativework_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY creativework
@@ -292,8 +342,8 @@ ALTER TABLE ONLY creativework
 
 
 --
--- TOC entry 1940 (class 2606 OID 32466)
--- Name: evidence_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1967 (class 2606 OID 33793)
+-- Name: evidence_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY evidence
@@ -301,8 +351,8 @@ ALTER TABLE ONLY evidence
 
 
 --
--- TOC entry 1946 (class 2606 OID 32474)
--- Name: hadith_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1973 (class 2606 OID 33801)
+-- Name: hadith_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY hadith
@@ -310,8 +360,8 @@ ALTER TABLE ONLY hadith
 
 
 --
--- TOC entry 1952 (class 2606 OID 32482)
--- Name: hadithcollection_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1979 (class 2606 OID 33809)
+-- Name: hadithcollection_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY hadithcollection
@@ -319,8 +369,8 @@ ALTER TABLE ONLY hadithcollection
 
 
 --
--- TOC entry 1958 (class 2606 OID 32490)
--- Name: literal_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1985 (class 2606 OID 33817)
+-- Name: literal_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY literal
@@ -328,8 +378,17 @@ ALTER TABLE ONLY literal
 
 
 --
--- TOC entry 1964 (class 2606 OID 32503)
--- Name: property_claim_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1987 (class 2606 OID 33825)
+-- Name: personproperty_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY personproperty
+    ADD CONSTRAINT personproperty_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1989 (class 2606 OID 33830)
+-- Name: property_claim_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY property_claim
@@ -337,17 +396,8 @@ ALTER TABLE ONLY property_claim
 
 
 --
--- TOC entry 1962 (class 2606 OID 32498)
--- Name: property_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY property
-    ADD CONSTRAINT property_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 1966 (class 2606 OID 32511)
--- Name: quranchapter_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1991 (class 2606 OID 33838)
+-- Name: quranchapter_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY quranchapter
@@ -355,8 +405,8 @@ ALTER TABLE ONLY quranchapter
 
 
 --
--- TOC entry 1974 (class 2606 OID 32519)
--- Name: quranverse_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1999 (class 2606 OID 33846)
+-- Name: quranverse_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY quranverse
@@ -364,8 +414,8 @@ ALTER TABLE ONLY quranverse
 
 
 --
--- TOC entry 1980 (class 2606 OID 32527)
--- Name: scholar_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 2005 (class 2606 OID 33854)
+-- Name: scholar_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY scholar
@@ -373,8 +423,35 @@ ALTER TABLE ONLY scholar
 
 
 --
--- TOC entry 1982 (class 2606 OID 32535)
--- Name: testimony_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 2007 (class 2606 OID 33862)
+-- Name: scholarproperty_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY scholarproperty
+    ADD CONSTRAINT scholarproperty_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2009 (class 2606 OID 33870)
+-- Name: spellingproperty_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY spellingproperty
+    ADD CONSTRAINT spellingproperty_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2011 (class 2606 OID 33878)
+-- Name: successionproperty_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY successionproperty
+    ADD CONSTRAINT successionproperty_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2018 (class 2606 OID 34009)
+-- Name: testimony_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY testimony
@@ -382,8 +459,17 @@ ALTER TABLE ONLY testimony
 
 
 --
--- TOC entry 1984 (class 2606 OID 32543)
--- Name: transliteration_pkey; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 2013 (class 2606 OID 33894)
+-- Name: thingproperty_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY thingproperty
+    ADD CONSTRAINT thingproperty_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2015 (class 2606 OID 33902)
+-- Name: transliteration_pkey; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY transliteration
@@ -391,8 +477,8 @@ ALTER TABLE ONLY transliteration
 
 
 --
--- TOC entry 1944 (class 2606 OID 32549)
--- Name: uk_1a285v3i3gv3ln51vshnqh87o; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1971 (class 2606 OID 33908)
+-- Name: uk_1a285v3i3gv3ln51vshnqh87o; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY evidence
@@ -400,8 +486,8 @@ ALTER TABLE ONLY evidence
 
 
 --
--- TOC entry 1950 (class 2606 OID 32553)
--- Name: uk_2wbhxot3fvi29740oicatlox9; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1977 (class 2606 OID 33912)
+-- Name: uk_2wbhxot3fvi29740oicatlox9; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY hadith
@@ -409,17 +495,8 @@ ALTER TABLE ONLY hadith
 
 
 --
--- TOC entry 1960 (class 2606 OID 32561)
--- Name: uk_6k1t6n18eonhmc1breh1v5ul8; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY literal
-    ADD CONSTRAINT uk_6k1t6n18eonhmc1breh1v5ul8 UNIQUE (normalized);
-
-
---
--- TOC entry 1938 (class 2606 OID 32545)
--- Name: uk_ayl4u4s9doh791oxyrfbopcdw; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1965 (class 2606 OID 33904)
+-- Name: uk_ayl4u4s9doh791oxyrfbopcdw; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY creativework
@@ -427,8 +504,8 @@ ALTER TABLE ONLY creativework
 
 
 --
--- TOC entry 1970 (class 2606 OID 32565)
--- Name: uk_cnkwk5bpkmmp7e8n97k8j3urf; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1995 (class 2606 OID 33922)
+-- Name: uk_cnkwk5bpkmmp7e8n97k8j3urf; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY quranchapter
@@ -436,8 +513,8 @@ ALTER TABLE ONLY quranchapter
 
 
 --
--- TOC entry 1972 (class 2606 OID 32563)
--- Name: uk_d9eyki9ihy3yf5t7vjpq371w; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1997 (class 2606 OID 33920)
+-- Name: uk_d9eyki9ihy3yf5t7vjpq371w; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY quranchapter
@@ -445,17 +522,8 @@ ALTER TABLE ONLY quranchapter
 
 
 --
--- TOC entry 1986 (class 2606 OID 32574)
--- Name: uk_hi421u15qh6e51f6cv1uheirx; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY transliteration
-    ADD CONSTRAINT uk_hi421u15qh6e51f6cv1uheirx UNIQUE (normalized);
-
-
---
--- TOC entry 1978 (class 2606 OID 32569)
--- Name: uk_iql4r2i52rvxyb7s4htdx2dkj; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 2003 (class 2606 OID 33926)
+-- Name: uk_iql4r2i52rvxyb7s4htdx2dkj; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY quranverse
@@ -463,8 +531,8 @@ ALTER TABLE ONLY quranverse
 
 
 --
--- TOC entry 1956 (class 2606 OID 32557)
--- Name: uk_k9jldvhu5ee76wkryfgsvg3y9; Type: CONSTRAINT; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1983 (class 2606 OID 33916)
+-- Name: uk_k9jldvhu5ee76wkryfgsvg3y9; Type: CONSTRAINT; Schema: sanad; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY hadithcollection
@@ -472,122 +540,180 @@ ALTER TABLE ONLY hadithcollection
 
 
 --
--- TOC entry 1935 (class 1259 OID 32546)
--- Name: creativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1962 (class 1259 OID 33905)
+-- Name: creativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX creativeworkthing_name_idx ON creativework USING btree (name);
 
 
 --
--- TOC entry 1936 (class 1259 OID 32547)
--- Name: creativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1963 (class 1259 OID 33906)
+-- Name: creativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX creativeworkthing_slug_idx ON creativework USING btree (slug);
 
 
 --
--- TOC entry 1941 (class 1259 OID 32550)
--- Name: evidencething_name_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1968 (class 1259 OID 33909)
+-- Name: evidencething_name_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX evidencething_name_idx ON evidence USING btree (name);
 
 
 --
--- TOC entry 1942 (class 1259 OID 32551)
--- Name: evidencething_slug_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1969 (class 1259 OID 33910)
+-- Name: evidencething_slug_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX evidencething_slug_idx ON evidence USING btree (slug);
 
 
 --
--- TOC entry 1953 (class 1259 OID 32558)
--- Name: hadithcollectioncreativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1980 (class 1259 OID 33917)
+-- Name: hadithcollectioncreativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX hadithcollectioncreativeworkthing_name_idx ON hadithcollection USING btree (name);
 
 
 --
--- TOC entry 1954 (class 1259 OID 32559)
--- Name: hadithcollectioncreativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1981 (class 1259 OID 33918)
+-- Name: hadithcollectioncreativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX hadithcollectioncreativeworkthing_slug_idx ON hadithcollection USING btree (slug);
 
 
 --
--- TOC entry 1947 (class 1259 OID 32554)
--- Name: hadithcreativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1974 (class 1259 OID 33913)
+-- Name: hadithcreativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX hadithcreativeworkthing_name_idx ON hadith USING btree (name);
 
 
 --
--- TOC entry 1948 (class 1259 OID 32555)
--- Name: hadithcreativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1975 (class 1259 OID 33914)
+-- Name: hadithcreativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX hadithcreativeworkthing_slug_idx ON hadith USING btree (slug);
 
 
 --
--- TOC entry 1967 (class 1259 OID 32566)
--- Name: quranchaptercreativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1992 (class 1259 OID 33923)
+-- Name: quranchaptercreativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX quranchaptercreativeworkthing_name_idx ON quranchapter USING btree (name);
 
 
 --
--- TOC entry 1968 (class 1259 OID 32567)
--- Name: quranchaptercreativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 1993 (class 1259 OID 33924)
+-- Name: quranchaptercreativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX quranchaptercreativeworkthing_slug_idx ON quranchapter USING btree (slug);
 
 
 --
--- TOC entry 1975 (class 1259 OID 32570)
--- Name: quranversecreativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 2000 (class 1259 OID 33927)
+-- Name: quranversecreativeworkthing_name_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX quranversecreativeworkthing_name_idx ON quranverse USING btree (name);
 
 
 --
--- TOC entry 1976 (class 1259 OID 32571)
--- Name: quranversecreativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: postgres; Tablespace: 
+-- TOC entry 2001 (class 1259 OID 33928)
+-- Name: quranversecreativeworkthing_slug_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
 CREATE INDEX quranversecreativeworkthing_slug_idx ON quranverse USING btree (slug);
 
 
 --
--- TOC entry 1990 (class 2606 OID 32590)
--- Name: fk_2dq801313t4lascfhh4kqgeic; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
+-- TOC entry 2016 (class 1259 OID 34010)
+-- Name: testimony_creationtime_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY property
-    ADD CONSTRAINT fk_2dq801313t4lascfhh4kqgeic FOREIGN KEY (literal_id) REFERENCES literal(id);
-
-
---
--- TOC entry 1991 (class 2606 OID 32595)
--- Name: fk_b6a5jxrd9yeqnstygtv8dm026; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
---
-
-ALTER TABLE ONLY property
-    ADD CONSTRAINT fk_b6a5jxrd9yeqnstygtv8dm026 FOREIGN KEY (articlebodies_thing_id) REFERENCES hadith(id);
+CREATE INDEX testimony_creationtime_idx ON testimony USING btree (creationtime, creationtimezone);
 
 
 --
--- TOC entry 1988 (class 2606 OID 32580)
--- Name: fk_cm9h74ndkgj1hsh9nhcl3x4hd; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
+-- TOC entry 2019 (class 1259 OID 34011)
+-- Name: testimony_validenddate_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE INDEX testimony_validenddate_idx ON testimony USING btree (validenddate);
+
+
+--
+-- TOC entry 2020 (class 1259 OID 34012)
+-- Name: testimony_validendtime_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE INDEX testimony_validendtime_idx ON testimony USING btree (validendtime, validendtimezone);
+
+
+--
+-- TOC entry 2021 (class 1259 OID 34013)
+-- Name: testimony_validstartdate_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE INDEX testimony_validstartdate_idx ON testimony USING btree (validstartdate);
+
+
+--
+-- TOC entry 2022 (class 1259 OID 34014)
+-- Name: testimony_validstarttime_idx; Type: INDEX; Schema: sanad; Owner: -; Tablespace: 
+--
+
+CREATE INDEX testimony_validstarttime_idx ON testimony USING btree (validstarttime, validstarttimezone);
+
+
+--
+-- TOC entry 2032 (class 2606 OID 33974)
+-- Name: fk_4fs8ta8pk8n4s2pugki2rrufk; Type: FK CONSTRAINT; Schema: sanad; Owner: -
+--
+
+ALTER TABLE ONLY spellingproperty
+    ADD CONSTRAINT fk_4fs8ta8pk8n4s2pugki2rrufk FOREIGN KEY (transliteration_id) REFERENCES transliteration(id);
+
+
+--
+-- TOC entry 2025 (class 2606 OID 33939)
+-- Name: fk_5ogqxuuipdp5fkv6rwyjw9f1x; Type: FK CONSTRAINT; Schema: sanad; Owner: -
+--
+
+ALTER TABLE ONLY literal
+    ADD CONSTRAINT fk_5ogqxuuipdp5fkv6rwyjw9f1x FOREIGN KEY (articlebodies_thing_id) REFERENCES hadith(id);
+
+
+--
+-- TOC entry 2030 (class 2606 OID 33964)
+-- Name: fk_8a8ls4utytb57cmv5qcg39x1a; Type: FK CONSTRAINT; Schema: sanad; Owner: -
+--
+
+ALTER TABLE ONLY quranverse
+    ADD CONSTRAINT fk_8a8ls4utytb57cmv5qcg39x1a FOREIGN KEY (textwithouttashkeel_id) REFERENCES literal(id);
+
+
+--
+-- TOC entry 2029 (class 2606 OID 33959)
+-- Name: fk_96jyqhhi678hednjjwvcke6kf; Type: FK CONSTRAINT; Schema: sanad; Owner: -
+--
+
+ALTER TABLE ONLY quranverse
+    ADD CONSTRAINT fk_96jyqhhi678hednjjwvcke6kf FOREIGN KEY (text_id) REFERENCES literal(id);
+
+
+--
+-- TOC entry 2024 (class 2606 OID 33934)
+-- Name: fk_cm9h74ndkgj1hsh9nhcl3x4hd; Type: FK CONSTRAINT; Schema: sanad; Owner: -
 --
 
 ALTER TABLE ONLY hadith
@@ -595,17 +721,35 @@ ALTER TABLE ONLY hadith
 
 
 --
--- TOC entry 1989 (class 2606 OID 32585)
--- Name: fk_ey4nwj44mfvkelmo6lr2wx87o; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
+-- TOC entry 2031 (class 2606 OID 33969)
+-- Name: fk_h88mtit8ywpjiglt47kkmkb3; Type: FK CONSTRAINT; Schema: sanad; Owner: -
 --
 
-ALTER TABLE ONLY property
-    ADD CONSTRAINT fk_ey4nwj44mfvkelmo6lr2wx87o FOREIGN KEY (transliteration_id) REFERENCES transliteration(id);
+ALTER TABLE ONLY quranverse
+    ADD CONSTRAINT fk_h88mtit8ywpjiglt47kkmkb3 FOREIGN KEY (transliteration_id) REFERENCES transliteration(id);
 
 
 --
--- TOC entry 1994 (class 2606 OID 32610)
--- Name: fk_qvcehjl13j1q7ie20wkhsvv2k; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
+-- TOC entry 2027 (class 2606 OID 33949)
+-- Name: fk_nxcps5lijee34n5jkakjcd555; Type: FK CONSTRAINT; Schema: sanad; Owner: -
+--
+
+ALTER TABLE ONLY quranchapter
+    ADD CONSTRAINT fk_nxcps5lijee34n5jkakjcd555 FOREIGN KEY (nametransliteration_id) REFERENCES transliteration(id);
+
+
+--
+-- TOC entry 2033 (class 2606 OID 33979)
+-- Name: fk_qc337gwxetwrcp7a8wd258yuy; Type: FK CONSTRAINT; Schema: sanad; Owner: -
+--
+
+ALTER TABLE ONLY spellingproperty
+    ADD CONSTRAINT fk_qc337gwxetwrcp7a8wd258yuy FOREIGN KEY (literal_id) REFERENCES literal(id);
+
+
+--
+-- TOC entry 2028 (class 2606 OID 33954)
+-- Name: fk_qvcehjl13j1q7ie20wkhsvv2k; Type: FK CONSTRAINT; Schema: sanad; Owner: -
 --
 
 ALTER TABLE ONLY quranverse
@@ -613,17 +757,8 @@ ALTER TABLE ONLY quranverse
 
 
 --
--- TOC entry 1993 (class 2606 OID 32605)
--- Name: fk_r4bd81y83aa101v4vt41o44d7; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
---
-
-ALTER TABLE ONLY property_claim
-    ADD CONSTRAINT fk_r4bd81y83aa101v4vt41o44d7 FOREIGN KEY (property_id) REFERENCES property(id);
-
-
---
--- TOC entry 1992 (class 2606 OID 32600)
--- Name: fk_t84muc58mlxipw8296o044uc8; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
+-- TOC entry 2026 (class 2606 OID 33944)
+-- Name: fk_t84muc58mlxipw8296o044uc8; Type: FK CONSTRAINT; Schema: sanad; Owner: -
 --
 
 ALTER TABLE ONLY property_claim
@@ -631,15 +766,15 @@ ALTER TABLE ONLY property_claim
 
 
 --
--- TOC entry 1987 (class 2606 OID 32575)
--- Name: fk_t9rfahjl4n30x5nrma0g77wig; Type: FK CONSTRAINT; Schema: sanad; Owner: postgres
+-- TOC entry 2023 (class 2606 OID 34015)
+-- Name: fk_t9rfahjl4n30x5nrma0g77wig; Type: FK CONSTRAINT; Schema: sanad; Owner: -
 --
 
 ALTER TABLE ONLY claim
     ADD CONSTRAINT fk_t9rfahjl4n30x5nrma0g77wig FOREIGN KEY (testimony_id) REFERENCES testimony(id);
 
 
--- Completed on 2014-08-01 00:08:25 WIB
+-- Completed on 2014-08-01 04:34:53 WIB
 
 --
 -- PostgreSQL database dump complete

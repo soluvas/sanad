@@ -28,7 +28,7 @@ public class Hadith extends CreativeWork {
 	 */
 	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumns({ @JoinColumn(name = "articlebodies_thing_id") })
-	private Set<LiteralProperty> articleBodies = new HashSet<LiteralProperty>();
+	private Set<Literal> articleBodies = new HashSet<Literal>();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -67,7 +67,7 @@ public class Hadith extends CreativeWork {
 	 * @return the value of '<em><b>articleBodies</b></em>' feature
 	 * @generated
 	 */
-	public Set<LiteralProperty> getArticleBodies() {
+	public Set<Literal> getArticleBodies() {
 		return articleBodies;
 	}
 
@@ -80,7 +80,7 @@ public class Hadith extends CreativeWork {
 	 *         present in the collection), false otherwise
 	 * @generated
 	 */
-	public boolean addToArticleBodies(LiteralProperty articleBodiesValue) {
+	public boolean addToArticleBodies(Literal articleBodiesValue) {
 		if (!articleBodies.contains(articleBodiesValue)) {
 			boolean result = articleBodies.add(articleBodiesValue);
 			return result;
@@ -98,7 +98,7 @@ public class Hadith extends CreativeWork {
 	 *
 	 * @generated
 	 */
-	public boolean removeFromArticleBodies(LiteralProperty articleBodiesValue) {
+	public boolean removeFromArticleBodies(Literal articleBodiesValue) {
 		if (articleBodies.contains(articleBodiesValue)) {
 			boolean result = articleBodies.remove(articleBodiesValue);
 			return result;
@@ -128,7 +128,7 @@ public class Hadith extends CreativeWork {
 	 *            articleBodies}' feature.
 	 * @generated
 	 */
-	public void setArticleBodies(Set<LiteralProperty> newArticleBodies) {
+	public void setArticleBodies(Set<Literal> newArticleBodies) {
 		articleBodies = newArticleBodies;
 	}
 

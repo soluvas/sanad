@@ -2,6 +2,7 @@ package org.soluvas.sanad.core.jpa;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * A representation of the model object '<em><b>ScholarProperty</b></em>'. <!--
@@ -13,7 +14,8 @@ import javax.persistence.Entity;
  * @generated
  */
 @Entity()
-public class ScholarProperty extends Property {
+@Table(schema = "sanad")
+public class ScholarProperty extends LegalEntityProperty {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

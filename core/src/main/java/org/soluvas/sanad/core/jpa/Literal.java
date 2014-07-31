@@ -2,29 +2,35 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
+
+import org.soluvas.sanad.core.AsciidocUtils;
+
+import com.google.common.html.HtmlEscapers;
 
 /**
  * A representation of the model object '<em><b>Literal</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  * 
- * @generated
  */
 @Entity()
-@Table(schema = "sanad")
-public class Literal {
+@Table(schema = "sanad", indexes={
+		@Index(name="literal_creativework_id_idx", columnList="creativework_id"),
+		@Index(name="literal_normalized_idx", columnList="normalized"),
+		@Index(name="literal_numeronym_idx", columnList="numeronym"),
+		@Index(name="literal_inlanguage_idx", columnList="inlanguage")
+})
+public class Literal extends Property {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> If
@@ -56,13 +62,32 @@ public class Literal {
 	private Set<SpellingProperty> spellings = new HashSet<SpellingProperty>();
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
+	private CreativeWork creativeWork = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * For translated literals, specify the person or organization name of the
+	 * translator. <!-- end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String translator = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
 	 * Normalized text. <!-- end-model-doc -->
 	 * 
 	 * @generated
 	 */
 	@Basic()
-	@Column(columnDefinition = "text", unique = true)
+	@Column(columnDefinition = "text")
 	private String normalized = null;
 
 	/**
@@ -85,16 +110,6 @@ public class Literal {
 	 */
 	@Basic()
 	private String inLanguage = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 */
-	@Id()
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	@Type(type = "org.hibernate.type.PostgresUUIDType")
-	private UUID id = null;
 
 	/**
 	 * Returns the value of '<em><b>adoc</b></em>' feature.
@@ -223,6 +238,63 @@ public class Literal {
 	}
 
 	/**
+	 * Returns the value of '<em><b>creativeWork</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>creativeWork</b></em>' feature
+	 * @generated
+	 */
+	public CreativeWork getCreativeWork() {
+		return creativeWork;
+	}
+
+	/**
+	 * Sets the '{@link Literal#getCreativeWork() <em>creativeWork</em>}'
+	 * feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newCreativeWork
+	 *            the new value of the '{@link Literal#getCreativeWork()
+	 *            creativeWork}' feature.
+	 * @generated
+	 */
+	public void setCreativeWork(CreativeWork newCreativeWork) {
+		creativeWork = newCreativeWork;
+	}
+
+	/**
+	 * Returns the value of '<em><b>translator</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * For translated literals, specify the person or organization name of the
+	 * translator. <!-- end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>translator</b></em>' feature
+	 * @generated
+	 */
+	public String getTranslator() {
+		return translator;
+	}
+
+	/**
+	 * Sets the '{@link Literal#getTranslator() <em>translator</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * For translated literals, specify the person or organization name of the
+	 * translator. <!-- end-model-doc -->
+	 * 
+	 * @param newTranslator
+	 *            the new value of the '{@link Literal#getTranslator()
+	 *            translator}' feature.
+	 * @generated
+	 */
+	public void setTranslator(String newTranslator) {
+		translator = newTranslator;
+	}
+
+	/**
 	 * Returns the value of '<em><b>normalized</b></em>' feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -313,31 +385,6 @@ public class Literal {
 	}
 
 	/**
-	 * Returns the value of '<em><b>id</b></em>' feature.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the value of '<em><b>id</b></em>' feature
-	 * @generated
-	 */
-	public UUID getId() {
-		return id;
-	}
-
-	/**
-	 * Sets the '{@link Literal#getId() <em>id</em>}' feature.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param newId
-	 *            the new value of the '{@link Literal#getId() id}' feature.
-	 * @generated
-	 */
-	public void setId(UUID newId) {
-		id = newId;
-	}
-
-	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -345,9 +392,17 @@ public class Literal {
 	 */
 	@Override
 	public String toString() {
-		return "Literal " + " [id: " + getId() + "]" + " [normalized: "
-				+ getNormalized() + "]" + " [numeronym: " + getNumeronym()
-				+ "]" + " [inLanguage: " + getInLanguage() + "]" + " [adoc: "
-				+ getAdoc() + "]" + " [html: " + getHtml() + "]";
+		return "Literal " + " [normalized: " + getNormalized() + "]"
+				+ " [numeronym: " + getNumeronym() + "]" + " [inLanguage: "
+				+ getInLanguage() + "]" + " [adoc: " + getAdoc() + "]"
+				+ " [html: " + getHtml() + "]" + " [translator: "
+				+ getTranslator() + "]";
 	}
+
+	public void assignAdoc(String adoc) {
+		setAdoc(adoc);
+		setHtml(HtmlEscapers.htmlEscaper().escape(adoc));
+		setNormalized(AsciidocUtils.normalize(adoc));
+	}
+
 }

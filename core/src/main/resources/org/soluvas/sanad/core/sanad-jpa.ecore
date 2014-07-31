@@ -63,24 +63,33 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="names" ordered="false"
-        upperBound="-1" eType="#//LiteralProperty" containment="true"/>
+        upperBound="-1" eType="#//Literal" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="authenticities" ordered="false"
         upperBound="-1" eType="#//AuthenticityProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="successions" ordered="false"
         upperBound="-1" eType="#//SuccessionProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="authors" ordered="false"
-        upperBound="-1" eType="#//Property" containment="true"/>
+        upperBound="-1" eType="#//LegalEntityProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Name can change if revised, but only one accepted name."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Literal">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Property">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A Literal's ID is usually an UUID representation. However, for things that have a distinct and universal meaning, e.g. Holy Quran verses Arabic literals, it's better to assign distinct human-readable IDs.&#xA;Human-readable IDs use the pattern {@code [a-z][a-z0-9_]+}. Note that UUID representations use the '-' character.&#xA;IDs need to be unique for all things, literals, and transliterations."/>
+    </eAnnotations>
+    <eOperations name="assignAdoc">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Normalized text."/>
+        <details key="documentation" value="Sets the {@link #adoc}, and generates {@link #normalized}, {@link #numeronym}, and {@link #html}."/>
+      </eAnnotations>
+      <eParameters name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" unique="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Normalized text.&#xA;Note: This is not unique because several things might have the exact same literal (i.e. some verses in the Holy Quran)."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeronym" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -93,18 +102,25 @@
         <details key="documentation" value="Language tag as specified by &lt;a href=&quot;http://tools.ietf.org/html/bcp47&quot;>IETF BCP 47&lt;/a>."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="html" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="html" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If a literal/translation, in HTML format."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="spellings" ordered="false"
         upperBound="-1" eType="#//SpellingProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="creativeWork" eType="#//CreativeWork"
+        eOpposite="#//CreativeWork/texts"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="translator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For translated literals, specify the person or organization name of the translator."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Claim" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
@@ -174,18 +190,6 @@
       </eAnnotations>
     </eLiterals>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LiteralProperty" eSuperTypes="#//Property">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="html" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="If a literal/translation, in HTML format."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PropertyKind">
     <eLiterals name="literal"/>
     <eLiterals name="resource"/>
@@ -207,7 +211,10 @@
     <eLiterals name="question"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Most properties exist because of {@link Claim}s, the rest are universal properties. One or more common Claims make up a Property.&#xA;&#xA;&lt;p>A property may be passivated when all of its claims are refuted. Universal properties (e.g. literals and transliterations of the Holy Quran) are permanent&#xA;and are not affected by Claims.&#xA;&#xA;&lt;p>Properties cannot be discussed. To &quot;discuss&quot; a Property, a user needs to either:&#xA;&#xA;&lt;ul>&#xA;&lt;li>create a Claim for a {@link Thing} for that property.&lt;/li>&#xA;&lt;li>create a Claim specifying the merits of an existing Claim.&lt;/li>&#xA;&lt;/ul>&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Description of the property in AsciiDoc. It is derived from the {@link Claim} or {@link Testimony}'s description."/>
@@ -388,28 +395,33 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PersonProperty" eSuperTypes="#//Property">
+  <eClassifiers xsi:type="ecore:EClass" name="PersonProperty" eSuperTypes="#//LegalEntityProperty">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The property refers to a {@link Person}."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="personId" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ScholarProperty" eSuperTypes="#//Property">
+  <eClassifiers xsi:type="ecore:EClass" name="ScholarProperty" eSuperTypes="#//LegalEntityProperty">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The property refers to a {@link Scholar} which did not participate in the Sanad system or was already deceased at the time of creation."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scholarId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transliteration">
+  <eClassifiers xsi:type="ecore:EClass" name="Transliteration" eSuperTypes="#//Property">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Transliteration's body cannot be revised, it can only be claimed for spelling.&#xA;&#xA;Note: An authentic transliteration may be based on a non-authentic thing. In this case, the transliteration is sound (linguistically), however its meaning is not sound."/>
+      <details key="documentation" value="A Transliteration's ID is usually an UUID representation. However, for things that have a distinct and universal meaning, e.g. Holy Quran verses official transliterations, it's better to assign distinct human-readable IDs.&#xA;Human-readable IDs use the pattern {@code [a-z][a-z0-9_]+}. Note that UUID representations use the '-' character.&#xA;IDs need to be unique for all things, literals, and transliterations.&#xA;&#xA;Transliteration's body cannot be revised, it can only be claimed for spelling.&#xA;&#xA;Note: An authentic transliteration may be based on a non-authentic thing. In this case, the transliteration is sound (linguistically), however its meaning is not sound."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eOperations name="assignAdoc">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Normalized text."/>
+        <details key="documentation" value="Sets the {@link #adoc}, and generates {@link #normalized}, {@link #numeronym}, and {@link #html}."/>
+      </eAnnotations>
+      <eParameters name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normalized" unique="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Normalized text.&#xA;Note: This is not unique because several things might have the exact same literal (i.e. some verses in the Holy Quran)."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeronym" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -429,6 +441,13 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="spellings" ordered="false"
         upperBound="-1" eType="#//SpellingProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="creativeWork" eType="#//CreativeWork"
+        eOpposite="#//CreativeWork/transliterations"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transliterator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Specify the person or organization name of the transliterator."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TransliterationClaim" eSuperTypes="#//Claim">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -451,13 +470,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Language tag as specified by &lt;a href=&quot;http://tools.ietf.org/html/bcp47&quot;>IETF BCP 47&lt;/a>."/>
+        <details key="documentation" value="The original language tag of the work, as specified by &lt;a href=&quot;http://tools.ietf.org/html/bcp47&quot;>IETF BCP 47&lt;/a>."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transliterations" ordered="false"
+        upperBound="-1" eType="#//Transliteration" containment="true" eOpposite="#//Transliteration/creativeWork"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="texts" ordered="false"
+        upperBound="-1" eType="#//Literal" containment="true" eOpposite="#//Literal/creativeWork"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Hadith" eSuperTypes="#//CreativeWork">
     <eStructuralFeatures xsi:type="ecore:EReference" name="articleBodies" ordered="false"
-        upperBound="-1" eType="#//LiteralProperty" containment="true"/>
+        upperBound="-1" eType="#//Literal" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="collection" eType="#//HadithCollection"
         eOpposite="#//HadithCollection/hadiths"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hadithNum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject">
@@ -479,12 +502,20 @@
         lowerBound="1" eType="#//QuranChapter" eOpposite="#//QuranChapter/verses"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="verseNum" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transliteration" eType="#//Transliteration"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Verse with tashkeel."/>
+        <details key="documentation" value="Official English transliteration of the verse.&#xA;Having it as a reference to a {@link Transliteration} allows comparison between incorrect/misleading spellings."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textWithoutTashkeel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//Literal"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Verse in official Arabic with tashkeel."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="textWithoutTashkeel" eType="#//Literal"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Verse without tashkeel."/>
       </eAnnotations>
@@ -507,9 +538,21 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="verses" upperBound="-1"
         eType="#//QuranVerse" containment="true" eOpposite="#//QuranVerse/chapter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nameTransliteration" eType="#//Transliteration"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Official English transliteration of the name.&#xA;Having it as a reference to a {@link Transliteration} allows comparison between incorrect/misleading spellings."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HadithCollection" eSuperTypes="#//CreativeWork">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hadiths" upperBound="-1"
         eType="#//Hadith" containment="true" eOpposite="#//Hadith/collection"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LegalEntityProperty" abstract="true"
+      eSuperTypes="#//Property">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Property that refers to legal/accountable entity such as person, scholar (including deceased ones), or organization (including historical organizations)."/>
+    </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

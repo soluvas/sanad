@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * A representation of the model object '<em><b>ThingProperty</b></em>'. <!--
@@ -14,6 +15,7 @@ import javax.persistence.ManyToOne;
  * @generated
  */
 @Entity()
+@Table(schema = "sanad")
 public class ThingProperty extends Property {
 
 	/**
@@ -31,7 +33,7 @@ public class ThingProperty extends Property {
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH }, optional = true)
+			CascadeType.REFRESH }, optional = false)
 	private Thing thing = null;
 
 	/**

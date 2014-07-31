@@ -2,19 +2,17 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 /**
  * A representation of the model object '<em><b>Transliteration</b></em>'. <!--
@@ -26,11 +24,14 @@ import org.hibernate.annotations.Type;
  * this case, the transliteration is sound (linguistically), however its meaning
  * is not sound. <!-- end-model-doc -->
  * 
- * @generated
  */
 @Entity()
-@Table(schema = "sanad")
-public class Transliteration {
+@Table(schema = "sanad", indexes={
+	@Index(name="transliteration_creativework_id_idx", columnList="creativework_id"),
+	@Index(name="transliteration_normalized_idx", columnList="normalized"),
+	@Index(name="transliteration_numeronym_idx", columnList="numeronym")
+})
+public class Transliteration extends Property {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> If
@@ -62,13 +63,32 @@ public class Transliteration {
 	private Set<SpellingProperty> spellings = new HashSet<SpellingProperty>();
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
+	private CreativeWork creativeWork = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Specify the person or organization name of the transliterator. <!--
+	 * end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String transliterator = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
 	 * Normalized text. <!-- end-model-doc -->
 	 * 
 	 * @generated
 	 */
 	@Basic()
-	@Column(columnDefinition = "text", unique = true)
+	@Column(columnDefinition = "text")
 	private String normalized = null;
 
 	/**
@@ -80,16 +100,6 @@ public class Transliteration {
 	 */
 	@Basic()
 	private String numeronym = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 */
-	@Id()
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	@Type(type = "org.hibernate.type.PostgresUUIDType")
-	private UUID id = null;
 
 	/**
 	 * Returns the value of '<em><b>adoc</b></em>' feature.
@@ -221,6 +231,66 @@ public class Transliteration {
 	}
 
 	/**
+	 * Returns the value of '<em><b>creativeWork</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>creativeWork</b></em>' feature
+	 * @generated
+	 */
+	public CreativeWork getCreativeWork() {
+		return creativeWork;
+	}
+
+	/**
+	 * Sets the '{@link Transliteration#getCreativeWork() <em>creativeWork</em>}
+	 * ' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newCreativeWork
+	 *            the new value of the '
+	 *            {@link Transliteration#getCreativeWork() creativeWork}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setCreativeWork(CreativeWork newCreativeWork) {
+		creativeWork = newCreativeWork;
+	}
+
+	/**
+	 * Returns the value of '<em><b>transliterator</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Specify the person or organization name of the transliterator. <!--
+	 * end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>transliterator</b></em>' feature
+	 * @generated
+	 */
+	public String getTransliterator() {
+		return transliterator;
+	}
+
+	/**
+	 * Sets the '{@link Transliteration#getTransliterator()
+	 * <em>transliterator</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Specify the person or organization name of the transliterator. <!--
+	 * end-model-doc -->
+	 * 
+	 * @param newTransliterator
+	 *            the new value of the '
+	 *            {@link Transliteration#getTransliterator() transliterator}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setTransliterator(String newTransliterator) {
+		transliterator = newTransliterator;
+	}
+
+	/**
 	 * Returns the value of '<em><b>normalized</b></em>' feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -281,32 +351,6 @@ public class Transliteration {
 	}
 
 	/**
-	 * Returns the value of '<em><b>id</b></em>' feature.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the value of '<em><b>id</b></em>' feature
-	 * @generated
-	 */
-	public UUID getId() {
-		return id;
-	}
-
-	/**
-	 * Sets the '{@link Transliteration#getId() <em>id</em>}' feature.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param newId
-	 *            the new value of the '{@link Transliteration#getId() id}'
-	 *            feature.
-	 * @generated
-	 */
-	public void setId(UUID newId) {
-		id = newId;
-	}
-
-	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -314,9 +358,9 @@ public class Transliteration {
 	 */
 	@Override
 	public String toString() {
-		return "Transliteration " + " [id: " + getId() + "]" + " [normalized: "
-				+ getNormalized() + "]" + " [numeronym: " + getNumeronym()
-				+ "]" + " [adoc: " + getAdoc() + "]" + " [html: " + getHtml()
-				+ "]";
+		return "Transliteration " + " [normalized: " + getNormalized() + "]"
+				+ " [numeronym: " + getNumeronym() + "]" + " [adoc: "
+				+ getAdoc() + "]" + " [html: " + getHtml() + "]"
+				+ " [transliterator: " + getTransliterator() + "]";
 	}
 }

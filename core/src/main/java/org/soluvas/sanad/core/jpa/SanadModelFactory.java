@@ -38,12 +38,12 @@ public class SanadModelFactory implements ModelFactory {
 		switch (eClass.getClassifierID()) {
 		case SanadModelPackage.TRANSLITERATION_CLASSIFIER_ID:
 			return createTransliteration();
+		case SanadModelPackage.LITERAL_CLASSIFIER_ID:
+			return createLiteral();
 		case SanadModelPackage.HADITH_CLASSIFIER_ID:
 			return createHadith();
 		case SanadModelPackage.SCHOLAR_CLASSIFIER_ID:
 			return createScholar();
-		case SanadModelPackage.LITERAL_CLASSIFIER_ID:
-			return createLiteral();
 		case SanadModelPackage.TESTIMONY_CLASSIFIER_ID:
 			return createTestimony();
 		case SanadModelPackage.HADITHCOLLECTION_CLASSIFIER_ID:
@@ -56,30 +56,28 @@ public class SanadModelFactory implements ModelFactory {
 			return createCreativeWork();
 		case SanadModelPackage.EVIDENCE_CLASSIFIER_ID:
 			return createEvidence();
-		case SanadModelPackage.LITERALPROPERTY_CLASSIFIER_ID:
-			return createLiteralProperty();
 		case SanadModelPackage.AUTHENTICITYPROPERTY_CLASSIFIER_ID:
 			return createAuthenticityProperty();
-		case SanadModelPackage.SUCCESSIONPROPERTY_CLASSIFIER_ID:
-			return createSuccessionProperty();
+		case SanadModelPackage.PERSONPROPERTY_CLASSIFIER_ID:
+			return createPersonProperty();
+		case SanadModelPackage.SCHOLARPROPERTY_CLASSIFIER_ID:
+			return createScholarProperty();
 		case SanadModelPackage.SPELLINGPROPERTY_CLASSIFIER_ID:
 			return createSpellingProperty();
+		case SanadModelPackage.SUCCESSIONPROPERTY_CLASSIFIER_ID:
+			return createSuccessionProperty();
+		case SanadModelPackage.THINGPROPERTY_CLASSIFIER_ID:
+			return createThingProperty();
 		case SanadModelPackage.LITERALCLAIM_CLASSIFIER_ID:
 			return createLiteralClaim();
 		case SanadModelPackage.THINGCLAIM_CLASSIFIER_ID:
 			return createThingClaim();
-		case SanadModelPackage.THINGPROPERTY_CLASSIFIER_ID:
-			return createThingProperty();
 		case SanadModelPackage.AUTHENTICITYCLAIM_CLASSIFIER_ID:
 			return createAuthenticityClaim();
 		case SanadModelPackage.SUCCESSIONCLAIM_CLASSIFIER_ID:
 			return createSuccessionClaim();
 		case SanadModelPackage.NARRATORCLAIM_CLASSIFIER_ID:
 			return createNarratorClaim();
-		case SanadModelPackage.PERSONPROPERTY_CLASSIFIER_ID:
-			return createPersonProperty();
-		case SanadModelPackage.SCHOLARPROPERTY_CLASSIFIER_ID:
-			return createScholarProperty();
 		case SanadModelPackage.TRANSLITERATIONCLAIM_CLASSIFIER_ID:
 			return createTransliterationClaim();
 		default:
@@ -107,6 +105,9 @@ public class SanadModelFactory implements ModelFactory {
 		case SanadModelPackage.TRANSLITERATION_CLASSIFIER_ID:
 			modelObject = new TransliterationModelObject();
 			break;
+		case SanadModelPackage.LITERAL_CLASSIFIER_ID:
+			modelObject = new LiteralModelObject();
+			break;
 		case SanadModelPackage.CLAIM_CLASSIFIER_ID:
 			modelObject = new ClaimModelObject();
 			break;
@@ -121,9 +122,6 @@ public class SanadModelFactory implements ModelFactory {
 			break;
 		case SanadModelPackage.SCHOLAR_CLASSIFIER_ID:
 			modelObject = new ScholarModelObject();
-			break;
-		case SanadModelPackage.LITERAL_CLASSIFIER_ID:
-			modelObject = new LiteralModelObject();
 			break;
 		case SanadModelPackage.TESTIMONY_CLASSIFIER_ID:
 			modelObject = new TestimonyModelObject();
@@ -143,26 +141,32 @@ public class SanadModelFactory implements ModelFactory {
 		case SanadModelPackage.EVIDENCE_CLASSIFIER_ID:
 			modelObject = new EvidenceModelObject();
 			break;
-		case SanadModelPackage.LITERALPROPERTY_CLASSIFIER_ID:
-			modelObject = new LiteralPropertyModelObject();
-			break;
 		case SanadModelPackage.AUTHENTICITYPROPERTY_CLASSIFIER_ID:
 			modelObject = new AuthenticityPropertyModelObject();
+			break;
+		case SanadModelPackage.PERSONPROPERTY_CLASSIFIER_ID:
+			modelObject = new PersonPropertyModelObject();
+			break;
+		case SanadModelPackage.SCHOLARPROPERTY_CLASSIFIER_ID:
+			modelObject = new ScholarPropertyModelObject();
+			break;
+		case SanadModelPackage.SPELLINGPROPERTY_CLASSIFIER_ID:
+			modelObject = new SpellingPropertyModelObject();
 			break;
 		case SanadModelPackage.SUCCESSIONPROPERTY_CLASSIFIER_ID:
 			modelObject = new SuccessionPropertyModelObject();
 			break;
-		case SanadModelPackage.SPELLINGPROPERTY_CLASSIFIER_ID:
-			modelObject = new SpellingPropertyModelObject();
+		case SanadModelPackage.THINGPROPERTY_CLASSIFIER_ID:
+			modelObject = new ThingPropertyModelObject();
+			break;
+		case SanadModelPackage.LEGALENTITYPROPERTY_CLASSIFIER_ID:
+			modelObject = new LegalEntityPropertyModelObject();
 			break;
 		case SanadModelPackage.LITERALCLAIM_CLASSIFIER_ID:
 			modelObject = new LiteralClaimModelObject();
 			break;
 		case SanadModelPackage.THINGCLAIM_CLASSIFIER_ID:
 			modelObject = new ThingClaimModelObject();
-			break;
-		case SanadModelPackage.THINGPROPERTY_CLASSIFIER_ID:
-			modelObject = new ThingPropertyModelObject();
 			break;
 		case SanadModelPackage.AUTHENTICITYCLAIM_CLASSIFIER_ID:
 			modelObject = new AuthenticityClaimModelObject();
@@ -172,12 +176,6 @@ public class SanadModelFactory implements ModelFactory {
 			break;
 		case SanadModelPackage.NARRATORCLAIM_CLASSIFIER_ID:
 			modelObject = new NarratorClaimModelObject();
-			break;
-		case SanadModelPackage.PERSONPROPERTY_CLASSIFIER_ID:
-			modelObject = new PersonPropertyModelObject();
-			break;
-		case SanadModelPackage.SCHOLARPROPERTY_CLASSIFIER_ID:
-			modelObject = new ScholarPropertyModelObject();
 			break;
 		case SanadModelPackage.TRANSLITERATIONCLAIM_CLASSIFIER_ID:
 			modelObject = new TransliterationClaimModelObject();
@@ -240,17 +238,6 @@ public class SanadModelFactory implements ModelFactory {
 	 */
 	public HadithCollection createHadithCollection() {
 		return new HadithCollection();
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return an instance of the model object representing the EClass
-	 *         LiteralProperty
-	 * @generated
-	 */
-	public LiteralProperty createLiteralProperty() {
-		return new LiteralProperty();
 	}
 
 	/**
@@ -1050,6 +1037,10 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getAuthor();
 			case SanadModelPackage.HADITHCOLLECTION_INLANGUAGE_FEATURE_ID:
 				return getTarget().getInLanguage();
+			case SanadModelPackage.HADITHCOLLECTION_TRANSLITERATIONS_FEATURE_ID:
+				return getTarget().getTransliterations();
+			case SanadModelPackage.HADITHCOLLECTION_TEXTS_FEATURE_ID:
+				return getTarget().getTexts();
 			case SanadModelPackage.HADITHCOLLECTION_HADITHS_FEATURE_ID:
 				return getTarget().getHadiths();
 			default:
@@ -1075,7 +1066,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setCanonicalSlug((String) value);
 				return;
 			case SanadModelPackage.HADITHCOLLECTION_NAMES_FEATURE_ID:
-				getTarget().setNames((Set<LiteralProperty>) value);
+				getTarget().setNames((Set<Literal>) value);
 				return;
 			case SanadModelPackage.HADITHCOLLECTION_AUTHENTICITIES_FEATURE_ID:
 				getTarget()
@@ -1085,7 +1076,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.HADITHCOLLECTION_AUTHORS_FEATURE_ID:
-				getTarget().setAuthors((Set<Property>) value);
+				getTarget().setAuthors((Set<LegalEntityProperty>) value);
 				return;
 			case SanadModelPackage.HADITHCOLLECTION_NAME_FEATURE_ID:
 				getTarget().setName((String) value);
@@ -1095,6 +1086,12 @@ public class SanadModelFactory implements ModelFactory {
 				return;
 			case SanadModelPackage.HADITHCOLLECTION_INLANGUAGE_FEATURE_ID:
 				getTarget().setInLanguage((String) value);
+				return;
+			case SanadModelPackage.HADITHCOLLECTION_TRANSLITERATIONS_FEATURE_ID:
+				getTarget().setTransliterations((Set<Transliteration>) value);
+				return;
+			case SanadModelPackage.HADITHCOLLECTION_TEXTS_FEATURE_ID:
+				getTarget().setTexts((Set<Literal>) value);
 				return;
 			case SanadModelPackage.HADITHCOLLECTION_HADITHS_FEATURE_ID:
 				getTarget().setHadiths((List<Hadith>) value);
@@ -1298,7 +1295,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setCanonicalSlug((String) value);
 				return;
 			case SanadModelPackage.THING_NAMES_FEATURE_ID:
-				getTarget().setNames((Set<LiteralProperty>) value);
+				getTarget().setNames((Set<Literal>) value);
 				return;
 			case SanadModelPackage.THING_AUTHENTICITIES_FEATURE_ID:
 				getTarget()
@@ -1308,7 +1305,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.THING_AUTHORS_FEATURE_ID:
-				getTarget().setAuthors((Set<Property>) value);
+				getTarget().setAuthors((Set<LegalEntityProperty>) value);
 				return;
 			case SanadModelPackage.THING_NAME_FEATURE_ID:
 				getTarget().setName((String) value);
@@ -1328,7 +1325,7 @@ public class SanadModelFactory implements ModelFactory {
 			switch (featureID) {
 
 			case SanadModelPackage.THING_NAMES_FEATURE_ID:
-				return getTarget().addToNames((LiteralProperty) value);
+				return getTarget().addToNames((Literal) value);
 
 			case SanadModelPackage.THING_AUTHENTICITIES_FEATURE_ID:
 				return getTarget().addToAuthenticities(
@@ -1338,7 +1335,7 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().addToSuccessions((SuccessionProperty) value);
 
 			case SanadModelPackage.THING_AUTHORS_FEATURE_ID:
-				return getTarget().addToAuthors((Property) value);
+				return getTarget().addToAuthors((LegalEntityProperty) value);
 
 			default:
 				return super.eAddTo(eStructuralFeature, value);
@@ -1355,7 +1352,7 @@ public class SanadModelFactory implements ModelFactory {
 			switch (featureID) {
 
 			case SanadModelPackage.THING_NAMES_FEATURE_ID:
-				return getTarget().removeFromNames((LiteralProperty) value);
+				return getTarget().removeFromNames((Literal) value);
 
 			case SanadModelPackage.THING_AUTHENTICITIES_FEATURE_ID:
 				return getTarget().removeFromAuthenticities(
@@ -1366,119 +1363,8 @@ public class SanadModelFactory implements ModelFactory {
 						(SuccessionProperty) value);
 
 			case SanadModelPackage.THING_AUTHORS_FEATURE_ID:
-				return getTarget().removeFromAuthors((Property) value);
-
-			default:
-				return super.eRemoveFrom(eStructuralFeature, value);
-			}
-		}
-	}
-
-	/**
-	 * The adapter/wrapper for the EClass '<em><b>LiteralProperty</b></em>'.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param <E>
-	 *            the domain model java class
-	 *
-	 * @generated
-	 */
-	public static class LiteralPropertyModelObject<E extends LiteralProperty>
-			extends PropertyModelObject<E> {
-		/**
-		 * @generated
-		 */
-		@Override
-		public EClass eClass() {
-			return SanadModelPackage.INSTANCE.getLiteralPropertyEClass();
-		}
-
-		/**
-		 * @generated
-		 */
-		@Override
-		public ModelPackage getModelPackage() {
-			return SanadModelPackage.INSTANCE;
-		}
-
-		/**
-		 * @generated
-		 */
-		@Override
-		public Object eGet(EStructuralFeature eStructuralFeature) {
-			final int featureID = eClass().getFeatureID(eStructuralFeature);
-			switch (featureID) {
-			case SanadModelPackage.LITERALPROPERTY_ID_FEATURE_ID:
-				return getTarget().getId();
-			case SanadModelPackage.LITERALPROPERTY_DESCRIPTION_FEATURE_ID:
-				return getTarget().getDescription();
-			case SanadModelPackage.LITERALPROPERTY_DESCRIPTIONHTML_FEATURE_ID:
-				return getTarget().getDescriptionHtml();
-			case SanadModelPackage.LITERALPROPERTY_CLAIMS_FEATURE_ID:
-				return getTarget().getClaims();
-			case SanadModelPackage.LITERALPROPERTY_ADOC_FEATURE_ID:
-				return getTarget().getAdoc();
-			case SanadModelPackage.LITERALPROPERTY_HTML_FEATURE_ID:
-				return getTarget().getHtml();
-			default:
-				return super.eGet(eStructuralFeature);
-			}
-		}
-
-		/**
-		 * @generated
-		 */
-		@SuppressWarnings("unchecked")
-		@Override
-		public void eSet(EStructuralFeature eStructuralFeature, Object value) {
-			final int featureID = eClass().getFeatureID(eStructuralFeature);
-			switch (featureID) {
-			case SanadModelPackage.LITERALPROPERTY_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
-				return;
-			case SanadModelPackage.LITERALPROPERTY_DESCRIPTION_FEATURE_ID:
-				getTarget().setDescription((String) value);
-				return;
-			case SanadModelPackage.LITERALPROPERTY_DESCRIPTIONHTML_FEATURE_ID:
-				getTarget().setDescriptionHtml((String) value);
-				return;
-			case SanadModelPackage.LITERALPROPERTY_CLAIMS_FEATURE_ID:
-				getTarget().setClaims((Set<Claim>) value);
-				return;
-			case SanadModelPackage.LITERALPROPERTY_ADOC_FEATURE_ID:
-				getTarget().setAdoc((String) value);
-				return;
-			case SanadModelPackage.LITERALPROPERTY_HTML_FEATURE_ID:
-				getTarget().setHtml((String) value);
-				return;
-			default:
-				super.eSet(eStructuralFeature, value);
-			}
-		}
-
-		/**
-		 * @generated
-		 */
-		@Override
-		public boolean eAddTo(EStructuralFeature eStructuralFeature,
-				Object value) {
-			final int featureID = eClass().getFeatureID(eStructuralFeature);
-			switch (featureID) {
-
-			default:
-				return super.eAddTo(eStructuralFeature, value);
-			}
-		}
-
-		/**
-		 * @generated
-		 */
-		@Override
-		public boolean eRemoveFrom(EStructuralFeature eStructuralFeature,
-				Object value) {
-			final int featureID = eClass().getFeatureID(eStructuralFeature);
-			switch (featureID) {
+				return getTarget().removeFromAuthors(
+						(LegalEntityProperty) value);
 
 			default:
 				return super.eRemoveFrom(eStructuralFeature, value);
@@ -1541,7 +1427,7 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.PROPERTY_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
 				return;
 			case SanadModelPackage.PROPERTY_DESCRIPTION_FEATURE_ID:
 				getTarget().setDescription((String) value);
@@ -1650,7 +1536,7 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.AUTHENTICITYPROPERTY_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
 				return;
 			case SanadModelPackage.AUTHENTICITYPROPERTY_DESCRIPTION_FEATURE_ID:
 				getTarget().setDescription((String) value);
@@ -1757,7 +1643,7 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.SUCCESSIONPROPERTY_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
 				return;
 			case SanadModelPackage.SUCCESSIONPROPERTY_DESCRIPTION_FEATURE_ID:
 				getTarget().setDescription((String) value);
@@ -1806,6 +1692,106 @@ public class SanadModelFactory implements ModelFactory {
 	}
 
 	/**
+	 * The adapter/wrapper for the EClass '<em><b>LegalEntityProperty</b></em>'.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param <E>
+	 *            the domain model java class
+	 *
+	 * @generated
+	 */
+	public static class LegalEntityPropertyModelObject<E extends LegalEntityProperty>
+			extends PropertyModelObject<E> {
+		/**
+		 * @generated
+		 */
+		@Override
+		public EClass eClass() {
+			return SanadModelPackage.INSTANCE.getLegalEntityPropertyEClass();
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public ModelPackage getModelPackage() {
+			return SanadModelPackage.INSTANCE;
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public Object eGet(EStructuralFeature eStructuralFeature) {
+			final int featureID = eClass().getFeatureID(eStructuralFeature);
+			switch (featureID) {
+			case SanadModelPackage.LEGALENTITYPROPERTY_ID_FEATURE_ID:
+				return getTarget().getId();
+			case SanadModelPackage.LEGALENTITYPROPERTY_DESCRIPTION_FEATURE_ID:
+				return getTarget().getDescription();
+			case SanadModelPackage.LEGALENTITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID:
+				return getTarget().getDescriptionHtml();
+			case SanadModelPackage.LEGALENTITYPROPERTY_CLAIMS_FEATURE_ID:
+				return getTarget().getClaims();
+			default:
+				return super.eGet(eStructuralFeature);
+			}
+		}
+
+		/**
+		 * @generated
+		 */
+		@SuppressWarnings("unchecked")
+		@Override
+		public void eSet(EStructuralFeature eStructuralFeature, Object value) {
+			final int featureID = eClass().getFeatureID(eStructuralFeature);
+			switch (featureID) {
+			case SanadModelPackage.LEGALENTITYPROPERTY_ID_FEATURE_ID:
+				getTarget().setId((String) value);
+				return;
+			case SanadModelPackage.LEGALENTITYPROPERTY_DESCRIPTION_FEATURE_ID:
+				getTarget().setDescription((String) value);
+				return;
+			case SanadModelPackage.LEGALENTITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID:
+				getTarget().setDescriptionHtml((String) value);
+				return;
+			case SanadModelPackage.LEGALENTITYPROPERTY_CLAIMS_FEATURE_ID:
+				getTarget().setClaims((Set<Claim>) value);
+				return;
+			default:
+				super.eSet(eStructuralFeature, value);
+			}
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public boolean eAddTo(EStructuralFeature eStructuralFeature,
+				Object value) {
+			final int featureID = eClass().getFeatureID(eStructuralFeature);
+			switch (featureID) {
+			default:
+				return super.eAddTo(eStructuralFeature, value);
+			}
+		}
+
+		/**
+		 * @generated
+		 */
+		@Override
+		public boolean eRemoveFrom(EStructuralFeature eStructuralFeature,
+				Object value) {
+			final int featureID = eClass().getFeatureID(eStructuralFeature);
+			switch (featureID) {
+			default:
+				return super.eRemoveFrom(eStructuralFeature, value);
+			}
+		}
+	}
+
+	/**
 	 * The adapter/wrapper for the EClass '<em><b>Literal</b></em>'.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1816,10 +1802,11 @@ public class SanadModelFactory implements ModelFactory {
 	 * @generated
 	 */
 	public static class LiteralModelObject<E extends Literal> extends
-			AbstractModelObject<E> {
+			PropertyModelObject<E> {
 		/**
 		 * @generated
 		 */
+		@Override
 		public EClass eClass() {
 			return SanadModelPackage.INSTANCE.getLiteralEClass();
 		}
@@ -1827,6 +1814,7 @@ public class SanadModelFactory implements ModelFactory {
 		/**
 		 * @generated
 		 */
+		@Override
 		public ModelPackage getModelPackage() {
 			return SanadModelPackage.INSTANCE;
 		}
@@ -1840,6 +1828,12 @@ public class SanadModelFactory implements ModelFactory {
 			switch (featureID) {
 			case SanadModelPackage.LITERAL_ID_FEATURE_ID:
 				return getTarget().getId();
+			case SanadModelPackage.LITERAL_DESCRIPTION_FEATURE_ID:
+				return getTarget().getDescription();
+			case SanadModelPackage.LITERAL_DESCRIPTIONHTML_FEATURE_ID:
+				return getTarget().getDescriptionHtml();
+			case SanadModelPackage.LITERAL_CLAIMS_FEATURE_ID:
+				return getTarget().getClaims();
 			case SanadModelPackage.LITERAL_NORMALIZED_FEATURE_ID:
 				return getTarget().getNormalized();
 			case SanadModelPackage.LITERAL_NUMERONYM_FEATURE_ID:
@@ -1852,6 +1846,10 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getHtml();
 			case SanadModelPackage.LITERAL_SPELLINGS_FEATURE_ID:
 				return getTarget().getSpellings();
+			case SanadModelPackage.LITERAL_CREATIVEWORK_FEATURE_ID:
+				return getTarget().getCreativeWork();
+			case SanadModelPackage.LITERAL_TRANSLATOR_FEATURE_ID:
+				return getTarget().getTranslator();
 			default:
 				return super.eGet(eStructuralFeature);
 			}
@@ -1866,7 +1864,16 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.LITERAL_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
+				return;
+			case SanadModelPackage.LITERAL_DESCRIPTION_FEATURE_ID:
+				getTarget().setDescription((String) value);
+				return;
+			case SanadModelPackage.LITERAL_DESCRIPTIONHTML_FEATURE_ID:
+				getTarget().setDescriptionHtml((String) value);
+				return;
+			case SanadModelPackage.LITERAL_CLAIMS_FEATURE_ID:
+				getTarget().setClaims((Set<Claim>) value);
 				return;
 			case SanadModelPackage.LITERAL_NORMALIZED_FEATURE_ID:
 				getTarget().setNormalized((String) value);
@@ -1886,6 +1893,12 @@ public class SanadModelFactory implements ModelFactory {
 			case SanadModelPackage.LITERAL_SPELLINGS_FEATURE_ID:
 				getTarget().setSpellings((Set<SpellingProperty>) value);
 				return;
+			case SanadModelPackage.LITERAL_CREATIVEWORK_FEATURE_ID:
+				getTarget().setCreativeWork((CreativeWork) value);
+				return;
+			case SanadModelPackage.LITERAL_TRANSLATOR_FEATURE_ID:
+				getTarget().setTranslator((String) value);
+				return;
 			default:
 				super.eSet(eStructuralFeature, value);
 			}
@@ -1902,6 +1915,7 @@ public class SanadModelFactory implements ModelFactory {
 
 			case SanadModelPackage.LITERAL_SPELLINGS_FEATURE_ID:
 				return getTarget().addToSpellings((SpellingProperty) value);
+
 			default:
 				return super.eAddTo(eStructuralFeature, value);
 			}
@@ -1919,6 +1933,7 @@ public class SanadModelFactory implements ModelFactory {
 			case SanadModelPackage.LITERAL_SPELLINGS_FEATURE_ID:
 				return getTarget()
 						.removeFromSpellings((SpellingProperty) value);
+
 			default:
 				return super.eRemoveFrom(eStructuralFeature, value);
 			}
@@ -1984,7 +1999,7 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.SPELLINGPROPERTY_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
 				return;
 			case SanadModelPackage.SPELLINGPROPERTY_DESCRIPTION_FEATURE_ID:
 				getTarget().setDescription((String) value);
@@ -2313,7 +2328,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setCanonicalSlug((String) value);
 				return;
 			case SanadModelPackage.EVIDENCE_NAMES_FEATURE_ID:
-				getTarget().setNames((Set<LiteralProperty>) value);
+				getTarget().setNames((Set<Literal>) value);
 				return;
 			case SanadModelPackage.EVIDENCE_AUTHENTICITIES_FEATURE_ID:
 				getTarget()
@@ -2323,7 +2338,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.EVIDENCE_AUTHORS_FEATURE_ID:
-				getTarget().setAuthors((Set<Property>) value);
+				getTarget().setAuthors((Set<LegalEntityProperty>) value);
 				return;
 			case SanadModelPackage.EVIDENCE_NAME_FEATURE_ID:
 				getTarget().setName((String) value);
@@ -2421,7 +2436,7 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.THINGPROPERTY_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
 				return;
 			case SanadModelPackage.THINGPROPERTY_DESCRIPTION_FEATURE_ID:
 				getTarget().setDescription((String) value);
@@ -2865,7 +2880,7 @@ public class SanadModelFactory implements ModelFactory {
 	 * @generated
 	 */
 	public static class PersonPropertyModelObject<E extends PersonProperty>
-			extends PropertyModelObject<E> {
+			extends LegalEntityPropertyModelObject<E> {
 		/**
 		 * @generated
 		 */
@@ -2913,7 +2928,7 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.PERSONPROPERTY_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
 				return;
 			case SanadModelPackage.PERSONPROPERTY_DESCRIPTION_FEATURE_ID:
 				getTarget().setDescription((String) value);
@@ -2972,7 +2987,7 @@ public class SanadModelFactory implements ModelFactory {
 	 * @generated
 	 */
 	public static class ScholarPropertyModelObject<E extends ScholarProperty>
-			extends PropertyModelObject<E> {
+			extends LegalEntityPropertyModelObject<E> {
 		/**
 		 * @generated
 		 */
@@ -3020,7 +3035,7 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.SCHOLARPROPERTY_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
 				return;
 			case SanadModelPackage.SCHOLARPROPERTY_DESCRIPTION_FEATURE_ID:
 				getTarget().setDescription((String) value);
@@ -3079,10 +3094,11 @@ public class SanadModelFactory implements ModelFactory {
 	 * @generated
 	 */
 	public static class TransliterationModelObject<E extends Transliteration>
-			extends AbstractModelObject<E> {
+			extends PropertyModelObject<E> {
 		/**
 		 * @generated
 		 */
+		@Override
 		public EClass eClass() {
 			return SanadModelPackage.INSTANCE.getTransliterationEClass();
 		}
@@ -3090,6 +3106,7 @@ public class SanadModelFactory implements ModelFactory {
 		/**
 		 * @generated
 		 */
+		@Override
 		public ModelPackage getModelPackage() {
 			return SanadModelPackage.INSTANCE;
 		}
@@ -3103,6 +3120,12 @@ public class SanadModelFactory implements ModelFactory {
 			switch (featureID) {
 			case SanadModelPackage.TRANSLITERATION_ID_FEATURE_ID:
 				return getTarget().getId();
+			case SanadModelPackage.TRANSLITERATION_DESCRIPTION_FEATURE_ID:
+				return getTarget().getDescription();
+			case SanadModelPackage.TRANSLITERATION_DESCRIPTIONHTML_FEATURE_ID:
+				return getTarget().getDescriptionHtml();
+			case SanadModelPackage.TRANSLITERATION_CLAIMS_FEATURE_ID:
+				return getTarget().getClaims();
 			case SanadModelPackage.TRANSLITERATION_NORMALIZED_FEATURE_ID:
 				return getTarget().getNormalized();
 			case SanadModelPackage.TRANSLITERATION_NUMERONYM_FEATURE_ID:
@@ -3113,6 +3136,10 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getHtml();
 			case SanadModelPackage.TRANSLITERATION_SPELLINGS_FEATURE_ID:
 				return getTarget().getSpellings();
+			case SanadModelPackage.TRANSLITERATION_CREATIVEWORK_FEATURE_ID:
+				return getTarget().getCreativeWork();
+			case SanadModelPackage.TRANSLITERATION_TRANSLITERATOR_FEATURE_ID:
+				return getTarget().getTransliterator();
 			default:
 				return super.eGet(eStructuralFeature);
 			}
@@ -3127,7 +3154,16 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 			case SanadModelPackage.TRANSLITERATION_ID_FEATURE_ID:
-				getTarget().setId((UUID) value);
+				getTarget().setId((String) value);
+				return;
+			case SanadModelPackage.TRANSLITERATION_DESCRIPTION_FEATURE_ID:
+				getTarget().setDescription((String) value);
+				return;
+			case SanadModelPackage.TRANSLITERATION_DESCRIPTIONHTML_FEATURE_ID:
+				getTarget().setDescriptionHtml((String) value);
+				return;
+			case SanadModelPackage.TRANSLITERATION_CLAIMS_FEATURE_ID:
+				getTarget().setClaims((Set<Claim>) value);
 				return;
 			case SanadModelPackage.TRANSLITERATION_NORMALIZED_FEATURE_ID:
 				getTarget().setNormalized((String) value);
@@ -3143,6 +3179,12 @@ public class SanadModelFactory implements ModelFactory {
 				return;
 			case SanadModelPackage.TRANSLITERATION_SPELLINGS_FEATURE_ID:
 				getTarget().setSpellings((Set<SpellingProperty>) value);
+				return;
+			case SanadModelPackage.TRANSLITERATION_CREATIVEWORK_FEATURE_ID:
+				getTarget().setCreativeWork((CreativeWork) value);
+				return;
+			case SanadModelPackage.TRANSLITERATION_TRANSLITERATOR_FEATURE_ID:
+				getTarget().setTransliterator((String) value);
 				return;
 			default:
 				super.eSet(eStructuralFeature, value);
@@ -3160,6 +3202,7 @@ public class SanadModelFactory implements ModelFactory {
 
 			case SanadModelPackage.TRANSLITERATION_SPELLINGS_FEATURE_ID:
 				return getTarget().addToSpellings((SpellingProperty) value);
+
 			default:
 				return super.eAddTo(eStructuralFeature, value);
 			}
@@ -3177,6 +3220,7 @@ public class SanadModelFactory implements ModelFactory {
 			case SanadModelPackage.TRANSLITERATION_SPELLINGS_FEATURE_ID:
 				return getTarget()
 						.removeFromSpellings((SpellingProperty) value);
+
 			default:
 				return super.eRemoveFrom(eStructuralFeature, value);
 			}
@@ -3345,6 +3389,10 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getAuthor();
 			case SanadModelPackage.CREATIVEWORK_INLANGUAGE_FEATURE_ID:
 				return getTarget().getInLanguage();
+			case SanadModelPackage.CREATIVEWORK_TRANSLITERATIONS_FEATURE_ID:
+				return getTarget().getTransliterations();
+			case SanadModelPackage.CREATIVEWORK_TEXTS_FEATURE_ID:
+				return getTarget().getTexts();
 			default:
 				return super.eGet(eStructuralFeature);
 			}
@@ -3368,7 +3416,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setCanonicalSlug((String) value);
 				return;
 			case SanadModelPackage.CREATIVEWORK_NAMES_FEATURE_ID:
-				getTarget().setNames((Set<LiteralProperty>) value);
+				getTarget().setNames((Set<Literal>) value);
 				return;
 			case SanadModelPackage.CREATIVEWORK_AUTHENTICITIES_FEATURE_ID:
 				getTarget()
@@ -3378,7 +3426,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.CREATIVEWORK_AUTHORS_FEATURE_ID:
-				getTarget().setAuthors((Set<Property>) value);
+				getTarget().setAuthors((Set<LegalEntityProperty>) value);
 				return;
 			case SanadModelPackage.CREATIVEWORK_NAME_FEATURE_ID:
 				getTarget().setName((String) value);
@@ -3388,6 +3436,12 @@ public class SanadModelFactory implements ModelFactory {
 				return;
 			case SanadModelPackage.CREATIVEWORK_INLANGUAGE_FEATURE_ID:
 				getTarget().setInLanguage((String) value);
+				return;
+			case SanadModelPackage.CREATIVEWORK_TRANSLITERATIONS_FEATURE_ID:
+				getTarget().setTransliterations((Set<Transliteration>) value);
+				return;
+			case SanadModelPackage.CREATIVEWORK_TEXTS_FEATURE_ID:
+				getTarget().setTexts((Set<Literal>) value);
 				return;
 			default:
 				super.eSet(eStructuralFeature, value);
@@ -3403,6 +3457,12 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 
+			case SanadModelPackage.CREATIVEWORK_TRANSLITERATIONS_FEATURE_ID:
+				return getTarget().addToTransliterations(
+						(Transliteration) value);
+
+			case SanadModelPackage.CREATIVEWORK_TEXTS_FEATURE_ID:
+				return getTarget().addToTexts((Literal) value);
 			default:
 				return super.eAddTo(eStructuralFeature, value);
 			}
@@ -3417,6 +3477,12 @@ public class SanadModelFactory implements ModelFactory {
 			final int featureID = eClass().getFeatureID(eStructuralFeature);
 			switch (featureID) {
 
+			case SanadModelPackage.CREATIVEWORK_TRANSLITERATIONS_FEATURE_ID:
+				return getTarget().removeFromTransliterations(
+						(Transliteration) value);
+
+			case SanadModelPackage.CREATIVEWORK_TEXTS_FEATURE_ID:
+				return getTarget().removeFromTexts((Literal) value);
 			default:
 				return super.eRemoveFrom(eStructuralFeature, value);
 			}
@@ -3478,10 +3544,16 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getAuthor();
 			case SanadModelPackage.QURANVERSE_INLANGUAGE_FEATURE_ID:
 				return getTarget().getInLanguage();
+			case SanadModelPackage.QURANVERSE_TRANSLITERATIONS_FEATURE_ID:
+				return getTarget().getTransliterations();
+			case SanadModelPackage.QURANVERSE_TEXTS_FEATURE_ID:
+				return getTarget().getTexts();
 			case SanadModelPackage.QURANVERSE_CHAPTER_FEATURE_ID:
 				return getTarget().getChapter();
 			case SanadModelPackage.QURANVERSE_VERSENUM_FEATURE_ID:
 				return getTarget().getVerseNum();
+			case SanadModelPackage.QURANVERSE_TRANSLITERATION_FEATURE_ID:
+				return getTarget().getTransliteration();
 			case SanadModelPackage.QURANVERSE_TEXT_FEATURE_ID:
 				return getTarget().getText();
 			case SanadModelPackage.QURANVERSE_TEXTWITHOUTTASHKEEL_FEATURE_ID:
@@ -3509,7 +3581,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setCanonicalSlug((String) value);
 				return;
 			case SanadModelPackage.QURANVERSE_NAMES_FEATURE_ID:
-				getTarget().setNames((Set<LiteralProperty>) value);
+				getTarget().setNames((Set<Literal>) value);
 				return;
 			case SanadModelPackage.QURANVERSE_AUTHENTICITIES_FEATURE_ID:
 				getTarget()
@@ -3519,7 +3591,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.QURANVERSE_AUTHORS_FEATURE_ID:
-				getTarget().setAuthors((Set<Property>) value);
+				getTarget().setAuthors((Set<LegalEntityProperty>) value);
 				return;
 			case SanadModelPackage.QURANVERSE_NAME_FEATURE_ID:
 				getTarget().setName((String) value);
@@ -3530,17 +3602,26 @@ public class SanadModelFactory implements ModelFactory {
 			case SanadModelPackage.QURANVERSE_INLANGUAGE_FEATURE_ID:
 				getTarget().setInLanguage((String) value);
 				return;
+			case SanadModelPackage.QURANVERSE_TRANSLITERATIONS_FEATURE_ID:
+				getTarget().setTransliterations((Set<Transliteration>) value);
+				return;
+			case SanadModelPackage.QURANVERSE_TEXTS_FEATURE_ID:
+				getTarget().setTexts((Set<Literal>) value);
+				return;
 			case SanadModelPackage.QURANVERSE_CHAPTER_FEATURE_ID:
 				getTarget().setChapter((QuranChapter) value);
 				return;
 			case SanadModelPackage.QURANVERSE_VERSENUM_FEATURE_ID:
 				getTarget().setVerseNum((Integer) value);
 				return;
+			case SanadModelPackage.QURANVERSE_TRANSLITERATION_FEATURE_ID:
+				getTarget().setTransliteration((Transliteration) value);
+				return;
 			case SanadModelPackage.QURANVERSE_TEXT_FEATURE_ID:
-				getTarget().setText((String) value);
+				getTarget().setText((Literal) value);
 				return;
 			case SanadModelPackage.QURANVERSE_TEXTWITHOUTTASHKEEL_FEATURE_ID:
-				getTarget().setTextWithoutTashkeel((String) value);
+				getTarget().setTextWithoutTashkeel((Literal) value);
 				return;
 			default:
 				super.eSet(eStructuralFeature, value);
@@ -3631,12 +3712,18 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getAuthor();
 			case SanadModelPackage.QURANCHAPTER_INLANGUAGE_FEATURE_ID:
 				return getTarget().getInLanguage();
+			case SanadModelPackage.QURANCHAPTER_TRANSLITERATIONS_FEATURE_ID:
+				return getTarget().getTransliterations();
+			case SanadModelPackage.QURANCHAPTER_TEXTS_FEATURE_ID:
+				return getTarget().getTexts();
 			case SanadModelPackage.QURANCHAPTER_CHAPTERNUM_FEATURE_ID:
 				return getTarget().getChapterNum();
 			case SanadModelPackage.QURANCHAPTER_NAMEWITHTASHKEEL_FEATURE_ID:
 				return getTarget().getNameWithTashkeel();
 			case SanadModelPackage.QURANCHAPTER_VERSES_FEATURE_ID:
 				return getTarget().getVerses();
+			case SanadModelPackage.QURANCHAPTER_NAMETRANSLITERATION_FEATURE_ID:
+				return getTarget().getNameTransliteration();
 			default:
 				return super.eGet(eStructuralFeature);
 			}
@@ -3660,7 +3747,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setCanonicalSlug((String) value);
 				return;
 			case SanadModelPackage.QURANCHAPTER_NAMES_FEATURE_ID:
-				getTarget().setNames((Set<LiteralProperty>) value);
+				getTarget().setNames((Set<Literal>) value);
 				return;
 			case SanadModelPackage.QURANCHAPTER_AUTHENTICITIES_FEATURE_ID:
 				getTarget()
@@ -3670,7 +3757,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.QURANCHAPTER_AUTHORS_FEATURE_ID:
-				getTarget().setAuthors((Set<Property>) value);
+				getTarget().setAuthors((Set<LegalEntityProperty>) value);
 				return;
 			case SanadModelPackage.QURANCHAPTER_NAME_FEATURE_ID:
 				getTarget().setName((String) value);
@@ -3681,6 +3768,12 @@ public class SanadModelFactory implements ModelFactory {
 			case SanadModelPackage.QURANCHAPTER_INLANGUAGE_FEATURE_ID:
 				getTarget().setInLanguage((String) value);
 				return;
+			case SanadModelPackage.QURANCHAPTER_TRANSLITERATIONS_FEATURE_ID:
+				getTarget().setTransliterations((Set<Transliteration>) value);
+				return;
+			case SanadModelPackage.QURANCHAPTER_TEXTS_FEATURE_ID:
+				getTarget().setTexts((Set<Literal>) value);
+				return;
 			case SanadModelPackage.QURANCHAPTER_CHAPTERNUM_FEATURE_ID:
 				getTarget().setChapterNum((Integer) value);
 				return;
@@ -3689,6 +3782,9 @@ public class SanadModelFactory implements ModelFactory {
 				return;
 			case SanadModelPackage.QURANCHAPTER_VERSES_FEATURE_ID:
 				getTarget().setVerses((List<QuranVerse>) value);
+				return;
+			case SanadModelPackage.QURANCHAPTER_NAMETRANSLITERATION_FEATURE_ID:
+				getTarget().setNameTransliteration((Transliteration) value);
 				return;
 			default:
 				super.eSet(eStructuralFeature, value);
@@ -3706,6 +3802,7 @@ public class SanadModelFactory implements ModelFactory {
 
 			case SanadModelPackage.QURANCHAPTER_VERSES_FEATURE_ID:
 				return getTarget().addToVerses((QuranVerse) value);
+
 			default:
 				return super.eAddTo(eStructuralFeature, value);
 			}
@@ -3722,6 +3819,7 @@ public class SanadModelFactory implements ModelFactory {
 
 			case SanadModelPackage.QURANCHAPTER_VERSES_FEATURE_ID:
 				return getTarget().removeFromVerses((QuranVerse) value);
+
 			default:
 				return super.eRemoveFrom(eStructuralFeature, value);
 			}
@@ -3783,6 +3881,10 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getAuthor();
 			case SanadModelPackage.HADITH_INLANGUAGE_FEATURE_ID:
 				return getTarget().getInLanguage();
+			case SanadModelPackage.HADITH_TRANSLITERATIONS_FEATURE_ID:
+				return getTarget().getTransliterations();
+			case SanadModelPackage.HADITH_TEXTS_FEATURE_ID:
+				return getTarget().getTexts();
 			case SanadModelPackage.HADITH_ARTICLEBODIES_FEATURE_ID:
 				return getTarget().getArticleBodies();
 			case SanadModelPackage.HADITH_COLLECTION_FEATURE_ID:
@@ -3814,7 +3916,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setCanonicalSlug((String) value);
 				return;
 			case SanadModelPackage.HADITH_NAMES_FEATURE_ID:
-				getTarget().setNames((Set<LiteralProperty>) value);
+				getTarget().setNames((Set<Literal>) value);
 				return;
 			case SanadModelPackage.HADITH_AUTHENTICITIES_FEATURE_ID:
 				getTarget()
@@ -3824,7 +3926,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setSuccessions((Set<SuccessionProperty>) value);
 				return;
 			case SanadModelPackage.HADITH_AUTHORS_FEATURE_ID:
-				getTarget().setAuthors((Set<Property>) value);
+				getTarget().setAuthors((Set<LegalEntityProperty>) value);
 				return;
 			case SanadModelPackage.HADITH_NAME_FEATURE_ID:
 				getTarget().setName((String) value);
@@ -3835,8 +3937,14 @@ public class SanadModelFactory implements ModelFactory {
 			case SanadModelPackage.HADITH_INLANGUAGE_FEATURE_ID:
 				getTarget().setInLanguage((String) value);
 				return;
+			case SanadModelPackage.HADITH_TRANSLITERATIONS_FEATURE_ID:
+				getTarget().setTransliterations((Set<Transliteration>) value);
+				return;
+			case SanadModelPackage.HADITH_TEXTS_FEATURE_ID:
+				getTarget().setTexts((Set<Literal>) value);
+				return;
 			case SanadModelPackage.HADITH_ARTICLEBODIES_FEATURE_ID:
-				getTarget().setArticleBodies((Set<LiteralProperty>) value);
+				getTarget().setArticleBodies((Set<Literal>) value);
 				return;
 			case SanadModelPackage.HADITH_COLLECTION_FEATURE_ID:
 				getTarget().setCollection((HadithCollection) value);
@@ -3862,7 +3970,7 @@ public class SanadModelFactory implements ModelFactory {
 			switch (featureID) {
 
 			case SanadModelPackage.HADITH_ARTICLEBODIES_FEATURE_ID:
-				return getTarget().addToArticleBodies((LiteralProperty) value);
+				return getTarget().addToArticleBodies((Literal) value);
 
 			default:
 				return super.eAddTo(eStructuralFeature, value);
@@ -3879,8 +3987,7 @@ public class SanadModelFactory implements ModelFactory {
 			switch (featureID) {
 
 			case SanadModelPackage.HADITH_ARTICLEBODIES_FEATURE_ID:
-				return getTarget().removeFromArticleBodies(
-						(LiteralProperty) value);
+				return getTarget().removeFromArticleBodies((Literal) value);
 
 			default:
 				return super.eRemoveFrom(eStructuralFeature, value);

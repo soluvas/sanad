@@ -41,6 +41,12 @@ Universal collections are not debatable because of their universal usage.
    * TODO: Sahih Bukhari, Arabic, with tashkeel (7008 ahadith)
    * TODO: Sahih Muslim, Arabic, with tashkeel (5362 ahadith)
 
+## Schema Dump
+
+To generate the SQL schema dump:
+
+	pg_dump -v -hlocalhost -Upostgres --schema=sanad --schema-only --no-owner -f export/sanad.schema.sql sanad_sanad_dev
+
 ## Credits
 
 * Stamp icon 1: [License: 	Creative Commons (Attribution 3.0 Unported) - Valera Zvonko](https://www.iconfinder.com/iconsets/free-mobile-icon-kit#readme)

@@ -2,8 +2,8 @@ package org.soluvas.sanad.core.jpa;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -16,10 +16,12 @@ import javax.persistence.Table;
  * conflict). Name is "{chapterNameWithoutTashkeel} {verseNum}". <!--
  * end-model-doc -->
  * 
- * @generated
  */
 @Entity()
-@Table(schema = "sanad")
+@Table(schema = "sanad", indexes={
+		@Index(name="quranverse_chapter_id_idx", columnList="chapter_id"),
+		@Index(name="quranverse_versenum_idx", columnList="versenum"),
+})
 public class QuranVerse extends CreativeWork {
 
 	/**
@@ -46,9 +48,8 @@ public class QuranVerse extends CreativeWork {
 	 * 
 	 * @generated
 	 */
-	@Basic()
-	@Column(columnDefinition = "text")
-	private String text = null;
+	@ManyToOne(cascade = { CascadeType.ALL })
+	private Literal text = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -56,9 +57,19 @@ public class QuranVerse extends CreativeWork {
 	 * 
 	 * @generated
 	 */
-	@Basic()
-	@Column(columnDefinition = "text")
-	private String textWithoutTashkeel = null;
+	@ManyToOne(cascade = { CascadeType.ALL })
+	private Literal textWithoutTashkeel = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Official English transliteration of the verse. Having it as a reference
+	 * to a {@link Transliteration} allows comparison between
+	 * incorrect/misleading spellings. <!-- end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@ManyToOne(cascade = { CascadeType.ALL })
+	private Transliteration transliteration = null;
 
 	/**
 	 * Returns the value of '<em><b>chapter</b></em>' feature.
@@ -121,7 +132,7 @@ public class QuranVerse extends CreativeWork {
 	 * @return the value of '<em><b>text</b></em>' feature
 	 * @generated
 	 */
-	public String getText() {
+	public Literal getText() {
 		return text;
 	}
 
@@ -129,14 +140,14 @@ public class QuranVerse extends CreativeWork {
 	 * Sets the '{@link QuranVerse#getText() <em>text</em>}' feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * Verse with tashkeel. <!-- end-model-doc -->
+	 * Verse in official Arabic with tashkeel. <!-- end-model-doc -->
 	 * 
 	 * @param newText
 	 *            the new value of the '{@link QuranVerse#getText() text}'
 	 *            feature.
 	 * @generated
 	 */
-	public void setText(String newText) {
+	public void setText(Literal newText) {
 		text = newText;
 	}
 
@@ -149,7 +160,7 @@ public class QuranVerse extends CreativeWork {
 	 * @return the value of '<em><b>textWithoutTashkeel</b></em>' feature
 	 * @generated
 	 */
-	public String getTextWithoutTashkeel() {
+	public Literal getTextWithoutTashkeel() {
 		return textWithoutTashkeel;
 	}
 
@@ -166,8 +177,41 @@ public class QuranVerse extends CreativeWork {
 	 *            textWithoutTashkeel}' feature.
 	 * @generated
 	 */
-	public void setTextWithoutTashkeel(String newTextWithoutTashkeel) {
+	public void setTextWithoutTashkeel(Literal newTextWithoutTashkeel) {
 		textWithoutTashkeel = newTextWithoutTashkeel;
+	}
+
+	/**
+	 * Returns the value of '<em><b>transliteration</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Official English transliteration of the verse. Having it as a reference
+	 * to a {@link Transliteration} allows comparison between
+	 * incorrect/misleading spellings. <!-- end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>transliteration</b></em>' feature
+	 * @generated
+	 */
+	public Transliteration getTransliteration() {
+		return transliteration;
+	}
+
+	/**
+	 * Sets the '{@link QuranVerse#getTransliteration()
+	 * <em>transliteration</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Official English transliteration of the verse. Having it as a reference
+	 * to a {@link Transliteration} allows comparison between
+	 * incorrect/misleading spellings. <!-- end-model-doc -->
+	 * 
+	 * @param newTransliteration
+	 *            the new value of the '{@link QuranVerse#getTransliteration()
+	 *            transliteration}' feature.
+	 * @generated
+	 */
+	public void setTransliteration(Transliteration newTransliteration) {
+		transliteration = newTransliteration;
 	}
 
 	/**
@@ -178,8 +222,6 @@ public class QuranVerse extends CreativeWork {
 	 */
 	@Override
 	public String toString() {
-		return "QuranVerse " + " [verseNum: " + getVerseNum() + "]"
-				+ " [text: " + getText() + "]" + " [textWithoutTashkeel: "
-				+ getTextWithoutTashkeel() + "]";
+		return "QuranVerse " + " [verseNum: " + getVerseNum() + "]";
 	}
 }

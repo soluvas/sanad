@@ -49,7 +49,8 @@ public class TransliterationDataTest {
 
 	@Test @Transactional
 	public void hasTransliterations() {
-		List<Transliteration> transliterations = em.createQuery("SELECT t FROM Transliteration t", Transliteration.class).getResultList();
+		List<Transliteration> transliterations = em.createQuery("SELECT t FROM Transliteration t", Transliteration.class)
+				.setMaxResults(10).getResultList();
 		log.info("Transliterations: {}", transliterations);
 		assertThat(transliterations, hasSize(greaterThanOrEqualTo(1)));
 	}

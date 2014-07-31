@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 /**
  * A representation of the model object '<em><b>SpellingProperty</b></em>'. <!--
@@ -12,6 +13,7 @@ import javax.persistence.Enumerated;
  * @generated
  */
 @Entity()
+@Table(schema = "sanad")
 public class SpellingProperty extends Property {
 
 	/**
@@ -60,4 +62,15 @@ public class SpellingProperty extends Property {
 	public String toString() {
 		return "SpellingProperty " + " [spelling: " + getSpelling() + "]";
 	}
+
+	public SpellingProperty() {
+		super();
+	}
+
+	public SpellingProperty(String id, Spelling spelling) {
+		super();
+		setId(id);
+		setSpelling(spelling);
+	}
+
 }

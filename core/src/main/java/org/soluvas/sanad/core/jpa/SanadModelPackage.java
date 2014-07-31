@@ -130,7 +130,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int HADITHCOLLECTION_CLASSIFIER_ID = 25;
+	public static final int HADITHCOLLECTION_CLASSIFIER_ID = 24;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -207,7 +207,21 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int HADITHCOLLECTION_HADITHS_FEATURE_ID = 10;
+	public static final int HADITHCOLLECTION_TRANSLITERATIONS_FEATURE_ID = 10;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int HADITHCOLLECTION_TEXTS_FEATURE_ID = 11;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int HADITHCOLLECTION_HADITHS_FEATURE_ID = 12;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -375,56 +389,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int LITERALPROPERTY_CLASSIFIER_ID = 7;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int LITERALPROPERTY_ADOC_FEATURE_ID = 4;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int LITERALPROPERTY_HTML_FEATURE_ID = 5;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int LITERALPROPERTY_CLAIMS_FEATURE_ID = 3;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int LITERALPROPERTY_ID_FEATURE_ID = 0;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int LITERALPROPERTY_DESCRIPTION_FEATURE_ID = 1;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int LITERALPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int PROPERTY_CLASSIFIER_ID = 8;
+	public static final int PROPERTY_CLASSIFIER_ID = 7;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -459,7 +424,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int AUTHENTICITYPROPERTY_CLASSIFIER_ID = 12;
+	public static final int AUTHENTICITYPROPERTY_CLASSIFIER_ID = 11;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -473,7 +438,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIONPROPERTY_CLASSIFIER_ID = 13;
+	public static final int SUCCESSIONPROPERTY_CLASSIFIER_ID = 12;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -515,6 +480,41 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
+	public static final int LEGALENTITYPROPERTY_CLASSIFIER_ID = 25;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int LEGALENTITYPROPERTY_ID_FEATURE_ID = 0;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int LEGALENTITYPROPERTY_DESCRIPTION_FEATURE_ID = 1;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int LEGALENTITYPROPERTY_DESCRIPTIONHTML_FEATURE_ID = 2;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int LEGALENTITYPROPERTY_CLAIMS_FEATURE_ID = 3;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public static final int AUTHENTICITYPROPERTY_CLAIMS_FEATURE_ID = 3;
 
 	/**
@@ -550,42 +550,56 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_ADOC_FEATURE_ID = 4;
+	public static final int LITERAL_ADOC_FEATURE_ID = 7;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_HTML_FEATURE_ID = 5;
+	public static final int LITERAL_HTML_FEATURE_ID = 8;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_SPELLINGS_FEATURE_ID = 6;
+	public static final int LITERAL_SPELLINGS_FEATURE_ID = 9;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_NORMALIZED_FEATURE_ID = 1;
+	public static final int LITERAL_CREATIVEWORK_FEATURE_ID = 10;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_NUMERONYM_FEATURE_ID = 2;
+	public static final int LITERAL_TRANSLATOR_FEATURE_ID = 11;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int LITERAL_INLANGUAGE_FEATURE_ID = 3;
+	public static final int LITERAL_NORMALIZED_FEATURE_ID = 4;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int LITERAL_NUMERONYM_FEATURE_ID = 5;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int LITERAL_INLANGUAGE_FEATURE_ID = 6;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -599,7 +613,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SPELLINGPROPERTY_CLASSIFIER_ID = 20;
+	public static final int LITERAL_DESCRIPTION_FEATURE_ID = 1;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int LITERAL_DESCRIPTIONHTML_FEATURE_ID = 2;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int LITERAL_CLAIMS_FEATURE_ID = 3;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int SPELLINGPROPERTY_CLASSIFIER_ID = 19;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -781,7 +816,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int THINGPROPERTY_CLASSIFIER_ID = 9;
+	public static final int THINGPROPERTY_CLASSIFIER_ID = 8;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -830,7 +865,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int AUTHENTICITYCLAIM_CLASSIFIER_ID = 10;
+	public static final int AUTHENTICITYCLAIM_CLASSIFIER_ID = 9;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -858,7 +893,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SUCCESSIONCLAIM_CLASSIFIER_ID = 11;
+	public static final int SUCCESSIONCLAIM_CLASSIFIER_ID = 10;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -886,7 +921,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int NARRATORCLAIM_CLASSIFIER_ID = 14;
+	public static final int NARRATORCLAIM_CLASSIFIER_ID = 13;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -921,7 +956,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SCHOLAR_CLASSIFIER_ID = 15;
+	public static final int SCHOLAR_CLASSIFIER_ID = 14;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -942,7 +977,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int PERSONPROPERTY_CLASSIFIER_ID = 16;
+	public static final int PERSONPROPERTY_CLASSIFIER_ID = 15;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -984,7 +1019,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int SCHOLARPROPERTY_CLASSIFIER_ID = 17;
+	public static final int SCHOLARPROPERTY_CLASSIFIER_ID = 16;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1026,42 +1061,56 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_CLASSIFIER_ID = 18;
+	public static final int TRANSLITERATION_CLASSIFIER_ID = 17;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_ADOC_FEATURE_ID = 3;
+	public static final int TRANSLITERATION_ADOC_FEATURE_ID = 6;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_HTML_FEATURE_ID = 4;
+	public static final int TRANSLITERATION_HTML_FEATURE_ID = 7;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_SPELLINGS_FEATURE_ID = 5;
+	public static final int TRANSLITERATION_SPELLINGS_FEATURE_ID = 8;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_NORMALIZED_FEATURE_ID = 1;
+	public static final int TRANSLITERATION_CREATIVEWORK_FEATURE_ID = 9;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATION_NUMERONYM_FEATURE_ID = 2;
+	public static final int TRANSLITERATION_TRANSLITERATOR_FEATURE_ID = 10;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int TRANSLITERATION_NORMALIZED_FEATURE_ID = 4;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int TRANSLITERATION_NUMERONYM_FEATURE_ID = 5;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1075,7 +1124,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int TRANSLITERATIONCLAIM_CLASSIFIER_ID = 19;
+	public static final int TRANSLITERATION_DESCRIPTION_FEATURE_ID = 1;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int TRANSLITERATION_DESCRIPTIONHTML_FEATURE_ID = 2;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int TRANSLITERATION_CLAIMS_FEATURE_ID = 3;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int TRANSLITERATIONCLAIM_CLASSIFIER_ID = 18;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1117,7 +1187,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int CREATIVEWORK_CLASSIFIER_ID = 21;
+	public static final int CREATIVEWORK_CLASSIFIER_ID = 20;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1173,7 +1243,21 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int QURANVERSE_CLASSIFIER_ID = 23;
+	public static final int CREATIVEWORK_TRANSLITERATIONS_FEATURE_ID = 10;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int CREATIVEWORK_TEXTS_FEATURE_ID = 11;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int QURANVERSE_CLASSIFIER_ID = 22;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1250,35 +1334,56 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int QURANVERSE_CHAPTER_FEATURE_ID = 10;
+	public static final int QURANVERSE_TRANSLITERATIONS_FEATURE_ID = 10;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int QURANVERSE_VERSENUM_FEATURE_ID = 11;
+	public static final int QURANVERSE_TEXTS_FEATURE_ID = 11;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int QURANVERSE_TEXT_FEATURE_ID = 12;
+	public static final int QURANVERSE_CHAPTER_FEATURE_ID = 12;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int QURANVERSE_TEXTWITHOUTTASHKEEL_FEATURE_ID = 13;
+	public static final int QURANVERSE_VERSENUM_FEATURE_ID = 13;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int QURANCHAPTER_CLASSIFIER_ID = 24;
+	public static final int QURANVERSE_TEXT_FEATURE_ID = 15;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int QURANVERSE_TEXTWITHOUTTASHKEEL_FEATURE_ID = 16;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int QURANVERSE_TRANSLITERATION_FEATURE_ID = 14;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int QURANCHAPTER_CLASSIFIER_ID = 23;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1355,21 +1460,42 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int QURANCHAPTER_CHAPTERNUM_FEATURE_ID = 10;
+	public static final int QURANCHAPTER_TRANSLITERATIONS_FEATURE_ID = 10;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int QURANCHAPTER_NAMEWITHTASHKEEL_FEATURE_ID = 11;
+	public static final int QURANCHAPTER_TEXTS_FEATURE_ID = 11;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int QURANCHAPTER_VERSES_FEATURE_ID = 12;
+	public static final int QURANCHAPTER_CHAPTERNUM_FEATURE_ID = 12;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int QURANCHAPTER_NAMEWITHTASHKEEL_FEATURE_ID = 13;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int QURANCHAPTER_VERSES_FEATURE_ID = 14;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int QURANCHAPTER_NAMETRANSLITERATION_FEATURE_ID = 15;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1397,7 +1523,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_CLASSIFIER_ID = 22;
+	public static final int HADITH_CLASSIFIER_ID = 21;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1453,6 +1579,20 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
+	public static final int HADITH_TRANSLITERATIONS_FEATURE_ID = 10;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int HADITH_TEXTS_FEATURE_ID = 11;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public static final int HADITH_ID_FEATURE_ID = 0;
 
 	/**
@@ -1474,28 +1614,28 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_ARTICLEBODIES_FEATURE_ID = 10;
+	public static final int HADITH_ARTICLEBODIES_FEATURE_ID = 12;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_COLLECTION_FEATURE_ID = 11;
+	public static final int HADITH_COLLECTION_FEATURE_ID = 13;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_HADITHNUM_FEATURE_ID = 12;
+	public static final int HADITH_HADITHNUM_FEATURE_ID = 14;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int HADITH_VOLUMENUM_FEATURE_ID = 13;
+	public static final int HADITH_VOLUMENUM_FEATURE_ID = 15;
 
 	/**
 	 * The static member with the instance of this {@link ModelPackage}. <!--
@@ -1540,6 +1680,8 @@ public class SanadModelPackage extends ModelPackage {
 		ModelResolver.getInstance().registerClassModelMapping(
 				Transliteration.class, modelPackage.getTransliterationEClass(),
 				modelPackage);
+		ModelResolver.getInstance().registerClassModelMapping(Literal.class,
+				modelPackage.getLiteralEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(Claim.class,
 				modelPackage.getClaimEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(Thing.class,
@@ -1550,8 +1692,6 @@ public class SanadModelPackage extends ModelPackage {
 				modelPackage.getPropertyEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(Scholar.class,
 				modelPackage.getScholarEClass(), modelPackage);
-		ModelResolver.getInstance().registerClassModelMapping(Literal.class,
-				modelPackage.getLiteralEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(Testimony.class,
 				modelPackage.getTestimonyEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
@@ -1568,25 +1708,31 @@ public class SanadModelPackage extends ModelPackage {
 		ModelResolver.getInstance().registerClassModelMapping(Evidence.class,
 				modelPackage.getEvidenceEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
-				LiteralProperty.class, modelPackage.getLiteralPropertyEClass(),
-				modelPackage);
-		ModelResolver.getInstance().registerClassModelMapping(
 				AuthenticityProperty.class,
 				modelPackage.getAuthenticityPropertyEClass(), modelPackage);
+		ModelResolver.getInstance().registerClassModelMapping(
+				PersonProperty.class, modelPackage.getPersonPropertyEClass(),
+				modelPackage);
+		ModelResolver.getInstance().registerClassModelMapping(
+				ScholarProperty.class, modelPackage.getScholarPropertyEClass(),
+				modelPackage);
+		ModelResolver.getInstance().registerClassModelMapping(
+				SpellingProperty.class,
+				modelPackage.getSpellingPropertyEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
 				SuccessionProperty.class,
 				modelPackage.getSuccessionPropertyEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
-				SpellingProperty.class,
-				modelPackage.getSpellingPropertyEClass(), modelPackage);
+				ThingProperty.class, modelPackage.getThingPropertyEClass(),
+				modelPackage);
+		ModelResolver.getInstance().registerClassModelMapping(
+				LegalEntityProperty.class,
+				modelPackage.getLegalEntityPropertyEClass(), modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
 				LiteralClaim.class, modelPackage.getLiteralClaimEClass(),
 				modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(ThingClaim.class,
 				modelPackage.getThingClaimEClass(), modelPackage);
-		ModelResolver.getInstance().registerClassModelMapping(
-				ThingProperty.class, modelPackage.getThingPropertyEClass(),
-				modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
 				AuthenticityClaim.class,
 				modelPackage.getAuthenticityClaimEClass(), modelPackage);
@@ -1595,12 +1741,6 @@ public class SanadModelPackage extends ModelPackage {
 				modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
 				NarratorClaim.class, modelPackage.getNarratorClaimEClass(),
-				modelPackage);
-		ModelResolver.getInstance().registerClassModelMapping(
-				PersonProperty.class, modelPackage.getPersonPropertyEClass(),
-				modelPackage);
-		ModelResolver.getInstance().registerClassModelMapping(
-				ScholarProperty.class, modelPackage.getScholarPropertyEClass(),
 				modelPackage);
 		ModelResolver.getInstance().registerClassModelMapping(
 				TransliterationClaim.class,
@@ -2031,49 +2171,6 @@ public class SanadModelPackage extends ModelPackage {
 	}
 
 	/**
-	 * Returns the {@link EClass} '<em><b>LiteralProperty</b></em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return an instance of the {@link EClass} '
-	 *         <em><b>LiteralProperty</b></em>'
-	 * @generated
-	 */
-	public EClass getLiteralPropertyEClass() {
-		return (EClass) getEPackage().getEClassifiers().get(
-				LITERALPROPERTY_CLASSIFIER_ID);
-	}
-
-	/**
-	 * Returns the {@link EStructuralFeature} '
-	 * <em><b>LiteralProperty.adoc</b></em>'. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>LiteralProperty.adoc</b></em>'.
-	 * @generated
-	 */
-	public EAttribute getLiteralProperty_Adoc() {
-		return (EAttribute) getLiteralPropertyEClass()
-				.getEAllStructuralFeatures().get(
-						LITERALPROPERTY_ADOC_FEATURE_ID);
-	}
-
-	/**
-	 * Returns the {@link EStructuralFeature} '
-	 * <em><b>LiteralProperty.html</b></em>'. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>LiteralProperty.html</b></em>'.
-	 * @generated
-	 */
-	public EAttribute getLiteralProperty_Html() {
-		return (EAttribute) getLiteralPropertyEClass()
-				.getEAllStructuralFeatures().get(
-						LITERALPROPERTY_HTML_FEATURE_ID);
-	}
-
-	/**
 	 * Returns the {@link EClass} '<em><b>Property</b></em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -2196,6 +2293,19 @@ public class SanadModelPackage extends ModelPackage {
 	}
 
 	/**
+	 * Returns the {@link EClass} '<em><b>LegalEntityProperty</b></em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EClass} '
+	 *         <em><b>LegalEntityProperty</b></em>'
+	 * @generated
+	 */
+	public EClass getLegalEntityPropertyEClass() {
+		return (EClass) getEPackage().getEClassifiers().get(
+				LEGALENTITYPROPERTY_CLASSIFIER_ID);
+	}
+
+	/**
 	 * Returns the {@link EClass} '<em><b>Literal</b></em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * 
@@ -2248,6 +2358,34 @@ public class SanadModelPackage extends ModelPackage {
 
 	/**
 	 * Returns the {@link EStructuralFeature} '
+	 * <em><b>Literal.creativeWork</b></em>'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>Literal.creativeWork</b></em>'.
+	 * @generated
+	 */
+	public EReference getLiteral_CreativeWork() {
+		return (EReference) getLiteralEClass().getEAllStructuralFeatures().get(
+				LITERAL_CREATIVEWORK_FEATURE_ID);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature} '
+	 * <em><b>Literal.translator</b></em>'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>Literal.translator</b></em>'.
+	 * @generated
+	 */
+	public EAttribute getLiteral_Translator() {
+		return (EAttribute) getLiteralEClass().getEAllStructuralFeatures().get(
+				LITERAL_TRANSLATOR_FEATURE_ID);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature} '
 	 * <em><b>Literal.normalized</b></em>'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
@@ -2285,19 +2423,6 @@ public class SanadModelPackage extends ModelPackage {
 	public EAttribute getLiteral_InLanguage() {
 		return (EAttribute) getLiteralEClass().getEAllStructuralFeatures().get(
 				LITERAL_INLANGUAGE_FEATURE_ID);
-	}
-
-	/**
-	 * Returns the {@link EStructuralFeature} '<em><b>Literal.id</b></em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>Literal.id</b></em>'.
-	 * @generated
-	 */
-	public EAttribute getLiteral_Id() {
-		return (EAttribute) getLiteralEClass().getEAllStructuralFeatures().get(
-				LITERAL_ID_FEATURE_ID);
 	}
 
 	/**
@@ -2725,6 +2850,36 @@ public class SanadModelPackage extends ModelPackage {
 
 	/**
 	 * Returns the {@link EStructuralFeature} '
+	 * <em><b>Transliteration.creativeWork</b></em>'. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>Transliteration.creativeWork</b></em>'.
+	 * @generated
+	 */
+	public EReference getTransliteration_CreativeWork() {
+		return (EReference) getTransliterationEClass()
+				.getEAllStructuralFeatures().get(
+						TRANSLITERATION_CREATIVEWORK_FEATURE_ID);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature} '
+	 * <em><b>Transliteration.transliterator</b></em>'. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>Transliteration.transliterator</b></em>'.
+	 * @generated
+	 */
+	public EAttribute getTransliteration_Transliterator() {
+		return (EAttribute) getTransliterationEClass()
+				.getEAllStructuralFeatures().get(
+						TRANSLITERATION_TRANSLITERATOR_FEATURE_ID);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature} '
 	 * <em><b>Transliteration.normalized</b></em>'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
@@ -2751,20 +2906,6 @@ public class SanadModelPackage extends ModelPackage {
 		return (EAttribute) getTransliterationEClass()
 				.getEAllStructuralFeatures().get(
 						TRANSLITERATION_NUMERONYM_FEATURE_ID);
-	}
-
-	/**
-	 * Returns the {@link EStructuralFeature} '
-	 * <em><b>Transliteration.id</b></em>'. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>Transliteration.id</b></em>'.
-	 * @generated
-	 */
-	public EAttribute getTransliteration_Id() {
-		return (EAttribute) getTransliterationEClass()
-				.getEAllStructuralFeatures().get(TRANSLITERATION_ID_FEATURE_ID);
 	}
 
 	/**
@@ -2866,6 +3007,34 @@ public class SanadModelPackage extends ModelPackage {
 	}
 
 	/**
+	 * Returns the {@link EStructuralFeature} '
+	 * <em><b>CreativeWork.transliterations</b></em>'. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>CreativeWork.transliterations</b></em>'.
+	 * @generated
+	 */
+	public EReference getCreativeWork_Transliterations() {
+		return (EReference) getCreativeWorkEClass().getEAllStructuralFeatures()
+				.get(CREATIVEWORK_TRANSLITERATIONS_FEATURE_ID);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature} '
+	 * <em><b>CreativeWork.texts</b></em>'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>CreativeWork.texts</b></em>'.
+	 * @generated
+	 */
+	public EReference getCreativeWork_Texts() {
+		return (EReference) getCreativeWorkEClass().getEAllStructuralFeatures()
+				.get(CREATIVEWORK_TEXTS_FEATURE_ID);
+	}
+
+	/**
 	 * Returns the {@link EClass} '<em><b>QuranVerse</b></em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -2913,8 +3082,8 @@ public class SanadModelPackage extends ModelPackage {
 	 *         <em><b>QuranVerse.text</b></em>'.
 	 * @generated
 	 */
-	public EAttribute getQuranVerse_Text() {
-		return (EAttribute) getQuranVerseEClass().getEAllStructuralFeatures()
+	public EReference getQuranVerse_Text() {
+		return (EReference) getQuranVerseEClass().getEAllStructuralFeatures()
 				.get(QURANVERSE_TEXT_FEATURE_ID);
 	}
 
@@ -2927,9 +3096,23 @@ public class SanadModelPackage extends ModelPackage {
 	 *         <em><b>QuranVerse.textWithoutTashkeel</b></em>'.
 	 * @generated
 	 */
-	public EAttribute getQuranVerse_TextWithoutTashkeel() {
-		return (EAttribute) getQuranVerseEClass().getEAllStructuralFeatures()
+	public EReference getQuranVerse_TextWithoutTashkeel() {
+		return (EReference) getQuranVerseEClass().getEAllStructuralFeatures()
 				.get(QURANVERSE_TEXTWITHOUTTASHKEEL_FEATURE_ID);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature} '
+	 * <em><b>QuranVerse.transliteration</b></em>'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>QuranVerse.transliteration</b></em>'.
+	 * @generated
+	 */
+	public EReference getQuranVerse_Transliteration() {
+		return (EReference) getQuranVerseEClass().getEAllStructuralFeatures()
+				.get(QURANVERSE_TRANSLITERATION_FEATURE_ID);
 	}
 
 	/**
@@ -2984,6 +3167,20 @@ public class SanadModelPackage extends ModelPackage {
 	public EReference getQuranChapter_Verses() {
 		return (EReference) getQuranChapterEClass().getEAllStructuralFeatures()
 				.get(QURANCHAPTER_VERSES_FEATURE_ID);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature} '
+	 * <em><b>QuranChapter.nameTransliteration</b></em>'. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>QuranChapter.nameTransliteration</b></em>'.
+	 * @generated
+	 */
+	public EReference getQuranChapter_NameTransliteration() {
+		return (EReference) getQuranChapterEClass().getEAllStructuralFeatures()
+				.get(QURANCHAPTER_NAMETRANSLITERATION_FEATURE_ID);
 	}
 
 	/**
@@ -3178,6 +3375,8 @@ public class SanadModelPackage extends ModelPackage {
 		switch (eClassifier.getClassifierID()) {
 		case TRANSLITERATION_CLASSIFIER_ID:
 			return Transliteration.class;
+		case LITERAL_CLASSIFIER_ID:
+			return Literal.class;
 		case CLAIM_CLASSIFIER_ID:
 			return Claim.class;
 		case THING_CLASSIFIER_ID:
@@ -3188,8 +3387,6 @@ public class SanadModelPackage extends ModelPackage {
 			return Property.class;
 		case SCHOLAR_CLASSIFIER_ID:
 			return Scholar.class;
-		case LITERAL_CLASSIFIER_ID:
-			return Literal.class;
 		case TESTIMONY_CLASSIFIER_ID:
 			return Testimony.class;
 		case HADITHCOLLECTION_CLASSIFIER_ID:
@@ -3202,30 +3399,30 @@ public class SanadModelPackage extends ModelPackage {
 			return CreativeWork.class;
 		case EVIDENCE_CLASSIFIER_ID:
 			return Evidence.class;
-		case LITERALPROPERTY_CLASSIFIER_ID:
-			return LiteralProperty.class;
 		case AUTHENTICITYPROPERTY_CLASSIFIER_ID:
 			return AuthenticityProperty.class;
-		case SUCCESSIONPROPERTY_CLASSIFIER_ID:
-			return SuccessionProperty.class;
+		case PERSONPROPERTY_CLASSIFIER_ID:
+			return PersonProperty.class;
+		case SCHOLARPROPERTY_CLASSIFIER_ID:
+			return ScholarProperty.class;
 		case SPELLINGPROPERTY_CLASSIFIER_ID:
 			return SpellingProperty.class;
+		case SUCCESSIONPROPERTY_CLASSIFIER_ID:
+			return SuccessionProperty.class;
+		case THINGPROPERTY_CLASSIFIER_ID:
+			return ThingProperty.class;
+		case LEGALENTITYPROPERTY_CLASSIFIER_ID:
+			return LegalEntityProperty.class;
 		case LITERALCLAIM_CLASSIFIER_ID:
 			return LiteralClaim.class;
 		case THINGCLAIM_CLASSIFIER_ID:
 			return ThingClaim.class;
-		case THINGPROPERTY_CLASSIFIER_ID:
-			return ThingProperty.class;
 		case AUTHENTICITYCLAIM_CLASSIFIER_ID:
 			return AuthenticityClaim.class;
 		case SUCCESSIONCLAIM_CLASSIFIER_ID:
 			return SuccessionClaim.class;
 		case NARRATORCLAIM_CLASSIFIER_ID:
 			return NarratorClaim.class;
-		case PERSONPROPERTY_CLASSIFIER_ID:
-			return PersonProperty.class;
-		case SCHOLARPROPERTY_CLASSIFIER_ID:
-			return ScholarProperty.class;
 		case TRANSLITERATIONCLAIM_CLASSIFIER_ID:
 			return TransliterationClaim.class;
 		case UUID_CLASSIFIER_ID:

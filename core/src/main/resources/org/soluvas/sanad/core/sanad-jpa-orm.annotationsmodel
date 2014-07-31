@@ -10,12 +10,6 @@
           <table schema="sanad"/>
         </entity>
       </eClassAnnotations>
-      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
-        <eAttribute href="sanad-jpa.ecore#//Transliteration/id"/>
-        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <id/>
-        </eAttributeAnnotations>
-      </annotatedEStructuralFeatures>
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
         <eReference href="sanad-jpa.ecore#//Transliteration/spellings"/>
         <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
@@ -26,7 +20,7 @@
         <eAttribute href="sanad-jpa.ecore#//Transliteration/normalized"/>
         <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
           <basic>
-            <column columnDefinition="text" unique="true"/>
+            <column columnDefinition="text"/>
           </basic>
         </eAttributeAnnotations>
       </annotatedEStructuralFeatures>
@@ -40,6 +34,44 @@
       </annotatedEStructuralFeatures>
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
         <eAttribute href="sanad-jpa.ecore#//Transliteration/html"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic>
+            <column columnDefinition="text"/>
+          </basic>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="sanad-jpa.ecore#//Literal"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table schema="sanad"/>
+        </entity>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="sanad-jpa.ecore#//Literal/spellings"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <joinColumn name="literal_id"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="sanad-jpa.ecore#//Literal/normalized"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic>
+            <column columnDefinition="text"/>
+          </basic>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="sanad-jpa.ecore#//Literal/adoc"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic>
+            <column columnDefinition="text"/>
+          </basic>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="sanad-jpa.ecore#//Literal/html"/>
         <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
           <basic>
             <column columnDefinition="text"/>
@@ -110,17 +142,13 @@
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
         <eAttribute href="sanad-jpa.ecore#//Thing/slug"/>
         <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <basic>
-            <index name="thing_slug_idx"/>
-          </basic>
+          <basic/>
         </eAttributeAnnotations>
       </annotatedEStructuralFeatures>
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
         <eAttribute href="sanad-jpa.ecore#//Thing/name"/>
         <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <basic>
-            <index name="thing_name_idx"/>
-          </basic>
+          <basic/>
         </eAttributeAnnotations>
       </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
@@ -143,6 +171,7 @@
       <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
         <entity>
           <table schema="sanad"/>
+          <inheritance strategy="TABLE_PER_CLASS"/>
         </entity>
       </eClassAnnotations>
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
@@ -169,50 +198,6 @@
         <eAttribute href="sanad-jpa.ecore#//Scholar/id"/>
         <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation" description="">
           <id/>
-        </eAttributeAnnotations>
-      </annotatedEStructuralFeatures>
-    </annotatedEClassifiers>
-    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
-      <eClass href="sanad-jpa.ecore#//Literal"/>
-      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
-        <entity>
-          <table schema="sanad"/>
-        </entity>
-      </eClassAnnotations>
-      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
-        <eAttribute href="sanad-jpa.ecore#//Literal/id"/>
-        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation" description="">
-          <id/>
-        </eAttributeAnnotations>
-      </annotatedEStructuralFeatures>
-      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
-        <eReference href="sanad-jpa.ecore#//Literal/spellings"/>
-        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
-          <joinColumn name="literal_id"/>
-        </eReferenceAnnotations>
-      </annotatedEStructuralFeatures>
-      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
-        <eAttribute href="sanad-jpa.ecore#//Literal/normalized"/>
-        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <basic>
-            <column columnDefinition="text" unique="true"/>
-          </basic>
-        </eAttributeAnnotations>
-      </annotatedEStructuralFeatures>
-      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
-        <eAttribute href="sanad-jpa.ecore#//Literal/adoc"/>
-        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <basic>
-            <column columnDefinition="text"/>
-          </basic>
-        </eAttributeAnnotations>
-      </annotatedEStructuralFeatures>
-      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
-        <eAttribute href="sanad-jpa.ecore#//Literal/html"/>
-        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <basic>
-            <column columnDefinition="text"/>
-          </basic>
         </eAttributeAnnotations>
       </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
@@ -289,22 +274,6 @@
           <table schema="sanad"/>
         </entity>
       </eClassAnnotations>
-      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
-        <eAttribute href="sanad-jpa.ecore#//QuranVerse/text"/>
-        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <basic>
-            <column columnDefinition="text"/>
-          </basic>
-        </eAttributeAnnotations>
-      </annotatedEStructuralFeatures>
-      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
-        <eAttribute href="sanad-jpa.ecore#//QuranVerse/textWithoutTashkeel"/>
-        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <basic>
-            <column columnDefinition="text"/>
-          </basic>
-        </eAttributeAnnotations>
-      </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
     <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
       <eClass href="sanad-jpa.ecore#//CreativeWork"/>
@@ -313,9 +282,69 @@
           <table schema="sanad"/>
         </entity>
       </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="sanad-jpa.ecore#//CreativeWork/transliterations"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany mappedBy="creativeWork"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="sanad-jpa.ecore#//CreativeWork/literals"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany mappedBy="creativeWork"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
     <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
       <eClass href="sanad-jpa.ecore#//Evidence"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table schema="sanad"/>
+        </entity>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="sanad-jpa.ecore#//AuthenticityProperty"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table schema="sanad"/>
+        </entity>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="sanad-jpa.ecore#//PersonProperty"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table schema="sanad"/>
+        </entity>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="sanad-jpa.ecore#//ScholarProperty"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table schema="sanad"/>
+        </entity>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="sanad-jpa.ecore#//SpellingProperty"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table schema="sanad"/>
+        </entity>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="sanad-jpa.ecore#//SuccessionProperty"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table schema="sanad"/>
+        </entity>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="sanad-jpa.ecore#//ThingProperty"/>
       <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
         <entity>
           <table schema="sanad"/>

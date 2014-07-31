@@ -2,17 +2,15 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 /**
  * A representation of the model object '<em><b>Property</b></em>'. <!--
@@ -22,6 +20,7 @@ import org.hibernate.annotations.Type;
  */
 @Entity()
 @Table(schema = "sanad")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Property {
 
 	/**
@@ -38,12 +37,10 @@ public abstract class Property {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @generated
 	 */
 	@Id()
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	@Type(type = "org.hibernate.type.PostgresUUIDType")
-	private UUID id = null;
+	private String id = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -148,7 +145,7 @@ public abstract class Property {
 	 * @return the value of '<em><b>id</b></em>' feature
 	 * @generated
 	 */
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -161,7 +158,7 @@ public abstract class Property {
 	 *            the new value of the '{@link Property#getId() id}' feature.
 	 * @generated
 	 */
-	public void setId(UUID newId) {
+	public void setId(String newId) {
 		id = newId;
 	}
 

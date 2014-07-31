@@ -2,10 +2,13 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -16,10 +19,11 @@ import javax.persistence.Table;
  * quran-{positioner}. Name is with arabic without tashkeel, as in Tanzil.net.
  * <!-- end-model-doc -->
  * 
- * @generated
  */
 @Entity()
-@Table(schema = "sanad")
+@Table(schema = "sanad", indexes={
+		@Index(name="quranchapter_chapternum_idx", columnList="chapternum"),
+})
 public class QuranChapter extends CreativeWork {
 
 	/**
@@ -49,6 +53,17 @@ public class QuranChapter extends CreativeWork {
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "chapter")
 	@OrderColumn(name = "verseNum")
 	private List<QuranVerse> verses = new ArrayList<QuranVerse>();
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Official English transliteration of the name. Having it as a reference to
+	 * a {@link Transliteration} allows comparison between incorrect/misleading
+	 * spellings. <!-- end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@ManyToOne(cascade = { CascadeType.ALL })
+	private Transliteration nameTransliteration = null;
 
 	/**
 	 * Returns the value of '<em><b>chapterNum</b></em>' feature.
@@ -179,6 +194,40 @@ public class QuranChapter extends CreativeWork {
 	 */
 	public void setVerses(List<QuranVerse> newVerses) {
 		verses = newVerses;
+	}
+
+	/**
+	 * Returns the value of '<em><b>nameTransliteration</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Official English transliteration of the name. Having it as a reference to
+	 * a {@link Transliteration} allows comparison between incorrect/misleading
+	 * spellings. <!-- end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>nameTransliteration</b></em>' feature
+	 * @generated
+	 */
+	public Transliteration getNameTransliteration() {
+		return nameTransliteration;
+	}
+
+	/**
+	 * Sets the '{@link QuranChapter#getNameTransliteration()
+	 * <em>nameTransliteration</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Official English transliteration of the name. Having it as a reference to
+	 * a {@link Transliteration} allows comparison between incorrect/misleading
+	 * spellings. <!-- end-model-doc -->
+	 * 
+	 * @param newNameTransliteration
+	 *            the new value of the '
+	 *            {@link QuranChapter#getNameTransliteration()
+	 *            nameTransliteration}' feature.
+	 * @generated
+	 */
+	public void setNameTransliteration(Transliteration newNameTransliteration) {
+		nameTransliteration = newNameTransliteration;
 	}
 
 	/**

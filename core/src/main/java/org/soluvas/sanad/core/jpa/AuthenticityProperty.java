@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 /**
  * A representation of the model object '<em><b>AuthenticityProperty</b></em>'.
@@ -12,6 +13,7 @@ import javax.persistence.Enumerated;
  * @generated
  */
 @Entity()
+@Table(schema = "sanad")
 public class AuthenticityProperty extends Property {
 
 	/**
@@ -62,4 +64,15 @@ public class AuthenticityProperty extends Property {
 		return "AuthenticityProperty " + " [authenticity: " + getAuthenticity()
 				+ "]";
 	}
+
+	public AuthenticityProperty() {
+		super();
+	}
+
+	public AuthenticityProperty(String id, Authenticity authenticity) {
+		super();
+		setId(id);
+		setAuthenticity(authenticity);
+	}
+
 }
