@@ -1,6 +1,7 @@
 package org.soluvas.sanad.core.jpa;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * A representation of the model object '<em><b>Evidence</b></em>'. <!--
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
  * @generated
  */
 @Entity()
+@Table(schema = "sanad")
 public class Evidence extends Thing {
 
 	/**

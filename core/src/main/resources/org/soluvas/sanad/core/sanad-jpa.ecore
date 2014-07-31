@@ -46,7 +46,11 @@
         upperBound="-1" eType="#//Claim" containment="true" eOpposite="#//Claim/testimony"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Thing" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A Thing's ID is usually an UUID representation. However, for things that have a distinct and universal meaning, e.g. Holy Quran Chapters, it's better to assign distinct human-readable IDs.&#xA;Human-readable IDs use the pattern {@code [a-z][a-z0-9_]+}. Note that UUID representations use the '-' character.&#xA;IDs need to be unique for all things."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="slug" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Slug which is based on initial name."/>
@@ -66,6 +70,11 @@
         upperBound="-1" eType="#//SuccessionProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="authors" ordered="false"
         upperBound="-1" eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Name can change if revised, but only one accepted name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="#//UUID"/>
@@ -79,7 +88,11 @@
         <details key="documentation" value="Numeronym of the text, in order to improve privacy during query."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Language tag as specified by &lt;a href=&quot;http://tools.ietf.org/html/bcp47&quot;>IETF BCP 47&lt;/a>."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If a literal/translation, in AsciiDoc syntax."/>
@@ -434,9 +447,69 @@
   <eClassifiers xsi:type="ecore:EClass" name="SpellingProperty" eSuperTypes="#//Property">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="spelling" eType="#//Spelling"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CreativeWork" eSuperTypes="#//Thing"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Hadith" eSuperTypes="#//Thing">
+  <eClassifiers xsi:type="ecore:EClass" name="CreativeWork" eSuperTypes="#//Thing">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Language tag as specified by &lt;a href=&quot;http://tools.ietf.org/html/bcp47&quot;>IETF BCP 47&lt;/a>."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hadith" eSuperTypes="#//CreativeWork">
     <eStructuralFeatures xsi:type="ecore:EReference" name="articleBodies" ordered="false"
         upperBound="-1" eType="#//LiteralProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collection" eType="#//HadithCollection"
+        eOpposite="#//HadithCollection/hadiths"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hadithNum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hadith number in the compendium, e.g. 1-7008 for Sahih Al-Bukhari in Arabic."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumeNum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Volume number of the HadithCollection, e.g. 1-9 for Sahih Al-Bukhari."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuranVerse" eSuperTypes="#//CreativeWork">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Slug is quran-{chapterNum}-verse-{verseNum} (&quot;verse&quot; to avoid canonicalSlug conflict).&#xA;Name is &quot;{chapterNameWithoutTashkeel} {verseNum}&quot;."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chapter" ordered="false"
+        lowerBound="1" eType="#//QuranChapter" eOpposite="#//QuranChapter/verses"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="verseNum" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Verse with tashkeel."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textWithoutTashkeel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Verse without tashkeel."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuranChapter" eSuperTypes="#//CreativeWork">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Slug is quran-{positioner}.&#xA;Name is with arabic without tashkeel, as in Tanzil.net."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chapterNum" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chapter number (1..114)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nameWithTashkeel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Chapter name with tashkeel."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verses" upperBound="-1"
+        eType="#//QuranVerse" containment="true" eOpposite="#//QuranVerse/chapter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HadithCollection" eSuperTypes="#//CreativeWork">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hadiths" upperBound="-1"
+        eType="#//Hadith" containment="true" eOpposite="#//Hadith/collection"/>
   </eClassifiers>
 </ecore:EPackage>

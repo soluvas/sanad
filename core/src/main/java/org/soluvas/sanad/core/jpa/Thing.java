@@ -2,18 +2,20 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
+
+import org.hibernate.annotations.Index;
 
 /**
  * A representation of the model object '<em><b>Thing</b></em>'. <!--
@@ -23,6 +25,7 @@ import org.hibernate.annotations.Type;
  */
 @Entity()
 @Table(schema = "sanad")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Thing {
 
 	/**
@@ -62,14 +65,22 @@ public abstract class Thing {
 	private Set<Property> authors = new HashSet<Property>();
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Name can change if revised, but only one accepted name. <!--
+	 * end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	@Index(name = "thing_name_idx")
+	private String name = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 */
 	@Id()
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	@Type(type = "org.hibernate.type.PostgresUUIDType")
-	private UUID id = null;
+	private String id = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -77,7 +88,8 @@ public abstract class Thing {
 	 * 
 	 * @generated
 	 */
-	@Basic(optional = false)
+	@Basic()
+	@Index(name = "thing_slug_idx")
 	private String slug = null;
 
 	/**
@@ -86,7 +98,8 @@ public abstract class Thing {
 	 * 
 	 * @generated
 	 */
-	@Basic(optional = false)
+	@Basic()
+	@Column(unique = true)
 	private String canonicalSlug = null;
 
 	/**
@@ -379,27 +392,68 @@ public abstract class Thing {
 	}
 
 	/**
+	 * Returns the value of '<em><b>name</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Name can change if revised, but only one accepted name. <!--
+	 * end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>name</b></em>' feature
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the '{@link Thing#getName() <em>name</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Name can change if revised, but only one accepted name. <!--
+	 * end-model-doc -->
+	 * 
+	 * @param newName
+	 *            the new value of the '{@link Thing#getName() name}' feature.
+	 * @generated
+	 */
+	public void setName(String newName) {
+		name = newName;
+	}
+
+	/**
 	 * Returns the value of '<em><b>id</b></em>' feature.
 	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A
+	 * Thing's ID is usually an UUID representation. However, for things that
+	 * have a distinct and universal meaning, e.g. Holy Quran Chapters, it's
+	 * better to assign distinct human-readable IDs. Human-readable IDs use the
+	 * pattern {@code [a-z][a-z0-9_]+}. Note that UUID representations use the
+	 * '-' character. IDs need to be unique for all things. <!-- end-model-doc
+	 * -->
 	 * 
 	 * @return the value of '<em><b>id</b></em>' feature
 	 * @generated
 	 */
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
 	/**
 	 * Sets the '{@link Thing#getId() <em>id</em>}' feature.
 	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A
+	 * Thing's ID is usually an UUID representation. However, for things that
+	 * have a distinct and universal meaning, e.g. Holy Quran Chapters, it's
+	 * better to assign distinct human-readable IDs. Human-readable IDs use the
+	 * pattern {@code [a-z][a-z0-9_]+}. Note that UUID representations use the
+	 * '-' character. IDs need to be unique for all things. <!-- end-model-doc
+	 * -->
 	 * 
 	 * @param newId
 	 *            the new value of the '{@link Thing#getId() id}' feature.
 	 * @generated
 	 */
-	public void setId(UUID newId) {
+	public void setId(String newId) {
 		id = newId;
 	}
 
@@ -468,6 +522,7 @@ public abstract class Thing {
 	@Override
 	public String toString() {
 		return "Thing " + " [id: " + getId() + "]" + " [slug: " + getSlug()
-				+ "]" + " [canonicalSlug: " + getCanonicalSlug() + "]";
+				+ "]" + " [canonicalSlug: " + getCanonicalSlug() + "]"
+				+ " [name: " + getName() + "]";
 	}
 }

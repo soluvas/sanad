@@ -27,20 +27,13 @@ import org.hibernate.annotations.Type;
 public class Literal {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	@Basic()
-	private String languageTag = null;
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> If
 	 * a literal/translation, in AsciiDoc syntax. <!-- end-model-doc -->
 	 * 
 	 * @generated
 	 */
 	@Basic()
+	@Column(columnDefinition = "text")
 	private String adoc = null;
 
 	/**
@@ -50,6 +43,7 @@ public class Literal {
 	 * @generated
 	 */
 	@Basic()
+	@Column(columnDefinition = "text")
 	private String html = null;
 
 	/**
@@ -68,7 +62,7 @@ public class Literal {
 	 * @generated
 	 */
 	@Basic()
-	@Column(unique = true)
+	@Column(columnDefinition = "text", unique = true)
 	private String normalized = null;
 
 	/**
@@ -82,6 +76,17 @@ public class Literal {
 	private String numeronym = null;
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Language tag as specified by <a
+	 * href="http://tools.ietf.org/html/bcp47">IETF BCP 47</a>. <!--
+	 * end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String inLanguage = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 */
@@ -90,32 +95,6 @@ public class Literal {
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	@Type(type = "org.hibernate.type.PostgresUUIDType")
 	private UUID id = null;
-
-	/**
-	 * Returns the value of '<em><b>languageTag</b></em>' feature.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the value of '<em><b>languageTag</b></em>' feature
-	 * @generated
-	 */
-	public String getLanguageTag() {
-		return languageTag;
-	}
-
-	/**
-	 * Sets the '{@link Literal#getLanguageTag() <em>languageTag</em>}' feature.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param newLanguageTag
-	 *            the new value of the '{@link Literal#getLanguageTag()
-	 *            languageTag}' feature.
-	 * @generated
-	 */
-	public void setLanguageTag(String newLanguageTag) {
-		languageTag = newLanguageTag;
-	}
 
 	/**
 	 * Returns the value of '<em><b>adoc</b></em>' feature.
@@ -302,6 +281,38 @@ public class Literal {
 	}
 
 	/**
+	 * Returns the value of '<em><b>inLanguage</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Language tag as specified by <a
+	 * href="http://tools.ietf.org/html/bcp47">IETF BCP 47</a>. <!--
+	 * end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>inLanguage</b></em>' feature
+	 * @generated
+	 */
+	public String getInLanguage() {
+		return inLanguage;
+	}
+
+	/**
+	 * Sets the '{@link Literal#getInLanguage() <em>inLanguage</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Language tag as specified by <a
+	 * href="http://tools.ietf.org/html/bcp47">IETF BCP 47</a>. <!--
+	 * end-model-doc -->
+	 * 
+	 * @param newInLanguage
+	 *            the new value of the '{@link Literal#getInLanguage()
+	 *            inLanguage}' feature.
+	 * @generated
+	 */
+	public void setInLanguage(String newInLanguage) {
+		inLanguage = newInLanguage;
+	}
+
+	/**
 	 * Returns the value of '<em><b>id</b></em>' feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -336,7 +347,7 @@ public class Literal {
 	public String toString() {
 		return "Literal " + " [id: " + getId() + "]" + " [normalized: "
 				+ getNormalized() + "]" + " [numeronym: " + getNumeronym()
-				+ "]" + " [languageTag: " + getLanguageTag() + "]" + " [adoc: "
+				+ "]" + " [inLanguage: " + getInLanguage() + "]" + " [adoc: "
 				+ getAdoc() + "]" + " [html: " + getHtml() + "]";
 	}
 }

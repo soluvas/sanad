@@ -38,7 +38,8 @@ public class Transliteration {
 	 * 
 	 * @generated
 	 */
-	@Basic(optional = false)
+	@Basic()
+	@Column(columnDefinition = "text")
 	private String adoc = null;
 
 	/**
@@ -47,7 +48,8 @@ public class Transliteration {
 	 * 
 	 * @generated
 	 */
-	@Basic(optional = false)
+	@Basic()
+	@Column(columnDefinition = "text")
 	private String html = null;
 
 	/**
@@ -66,7 +68,7 @@ public class Transliteration {
 	 * @generated
 	 */
 	@Basic()
-	@Column(unique = true)
+	@Column(columnDefinition = "text", unique = true)
 	private String normalized = null;
 
 	/**
