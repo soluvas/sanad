@@ -27,8 +27,8 @@ import javax.persistence.Table;
  */
 @Entity()
 @Table(schema = "sanad", indexes={
+	// normalized cannot be indexed because too large 
 	@Index(name="transliteration_creativework_id_idx", columnList="creativework_id"),
-	@Index(name="transliteration_normalized_idx", columnList="normalized"),
 	@Index(name="transliteration_numeronym_idx", columnList="numeronym")
 })
 public class Transliteration extends Property {

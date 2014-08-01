@@ -28,18 +28,29 @@ Please like [Sanad on Facebook](https://www.facebook.com/pages/Sanad-Muslim-Assi
 
 Universal collections are not debatable because of their universal usage.
 
-1. Arabic Quran with tashkeel (114 chapters)
+1. Arabic Quran with tashkeel (114 chapters), Quran transliteration English style, several English translation, Indonesian translation
+
    * Source: [QuranDatabase.org](http://qurandatabase.org/)
    * Signed XML files available from https://github.com/ceefour/qurandatabase
    * These can be imported using `org.soluvas.sanad.cli.qurandatabase.ImportQuranDatabase`
    * A ready-made SQL dump is available at https://github.com/ceefour/sanad-quran
 
 2. The following universal collections are sourced from [Islam Ware](https://www.islamware.com/app/downloads):
+
+   * [Sahih Bukhari, Arabic, with tashkeel (7008 ahadith)](https://www.islamware.com/download/Hadith-Sahih-Bukhari.zip)
+   * [Sahih Muslim, Arabic, with tashkeel (5362 ahadith)](https://www.islamware.com/download/Hadith-Sahih-Muslim.zip)
+   * TODO: [Hadith Sunan At-Tirmidhi](https://www.islamware.com/download/Hadith-Sunan-al-Tirmidhi.zip)
+   * TODO: [Hadith Sunan An-Nasai](https://www.islamware.com/download/Hadith-Sunan-al-Nasai.zip)
+   * TODO: [Hadith Sunan Abu Dawud](https://www.islamware.com/download/Hadith-Sunan-Abu-Dawud.zip)
+   * TODO: [Hadith Sunan Ibn Maja](https://www.islamware.com/download/Hadith-Sunan-Ibn-Maja.zip)
+   * TODO: [Hadith Musnad Ahmad ibn Hanbal](https://www.islamware.com/download/Hadith-Musnad-Ahmad-ibn-Hanbal.zip)
+   * TODO: [Hadith Maliks Muwatta](https://www.islamware.com/download/Hadith-Maliks-Muwatta.zip)
+   * TODO: [Hadith Sunan Ad-Darami](https://www.islamware.com/download/Hadith-Sunan-al-Darami.zip)
+   
+   Download and extract these files then run `org.soluvas.sanad.cli.islamware.ImportHadithDatabase`.
+   
+3. TODO: from [Islam Ware](https://www.islamware.com/app/downloads):
    * TODO: Arabic Quran without tashkeel (114 chapters)   
-   * TODO: Quran transliteration English style
-   * TODO: Quran translations for each language and translator   
-   * TODO: Sahih Bukhari, Arabic, with tashkeel (7008 ahadith)
-   * TODO: Sahih Muslim, Arabic, with tashkeel (5362 ahadith)
 
 ## Schema Dump
 

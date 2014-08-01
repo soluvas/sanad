@@ -25,10 +25,10 @@ import com.google.common.html.HtmlEscapers;
  */
 @Entity()
 @Table(schema = "sanad", indexes={
-		@Index(name="literal_creativework_id_idx", columnList="creativework_id"),
-		@Index(name="literal_normalized_idx", columnList="normalized"),
-		@Index(name="literal_numeronym_idx", columnList="numeronym"),
-		@Index(name="literal_inlanguage_idx", columnList="inlanguage")
+	// normalized cannot be indexed because too large 
+	@Index(name="literal_creativework_id_idx", columnList="creativework_id"),
+	@Index(name="literal_numeronym_idx", columnList="numeronym"),
+	@Index(name="literal_inlanguage_idx", columnList="inlanguage")
 })
 public class Literal extends Property {
 
