@@ -31,6 +31,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * <p>To reset all translations:
  * 
  * <pre>
+ * CREATE INDEX spellingproperty_id_idx ON sanad.spellingproperty (id varchar_pattern_ops);
+ * CREATE INDEX literal_id_idx ON sanad.literal (id varchar_pattern_ops);
  * DELETE FROM sanad.spellingproperty WHERE literal_id IN (SELECT id FROM sanad.literal WHERE id LIKE 'quran%' AND inlanguage <> 'ara');
  * DELETE FROM sanad.literal WHERE id LIKE 'quran%' AND inlanguage <> 'ara';
  * </pre>

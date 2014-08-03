@@ -2,7 +2,6 @@ package org.soluvas.sanad.core;
 
 import java.text.Normalizer;
 import java.util.Locale;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -22,14 +21,8 @@ public class AsciidocUtils {
 	public static String normalize(String adoc) {
 		String normalized = Normalizer.normalize(adoc, Normalizer.Form.NFC);
 		normalized = adoc.toLowerCase(Locale.ROOT);
-		final Matcher notAlnumMatcher = NOT_PRINT.matcher(adoc);
-		if (notAlnumMatcher.matches()) {
-			normalized = notAlnumMatcher.replaceAll(" ");
-		}
-		Matcher whitespaceMatcher = WHITESPACE.matcher(adoc);
-		if (whitespaceMatcher.matches()) {
-			normalized = whitespaceMatcher.replaceAll(" ");
-		}
+		normalized = NOT_PRINT.matcher(adoc).replaceAll(" ");
+		normalized = WHITESPACE.matcher(adoc).replaceAll(" ");
 		normalized = normalized.trim();
 		return normalized;
 	}

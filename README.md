@@ -33,21 +33,25 @@ Universal collections are not debatable because of their universal usage.
    * Source: [QuranDatabase.org](http://qurandatabase.org/)
    * Signed XML files available from https://github.com/ceefour/qurandatabase
    * These can be imported using `org.soluvas.sanad.cli.qurandatabase.ImportQuranDatabase`
-   * A ready-made SQL dump is available at https://github.com/ceefour/sanad-quran
+   * Ready-made PostgreSQL TSV dumps are available at https://github.com/ceefour/sanad-quran
 
 2. The following universal collections are sourced from [Islam Ware](https://www.islamware.com/app/downloads), use the files from https://github.com/ceefour/hadith-islamware :
 
    * [Sahih Bukhari, Arabic, with tashkeel (7008 ahadith)](https://www.islamware.com/download/Hadith-Sahih-Bukhari.zip)
    * [Sahih Muslim, Arabic, with tashkeel (5362 ahadith)](https://www.islamware.com/download/Hadith-Sahih-Muslim.zip)
-   * [Hadith Sunan At-Tirmidhi](https://www.islamware.com/download/Hadith-Sunan-al-Tirmidhi.zip)
-   * [Hadith Sunan An-Nasai](https://www.islamware.com/download/Hadith-Sunan-al-Nasai.zip)
-   * [Hadith Sunan Abu Dawud](https://www.islamware.com/download/Hadith-Sunan-Abu-Dawud.zip)
-   * [Hadith Sunan Ibn Maja](https://www.islamware.com/download/Hadith-Sunan-Ibn-Maja.zip)
-   * [Hadith Musnad Ahmad ibn Hanbal](https://www.islamware.com/download/Hadith-Musnad-Ahmad-ibn-Hanbal.zip)
-   * [Hadith Maliks Muwatta](https://www.islamware.com/download/Hadith-Maliks-Muwatta.zip)
-   * [Hadith Sunan Ad-Darami](https://www.islamware.com/download/Hadith-Sunan-al-Darami.zip)
+   * [Sunan At-Tirmidhi](https://www.islamware.com/download/Hadith-Sunan-al-Tirmidhi.zip)
+   * [Sunan An-Nasai](https://www.islamware.com/download/Hadith-Sunan-al-Nasai.zip)
+   * [Sunan Abu Dawud](https://www.islamware.com/download/Hadith-Sunan-Abu-Dawud.zip)
+   * [Sunan Ibn Maja](https://www.islamware.com/download/Hadith-Sunan-Ibn-Maja.zip)
+   * [Musnad Ahmad ibn Hanbal](https://www.islamware.com/download/Hadith-Musnad-Ahmad-ibn-Hanbal.zip)
+   * [Malik's Muwatta](https://www.islamware.com/download/Hadith-Maliks-Muwatta.zip)
+   * [Sunan Ad-Darimi](https://www.islamware.com/download/Hadith-Sunan-al-Darami.zip)
    
+   To import from Islam Ware files:
    Download and extract these files then run `org.soluvas.sanad.cli.islamware.ImportHadithDatabase`.
+
+   To import from PostgreSQL TSV dumps:
+   See https://github.com/ceefour/sanad-quran
    
 3. TODO: from [Islam Ware](https://www.islamware.com/app/downloads):
    * TODO: Arabic Quran without tashkeel (114 chapters)   

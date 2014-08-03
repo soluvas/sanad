@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,11 +37,20 @@ import com.google.common.base.Splitter;
 /**
  * Imports <a href="https://www.islamware.com/app/downloads">IslamWare.com</a> hadith data using CP1256 character encoding.
  * 
- * <p>To reset all hadith:
+ * <p>Importing takes ~2 minutes on SATA i5.
+ * 
+ * <p>To reset all hadith: (~23 minutes on SATA i5)
+ * (<a href="http://www.postgresql.org/docs/9.3/static/indexes-opclass.html">why varchar_pattern_ops is needed</a>)
  * 
  * <pre>
+ * CREATE INDEX authenticityproperty_id_idx ON sanad.authenticityproperty (id varchar_pattern_ops);
+ * CREATE INDEX spellingproperty_id_idx ON sanad.spellingproperty (id varchar_pattern_ops);
+ * CREATE INDEX literal_id_idx ON sanad.literal (id varchar_pattern_ops);
+ * CREATE INDEX transliteration_id_idx ON sanad.transliteration (id varchar_pattern_ops);
  * DELETE FROM sanad.authenticityproperty WHERE id LIKE 'hadith%';
  * DELETE FROM sanad.spellingproperty WHERE id LIKE 'hadith%';
+ * DELETE FROM sanad.literal WHERE id LIKE 'hadith%';
+ * DELETE FROM sanad.transliteration WHERE id LIKE 'hadith%';
  * DELETE FROM sanad.hadith;
  * DELETE FROM sanad.hadithcollection;
  * </pre>
@@ -64,29 +74,31 @@ public class ImportHadithDatabase {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ImportHadithDatabase.class)) {
 			ImportHadithDatabase cmd = ctx.getBean(ImportHadithDatabase.class);
-			cmd.persistAhadith(CP1256, "Hadith Sahih al-Bukhari", "Muhammad al-Bukhari",
+			cmd.persistAhadith(CP1256, "Sahih al-Bukhari", "Abū ‘Abd Allāh Muḥammad ibn Ismā‘īl ibn Ibrāhīm ibn al-Mughīrah ibn Bardizbah al-Ju‘fī al-Bukhārī",
+					Optional.of(Authenticity.AUTHENTIC),
 					new File("/home/ceefour/git/hadith-islamware/hadith-sahih-bukhari.csv")); // 0: 7008
-			cmd.persistAhadith(CP1256, "Hadith Sahih Muslim", "Muslim ibn al-Hajjaj", 
+			cmd.persistAhadith(CP1256, "Sahih Muslim", "Abū al-Ḥusayn ‘Asākir ad-Dīn Muslim ibn al-Ḥajjāj ibn Muslim ibn Ward ibn Kawshādh al-Qushayrī an-Naysābūrī",
+					Optional.of(Authenticity.AUTHENTIC),
 					new File("/home/ceefour/git/hadith-islamware/hadith-sahih-muslim.csv")); // 1: 5362
-			cmd.persistAhadith(CP1256, "Hadith Sunan al-Tirmidhi", "Sunan al-Tirmidhi", 
-					new File("/home/ceefour/git/hadith-islamware/hadith-sunan-al-tirmidhi.csv")); // 3891
-			cmd.persistAhadith(CP1256, "Hadith Sunan al-Nasa'i", "Sunan al-Nasa'i", 
-					new File("/home/ceefour/git/hadith-islamware/hadith-sunan-al-nasai.csv")); // 5662
-			cmd.persistAhadith(CP1256, "Hadith Sunan Abu Dawud", "Sunan Abu Dawud", 
-					new File("/home/ceefour/git/hadith-islamware/hadith-sunan-abu-dawud.csv")); // 4590
-			cmd.persistAhadith(CP1256, "Hadith Sunan Ibn Maja", "Sunan Ibn Maja", 
-					new File("/home/ceefour/git/hadith-islamware/hadith-sunan-ibn-maja.csv")); // 4332
-			cmd.persistAhadith(CP1256, "Hadith Musnad Ahmad ibn Hanbal", "Musnad Ahmad ibn Hanbal", 
-					new File("/home/ceefour/git/hadith-islamware/hadith-musnad-ahmad-ibn-hanbal.csv")); // 26363
-			cmd.persistAhadith(CP1256, "Hadith Malik's Muwatta", "Malik's Muwatta", 
-					new File("/home/ceefour/git/hadith-islamware/hadith-maliks-muwatta.csv")); // 1594
-			cmd.persistAhadith(CP1256, "Hadith Sunan al-Darami", "Sunan al-Darami", 
-					new File("/home/ceefour/git/hadith-islamware/hadith-sunan-al-darami.csv")); // 3367
+			cmd.persistAhadith(CP1256, "Jāmi` at-Tirmidhī", "Abu `Isa Muhammad ibn `Isa at-Tirmidhi", 
+					Optional.empty(), new File("/home/ceefour/git/hadith-islamware/hadith-sunan-al-tirmidhi.csv")); // 3891
+			cmd.persistAhadith(CP1256, "Sunan al-Nasā'ī", "Aḥmad ibn Shu`ayb ibn Alī ibn Sīnān Abū `Abd ar-Raḥmān al-Nasā'ī", 
+					Optional.empty(), new File("/home/ceefour/git/hadith-islamware/hadith-sunan-al-nasai.csv")); // 5662
+			cmd.persistAhadith(CP1256, "Sunan Abu Dawud", "Abu Dawud Sulaymān ibn al-Ashʿath al-Azdi as-Sijistani", 
+					Optional.empty(), new File("/home/ceefour/git/hadith-islamware/hadith-sunan-abu-dawud.csv")); // 4590
+			cmd.persistAhadith(CP1256, "Sunan Ibn Mājah", "Abū ʻAbdillāh Muḥammad ibn Yazīd Ibn Mājah al-Rabʻī al-Qazwīn", 
+					Optional.empty(), new File("/home/ceefour/git/hadith-islamware/hadith-sunan-ibn-maja.csv")); // 4332
+			cmd.persistAhadith(CP1256, "Musnad Ahmad ibn Hanbal", "Ahmad bin Muhammad bin Hanbal Abu `Abd Allah al-Shaybani", 
+					Optional.empty(), new File("/home/ceefour/git/hadith-islamware/hadith-musnad-ahmad-ibn-hanbal.csv")); // 26363
+			cmd.persistAhadith(CP1256, "Al-Muwaṭṭaʾ Imam Mālik", "Mālik ibn Anas ibn Mālik ibn Abī 'Āmir al-Asbahī", 
+					Optional.empty(), new File("/home/ceefour/git/hadith-islamware/hadith-maliks-muwatta.csv")); // 1594
+			cmd.persistAhadith(CP1256, "Sunan al-Darimi", "`Abd Allah ibn `Abd al-Rahman al-Darimi", 
+					Optional.empty(), new File("/home/ceefour/git/hadith-islamware/hadith-sunan-al-darimi.csv")); // 3367
 		}
 	}
 	
 	@Transactional
-	public void persistAhadith(Charset charset, String collectionName, String authorName, File file) throws FileNotFoundException, IOException {
+	public void persistAhadith(Charset charset, String collectionName, String authorName, Optional<Authenticity> authenticity, File file) throws FileNotFoundException, IOException {
 		HadithCollection coll = new HadithCollection();
 		coll.setAuthor(authorName);
 		coll.setId("hadithcollection_" + SlugUtils.generateId(collectionName));
@@ -94,7 +106,10 @@ public class ImportHadithDatabase {
 		coll.setCanonicalSlug(SlugUtils.canonicalize(coll.getSlug()));
 		coll.setInLanguage("ara");
 		coll.setName(collectionName);
-		coll.addToAuthenticities(new AuthenticityProperty(coll.getId() + "_authentic", Authenticity.AUTHENTIC));
+		if (authenticity.isPresent()) {
+			coll.addToAuthenticities(new AuthenticityProperty(coll.getId() + "_" + authenticity.get().getLiteral(),
+					authenticity.get()));
+		}
 		
 		/**
 		 * OpenCSV errors here: (Sahih al-Bukhari)
@@ -138,7 +153,10 @@ public class ImportHadithDatabase {
 				hadith.setName(collectionName + " hadith " + hadithNum);
 				hadith.setHadithNum(hadithNum);
 //				hadith.setAuthor(authorName);
-				hadith.addToAuthenticities(new AuthenticityProperty(hadith.getId() + "_authentic", Authenticity.AUTHENTIC));
+				if (authenticity.isPresent()) {
+					hadith.addToAuthenticities(new AuthenticityProperty(hadith.getId() + "_"  + authenticity.get().getLiteral(),
+							authenticity.get()));
+				}
 				Literal literal = new Literal();
 				literal.setCreativeWork(hadith);
 				literal.assignAdoc(text);
