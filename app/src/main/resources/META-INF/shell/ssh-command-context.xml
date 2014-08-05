@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+    <!-- set properties from the parent context, please! 
+    bean name="sshPropertyPlaceholderConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:META-INF/shell/ssh.properties"/>
+    </bean-->
+
+    <bean name="blueprintContainerAwarePostProcessor" class="blast.shell.osgi.BlueprintContainerAwarePostProcessor"/>
+
+    <bean name="sshCommand" class="org.apache.karaf.shell.ssh.SshAction" scope="prototype">
+        <property name="sshClientId" value="sshClient"/>
+    </bean>
+
+    <!--<bean name="sshServerCommand" class="org.apache.karaf.shell.ssh.SshServerAction">-->
+    <!--<property name="sshServerId" value="sshServer"/>-->
+    <!--</bean>-->
+
+    <bean id="sshClient" class="org.apache.sshd.SshClient" factory-method="setUpDefaultClient" scope="prototype">
+    </bean>
+
+    <bean id="sshServer" class="org.apache.sshd.SshServer" factory-method="setUpDefaultServer" scope="prototype">
+        <property name="port" value="${sshPort}"/>
+        <property name="shellFactory">
+            <bean class="blast.shell.karaf.ssh.BlastShellFactoryImpl">
+                <property name="consoleFactory" ref="consoleFactory"/>
+            </bean>
+        </property>
+        <property name="commandFactory">
+            <bean class="org.apache.karaf.shell.ssh.ShellCommandFactory">
+                <property name="commandProcessor" ref="commandProcessor"/>
+            </bean>
+        </property>
+        <property name="keyPairProvider" ref="keyPairProvider"/>
+        <!-- property name="passwordAuthenticator" ref="passwordAuthenticator"/-->
+        <property name="publickeyAuthenticator" ref="publickeyAuthenticator"/>
+        <property name="sessionConfig">
+        	<bean class="org.apache.mina.transport.socket.DefaultSocketSessionConfig">
+        		<!-- disconnect after 12 hours -->
+        		<property name="keepAlive" value="true"/>
+        		<property name="bothIdleTime" value="1200"/>
+        		<property name="readerIdleTime" value="1200"/>
+        		<property name="writerIdleTime" value="1200"/>
+        	</bean>
+        </property>
+    </bean>
+
+    <bean name="keyPairProvider" class="org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider">
+    	<!-- /WEB-INF/classes/META-INF/host.key -->
+        <property name="path" value="${configDir}/host.key"/>
+    </bean>
+
+    <!-- use this if you want to use JAAS -->
+    <!--
+    <bean id="passwordAuthenticator" class="org.apache.sshd.server.jaas.JaasPasswordAuthenticator">
+        <property name="domain" value="${sshRealm}"/>
+    </bean>
+    -->
+
+    <!-- this is a very basic username + password implementation -->
+    <!-- bean id="passwordAuthenticator" class="blast.shell.karaf.ssh.BasicPasswordAuthenticator">
+        <constructor-arg index="0">
+            <util:properties location="#{appConfig.tenantEtcFolder}/ssh.passwd"/>
+        </constructor-arg>
+    </bean-->
+    <bean id="publickeyAuthenticator" class="org.apache.karaf.shell.ssh.KarafPublickeyAuthenticator"
+    	init-method="startTimer" destroy-method="stopTimer">
+    	<!-- /WEB-INF/classes/META-INF/authorized_keys -->
+    	<property name="authorizedKeys" value="${configDir}/authorized_keys"/>
+    	<property name="active" value="true"/>
+    </bean>
+
+    <bean id="sshServerFactory" class="org.apache.karaf.shell.ssh.SshServerFactory" init-method="start"
+          destroy-method="stop" lazy-init="false">
+        <constructor-arg ref="sshServer"/>
+        <property name="start" value="true"/>
+    </bean>
+
+</beans>

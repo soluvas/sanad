@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commons:AppManifest
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:commons="http://www.soluvas.org/schema/commons/1.0"
+    xsi:schemaLocation="http://www.soluvas.org/schema/commons/1.0 ../../../../../org.soluvas.commons/src/main/resources/org/soluvas/commons/commons.ecore"
+    positioner="10"
+    title="Sanad"
+    summary="Collaborative Knowledge Sharing"
+    description="Collaborative knowledge sharing"
+    domain="sanad.{+appDomain}"
+    generalEmailPrd="info@soluvas.com"
+    generalEmailDev="{+userName}@{+fqdn}"
+    generalEmailStg="info@soluvas.com"
+    organizationName="Soluvas"
+    organizationAddress="Jl. Gunung Kencana 17, Ciumbuleuit, Bandung"
+    defaultTimeZoneId="Asia/Jakarta"
+    defaultCurrencyCode="IDR"
+    defaultLanguageTag="id-ID"
+    defaultCountryCode="ID"
+    letterSalutation="Hai"/>

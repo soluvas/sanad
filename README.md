@@ -56,6 +56,18 @@ Universal collections are not debatable because of their universal usage.
 3. TODO: from [Islam Ware](https://www.islamware.com/app/downloads):
    * TODO: Arabic Quran without tashkeel (114 chapters)   
 
+## Setup
+
+1. Connect to Sanad Shell
+
+    ssh -p8306 localhost
+
+2. Add a the first user and set his role as `sysadmin` and `admin`:
+
+    person:add -e ceefour666@gmail.com -g male -p test hendy 'Hendy Irawan'
+    personroleset hendy sysadmin admin
+
+
 ## Schema Dump
 
 To generate the SQL schema dump:

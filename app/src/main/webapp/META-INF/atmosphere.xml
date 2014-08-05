@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atmosphere-handlers>
+    <atmosphere-handler support-session="true"
+    	context-root="/*" 
+    	class-name="org.soluvas.web.site.SecuredWicketAtmosphereHandler"/>
+</atmosphere-handlers>

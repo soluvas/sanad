@@ -10,9 +10,14 @@ import org.hibernate.cfg.DefaultComponentSafeNamingStrategy;
 import org.hibernate.dialect.PostgreSQL9Dialect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.soluvas.commons.config.CommonsWebConfig;
+import org.soluvas.commons.config.MultiTenantConfig;
+import org.soluvas.commons.config.SoluvasApplication;
+import org.soluvas.data.person.PersonRepository;
 import org.soluvas.jpa.JpaConfig;
 import org.soluvas.jpa.SoluvasMultiTenantConnectionProviderImpl;
 import org.soluvas.jpa.SoluvasTenantIdentifierResolver;
+import org.soluvas.mongo.MongoPersonRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +31,9 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.damnhandy.uri.template.MalformedUriTemplateException;
+import com.damnhandy.uri.template.UriTemplate;
+import com.damnhandy.uri.template.VariableExpansionException;
 import com.google.common.collect.ImmutableMap;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -35,7 +43,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  */
 @Configuration
 @EnableTransactionManagement
-@Import(JpaConfig.class)
+@Import({JpaConfig.class, CommonsWebConfig.class, MultiTenantConfig.class})
 public class SanadConfig {
 
 	@Configuration
@@ -158,6 +166,28 @@ public class SanadConfig {
 			return new PersistenceExceptionTranslationPostProcessor();
 		}
 
+	}
+	
+	@Inject
+	private Environment env;
+	
+	@Bean
+	public SoluvasApplication app() {
+		return new SoluvasApplication() {
+			@Override
+			public String getId() {
+				return "sanad";
+			}
+		};
+	}
+	
+	@Bean(name={"personRepo", "personLookup"})
+	public PersonRepository personRepo() throws VariableExpansionException, MalformedUriTemplateException {
+		final String tenantId = env.getRequiredProperty("tenantId");
+		final String tenantEnv = env.getRequiredProperty("tenantEnv");
+		final String mongoUriTemplate = env.getRequiredProperty("mongoUriTemplate");
+		String mongoUri = UriTemplate.fromTemplate(mongoUriTemplate).expand(ImmutableMap.of("tenantId", tenantId, "tenantEnv", tenantEnv));
+		return new MongoPersonRepository(mongoUri, false, true);
 	}
 	
 }

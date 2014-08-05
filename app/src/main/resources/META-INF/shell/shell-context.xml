@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- 
+	Default configuration is in:
+	blast-shell/karaf/ssh/target/classes/META-INF/shell/ssh.properties
+	username & password credentials: blast-shell/karaf/ssh/src/main/resources/ssh.passwd
+		referred from blast-shell/karaf/ssh/src/main/resources/META-INF/shell/ssh-command-context.xml
+	SSH Port: 8103
+	Username: test
+	Password: test001
+	 -->
+	 
+	<context:property-placeholder />
+    
+    <import resource="classpath:META-INF/shell/command-context.xml"/>
+    
+    <!-- this one we need to replace: -->
+    <import resource="classpath:META-INF/shell/ssh-command-context.xml"/>
+    
+    <import resource="classpath:META-INF/shell/wrapper-context.xml"/>
+    <!-- import resource="classpath:META-INF/shell/groovy-context.xml"/>
+    <import resource="classpath:META-INF/shell/beanshell-context.xml"/>
+    <import resource="classpath:META-INF/shell/scala-context.xml"/>
+    <import resource="classpath:META-INF/shell/base-command-context.xml"/-->
+    <import resource="classpath:META-INF/shell/command-scanner-context.xml"/>
+    
+	<!-- BEGIN replace blast-shell-core-0.13.jar!/META-INF/shell/base-command-context.xml -->
+	<!-- We don't use ${welcome}, and we use newer 3.2 property placeholder mechanism -->
+	<bean name="threadIo" class="org.apache.felix.gogo.runtime.threadio.ThreadIOImpl" />
+
+	<bean name="commandProcessor" class="org.apache.felix.gogo.runtime.CommandProcessorImpl">
+		<constructor-arg ref="threadIo" />
+	</bean>
+
+	<bean id="commandRegistry" class="blast.shell.CommandRegistry">
+		<property name="commandShell" ref="commandProcessor" />
+		<property name="actionFactory">
+			<bean
+				class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
+				<property name="serviceLocatorInterface" value="blast.shell.ActionFactory" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Overrides consoleFactory defined in blast-shell-core-0.13.jar!/META-INF/shell/base-command-context.xml -->
+	<bean id="consoleFactory" class="org.soluvas.commons.shell.SoluvasConsoleFactory">
+		<property name="commandRegistry" ref="commandRegistry" />
+		<property name="commandProcessor" ref="commandProcessor" />
+		<property name="welcomeMessageFile" value="classpath:branding/branding.properties" />
+		<property name="application" value="#{app.id}" />
+		<property name="hotelIdSupplier">
+			<bean class="com.google.common.base.Suppliers" factory-method="ofInstance">
+				<constructor-arg value="${hotelId}" />
+			</bean>
+		</property>
+		<property name="tenantIdSupplier" value="#{tenantConfig.initialTenantIdSupplier}" />
+		<property name="tenantEnvSupplier">
+			<bean class="com.google.common.base.Suppliers" factory-method="ofInstance">
+				<constructor-arg value="${tenantEnv}" />
+			</bean>
+		</property>
+	</bean>
+	<!-- END replace blast-shell-core-0.13.jar!/META-INF/shell/base-command-context.xml -->
+
+</beans>
