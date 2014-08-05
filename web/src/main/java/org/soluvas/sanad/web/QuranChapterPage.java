@@ -22,6 +22,10 @@ public class QuranChapterPage extends GuestLayoutPage {
 	@Inject
 	QuranManager quranMgr;
 	
+	public static PageParameters byChapterNum(int chapterNum) {
+		return new PageParameters().set("chapterNum", chapterNum);
+	}
+	
 	public QuranChapterPage(PageParameters parameters) {
 		super(parameters);
 		LoadableDetachableModel<QuranChapter> chapterModel = new LoadableDetachableModel<QuranChapter>() {
