@@ -19,6 +19,7 @@ import org.soluvas.sanad.core.HadithManager;
 import org.soluvas.sanad.core.jpa.Hadith;
 import org.soluvas.sanad.core.jpa.HadithCollection;
 import org.soluvas.sanad.web.GuestLayoutPage;
+import org.soluvas.web.site.JpaModel;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
@@ -71,12 +72,7 @@ public class HadithCollectionPage extends GuestLayoutPage {
 
 			@Override
 			public IModel<Hadith> model(Hadith object) {
-				return new LoadableDetachableModel<Hadith>(object) {
-					@Override
-					protected Hadith load() {
-						throw new UnsupportedOperationException();
-					}
-				};
+				return new JpaModel<>(Hadith.class, object.getId(), object);
 			}
 		};
 		

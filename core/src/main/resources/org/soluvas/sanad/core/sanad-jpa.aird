@@ -3691,7 +3691,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Yeqj0BxWEeSb3bU9X0IeEg" name="nameTransliteration : EString" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@8891e30{platform:/resource/org.soluvas.sanad.core/src/main/resources/org/soluvas/sanad/core/sanad-jpa.ecore#//QuranChapter/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Yeqj0BxWEeSb3bU9X0IeEg" name="nameTransliteration : EString" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="sanad-jpa.ecore#//QuranChapter/nameTransliteration"/>
           <semanticElements xmi:type="ecore:EAttribute" href="sanad-jpa.ecore#//QuranChapter/nameTransliteration"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_aDDHsBxWEeSb3bU9X0IeEg" labelAlignment="LEFT">
