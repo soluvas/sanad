@@ -11,6 +11,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.SharedResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.soluvas.commons.AppManifest;
+import org.soluvas.sanad.web.hadith.HadithCollectionListPage;
+import org.soluvas.sanad.web.quran.QuranPage;
 import org.soluvas.web.bootstrap.FontAwesome;
 import org.soluvas.web.bootstrap.Footer;
 import org.soluvas.web.bootstrap.GrowlBehavior;

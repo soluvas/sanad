@@ -1,4 +1,4 @@
-package org.soluvas.sanad.web;
+package org.soluvas.sanad.web.hadith;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.soluvas.sanad.core.HadithManager;
 import org.soluvas.sanad.core.HadithManager.HadithCollectionSummary;
+import org.soluvas.sanad.web.GuestLayoutPage;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @SuppressWarnings("serial")

@@ -1,4 +1,4 @@
-package org.soluvas.sanad.web;
+package org.soluvas.sanad.web.hadith;
 
 import java.util.Iterator;
 
@@ -18,6 +18,7 @@ import org.soluvas.data.domain.Sort.Direction;
 import org.soluvas.sanad.core.HadithManager;
 import org.soluvas.sanad.core.jpa.Hadith;
 import org.soluvas.sanad.core.jpa.HadithCollection;
+import org.soluvas.sanad.web.GuestLayoutPage;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;

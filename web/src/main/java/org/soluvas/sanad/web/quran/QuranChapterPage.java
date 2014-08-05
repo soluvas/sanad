@@ -1,4 +1,4 @@
-package org.soluvas.sanad.web;
+package org.soluvas.sanad.web.quran;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.soluvas.sanad.core.QuranManager;
 import org.soluvas.sanad.core.jpa.QuranChapter;
 import org.soluvas.sanad.core.jpa.QuranVerse;
+import org.soluvas.sanad.web.GuestLayoutPage;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @SuppressWarnings("serial")
