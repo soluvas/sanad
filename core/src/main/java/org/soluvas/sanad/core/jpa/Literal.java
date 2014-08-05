@@ -2,7 +2,6 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,9 +12,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.soluvas.sanad.core.AsciidocUtils;
-
 import com.google.common.html.HtmlEscapers;
 
 /**
@@ -24,12 +21,11 @@ import com.google.common.html.HtmlEscapers;
  * 
  */
 @Entity()
-@Table(schema = "sanad", indexes={
-	// normalized cannot be indexed because too large 
-	@Index(name="literal_creativework_id_idx", columnList="creativework_id"),
-	@Index(name="literal_numeronym_idx", columnList="numeronym"),
-	@Index(name="literal_inlanguage_idx", columnList="inlanguage")
-})
+@Table(schema = "sanad", indexes = {
+		// normalized cannot be indexed because too large
+		@Index(name = "literal_creativework_id_idx", columnList = "creativework_id"),
+		@Index(name = "literal_numeronym_idx", columnList = "numeronym"),
+		@Index(name = "literal_inlanguage_idx", columnList = "inlanguage") })
 public class Literal extends Property {
 
 	/**

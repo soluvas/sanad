@@ -18,10 +18,9 @@ import javax.persistence.Table;
  * 
  */
 @Entity()
-@Table(schema = "sanad", indexes={
-		@Index(name="quranverse_chapter_id_idx", columnList="chapter_id"),
-		@Index(name="quranverse_versenum_idx", columnList="versenum"),
-})
+@Table(schema = "sanad", indexes = {
+		@Index(name = "quranverse_chapter_id_idx", columnList = "chapter_id"),
+		@Index(name = "quranverse_versenum_idx", columnList = "versenum"), })
 public class QuranVerse extends CreativeWork {
 
 	/**

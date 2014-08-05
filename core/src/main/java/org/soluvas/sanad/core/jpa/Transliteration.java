@@ -2,7 +2,6 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,11 +25,10 @@ import javax.persistence.Table;
  * 
  */
 @Entity()
-@Table(schema = "sanad", indexes={
-	// normalized cannot be indexed because too large 
-	@Index(name="transliteration_creativework_id_idx", columnList="creativework_id"),
-	@Index(name="transliteration_numeronym_idx", columnList="numeronym")
-})
+@Table(schema = "sanad", indexes = {
+		// normalized cannot be indexed because too large
+		@Index(name = "transliteration_creativework_id_idx", columnList = "creativework_id"),
+		@Index(name = "transliteration_numeronym_idx", columnList = "numeronym") })
 public class Transliteration extends Property {
 
 	/**

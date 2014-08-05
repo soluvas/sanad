@@ -190,4 +190,14 @@ public class SanadConfig {
 		return new MongoPersonRepository(mongoUri, false, true);
 	}
 	
+	@Bean
+	public QuranManager quranMgr() {
+		return new QuranManager();
+	}
+	
+	@Bean
+	public HadithManager hadithMgr() {
+		return new HadithManager();
+	}
+	
 }

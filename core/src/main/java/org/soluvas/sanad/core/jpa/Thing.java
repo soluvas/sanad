@@ -2,7 +2,6 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,10 +21,9 @@ import javax.persistence.Table;
  * 
  */
 @Entity()
-@Table(schema = "sanad", indexes={
-		@Index(name="thing_slug_idx", columnList="slug"),
-		@Index(name="thing_name_idx", columnList="name"),
-})
+@Table(schema = "sanad", indexes = {
+		@Index(name = "thing_slug_idx", columnList = "slug"),
+		@Index(name = "thing_name_idx", columnList = "name"), })
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Thing {
 

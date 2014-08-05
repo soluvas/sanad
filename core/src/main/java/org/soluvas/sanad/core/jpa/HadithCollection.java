@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 /**
@@ -24,7 +23,6 @@ public class HadithCollection extends CreativeWork {
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "collection")
-	@OrderColumn(name = "hadithNum")
 	private List<Hadith> hadiths = new ArrayList<Hadith>();
 
 	/**

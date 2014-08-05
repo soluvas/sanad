@@ -1,0 +1,18 @@
+<wicket:head>
+<style>
+.chapter-num { display: inline-block; width: 2em; text-align: right; }
+</style>
+</wicket:head>
+
+<wicket:extend>
+<div class="page-header">
+	<h1>Holy Quran</h1>
+</div>
+
+<div class="list-group">
+	<a class="list-group-item" wicket:id="chapters">
+		<span class="chapter-num" wicket:id="chapterNum">chapterNum</span>
+		<span class="badge" wicket:id="verseCount">14</span>
+		<wicket:container wicket:id="name">chapter</wicket:container></a>
+</div>
+</wicket:extend>

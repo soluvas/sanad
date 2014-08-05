@@ -1,0 +1,20 @@
+<wicket:head>
+<style>
+.verse-num { display: inline-block; width: 2em; text-align: right; }
+</style>
+</wicket:head>
+
+<wicket:extend>
+<div class="page-header">
+	<h1 wicket:id="chapterName">Al-Fatihah</h1>
+</div>
+
+<ul class="list-group">
+	<li class="list-group-item" wicket:id="verses">
+		<span class="verse-num" wicket:id="verseNum">verseNum</span>
+		<p dir="rtl" wicket:id="text">arabic text with tashkeel</p>
+		<p wicket:id="transliteration">transliteration</p>
+	</li>
+</ul>
+
+</wicket:extend>

@@ -232,7 +232,6 @@
         <eReference href="sanad-jpa.ecore#//HadithCollection/hadiths"/>
         <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
           <oneToMany orderBy="hadithNum" mappedBy="collection"/>
-          <orderColumn name="hadithNum"/>
         </eReferenceAnnotations>
       </annotatedEStructuralFeatures>
     </annotatedEClassifiers>
@@ -247,7 +246,6 @@
         <eReference href="sanad-jpa.ecore#//QuranChapter/verses"/>
         <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
           <oneToMany orderBy="verseNum" mappedBy="chapter"/>
-          <orderColumn name="verseNum"/>
         </eReferenceAnnotations>
       </annotatedEStructuralFeatures>
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">

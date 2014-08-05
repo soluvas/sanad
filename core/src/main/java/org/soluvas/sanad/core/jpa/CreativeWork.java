@@ -2,7 +2,6 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,10 +15,9 @@ import javax.persistence.Table;
  * 
  */
 @Entity()
-@Table(schema = "sanad", indexes={
-		@Index(name="creativework_inlanguage_idx", columnList="inlanguage"),
-		@Index(name="creativework_author_idx", columnList="author")
-})
+@Table(schema = "sanad", indexes = {
+		@Index(name = "creativework_inlanguage_idx", columnList = "inlanguage"),
+		@Index(name = "creativework_author_idx", columnList = "author") })
 public class CreativeWork extends Thing {
 
 	/**

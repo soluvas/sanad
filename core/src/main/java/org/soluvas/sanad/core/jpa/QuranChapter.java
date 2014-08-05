@@ -2,7 +2,6 @@ package org.soluvas.sanad.core.jpa;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 /**
@@ -21,9 +19,7 @@ import javax.persistence.Table;
  * 
  */
 @Entity()
-@Table(schema = "sanad", indexes={
-		@Index(name="quranchapter_chapternum_idx", columnList="chapternum"),
-})
+@Table(schema = "sanad", indexes = { @Index(name = "quranchapter_chapternum_idx", columnList = "chapternum"), })
 public class QuranChapter extends CreativeWork {
 
 	/**
@@ -51,7 +47,6 @@ public class QuranChapter extends CreativeWork {
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "chapter")
-	@OrderColumn(name = "verseNum")
 	private List<QuranVerse> verses = new ArrayList<QuranVerse>();
 
 	/**
