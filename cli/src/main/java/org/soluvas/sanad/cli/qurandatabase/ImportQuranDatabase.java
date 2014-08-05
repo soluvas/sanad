@@ -48,6 +48,8 @@ public class ImportQuranDatabase {
 	EntityManager em;
 	private HolyQuran quran;
 	private HolyQuran translit;
+
+	private HolyQuran ind;
 	
 	public static void main(String[] args) throws JAXBException {
 		try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ImportQuranDatabase.class)) {
@@ -68,19 +70,31 @@ public class ImportQuranDatabase {
 		
 		String translitFile = "/home/ceefour/git/qurandatabase/English-Transliteration-63.xml";
 		translit = (HolyQuran) unmarshaller.unmarshal(new File(translitFile));
+		
+		File indFile = new File("/home/ceefour/git/qurandatabase/Indonesian-Bahasa-Indonesia-68.xml");
+		ind = (HolyQuran) unmarshaller.unmarshal(indFile);
 	}
 	
 	@Transactional
 	public void persistQuran() {
 		for (Chapter chapter : quran.chapters) {
+			String chapterNameTranslit = ind.chapters.get(chapter.chapterId - 1).chapterName;
+			// Fix buggy QuranDatabase.org Indonesian translation chapter names
+			if ("AL� AALI-IMRAN".equals(chapterNameTranslit)) {
+				chapterNameTranslit = "ALI-IMRAN";
+			} else if ("�BRAH�M".equals(chapterNameTranslit)) {
+				chapterNameTranslit = "IBRAHIM";
+			}
+			
 			QuranChapter quranChapter = new QuranChapter();
 			quranChapter.setAuthor(quran.writer);
 			quranChapter.setChapterNum(chapter.chapterId);
 			quranChapter.setName(chapter.chapterName);
+			quranChapter.setNameTransliteration(chapterNameTranslit);
 			quranChapter.setId("quran_" + chapter.chapterId);
 			quranChapter.setSlug("quran-" + chapter.chapterId);
 			quranChapter.setCanonicalSlug("quran" + chapter.chapterId);
-			quranChapter.setInLanguage(quran.languageIsoCode);
+			quranChapter.setInLanguage("ar");
 			
 //			quranChapter = em.merge(quranChapter);
 			for (Verse verse : chapter.verses) {
@@ -94,7 +108,7 @@ public class ImportQuranDatabase {
 				quranVerse.setName("Quran " + chapter.chapterId + ":" + verse.verseId);
 				quranVerse.setSlug("quran-" + chapter.chapterId + "-verse-" + verse.verseId);
 				quranVerse.setCanonicalSlug("quran" + chapter.chapterId + "verse" + verse.verseId);
-				quranVerse.setInLanguage(quran.languageIsoCode);
+				quranVerse.setInLanguage("ar");
 				quranVerse.addToAuthenticities(new AuthenticityProperty(quranVerse.getId() + "_authentic", Authenticity.AUTHENTIC));
 				quranVerse.addToSuccessions(new SuccessionProperty(quranVerse.getId() + "_wording", Succession.WORDING));
 				// Arabic text with tashkeel
@@ -102,7 +116,7 @@ public class ImportQuranDatabase {
 				tashkeelLiteral.setCreativeWork(quranVerse);
 				tashkeelLiteral.setId(quranVerse.getId() + "_tashkeel");
 				tashkeelLiteral.assignAdoc(verse.text);
-				tashkeelLiteral.setInLanguage(quran.languageIsoCode);
+				tashkeelLiteral.setInLanguage("ar");
 				tashkeelLiteral.addToSpellings(new SpellingProperty(tashkeelLiteral.getId() + "_official", Spelling.OFFICIAL));
 				quranVerse.addToTexts(tashkeelLiteral);
 				quranVerse.setText(tashkeelLiteral);
@@ -123,7 +137,8 @@ public class ImportQuranDatabase {
 			}
 			log.info("Persisting chapter {} {} with {} verses", 
 					quranChapter.getChapterNum(), quranChapter.getName(), quranChapter.getVerses().size());
-			quranChapter = em.merge(quranChapter);
+//			quranChapter = em.merge(quranChapter);
+			em.persist(quranChapter);
 		}
 	}
 

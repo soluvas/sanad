@@ -20,6 +20,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar.Position;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.less.LessResourceReference;
 
@@ -49,6 +50,7 @@ public abstract class GuestLayoutPage extends WebPage {
         add(new MetaTag("author", new Model<>("author"), new Model<>("Hendy Irawan <hendy@soluvas.com>")));
 		
 		final Navbar navbar = new Navbar("navbar");
+		navbar.setPosition(Position.TOP);
 		navbar.setBrandName(new Model<>(appManifest.getTitle()));
 		navbar.setBrandImage(new SharedResourceReference(GuestLayoutPage.class, "cloud-27.png"), new Model<>(appManifest.getTitle()));
 		navbar.addComponents(new ImmutableNavbarComponent(new NavbarButton<>(QuranPage.class, new Model<>("Quran"))),

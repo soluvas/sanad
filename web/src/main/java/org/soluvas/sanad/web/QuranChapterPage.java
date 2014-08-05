@@ -35,6 +35,7 @@ public class QuranChapterPage extends GuestLayoutPage {
 			}
 		};
 		add(new Label("chapterName", new PropertyModel<>(chapterModel, "name")));
+		add(new Label("chapterNameTransliteration", new PropertyModel<>(chapterModel, "nameTransliteration")));
 		add(new ListView<QuranVerse>("verses", new PropertyModel<List<QuranVerse>>(chapterModel, "verses")) {
 			@Override
 			protected void populateItem(ListItem<QuranVerse> item) {

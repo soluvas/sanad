@@ -56,10 +56,10 @@ public class ImportQuranTranslation {
 	public static void main(String[] args) throws JAXBException {
 		try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ImportQuranTranslation.class)) {
 			ImportQuranTranslation cmd = ctx.getBean(ImportQuranTranslation.class);
-			cmd.importTranslation("eng_pickthall", new File("/home/ceefour/git/qurandatabase/English-Pickthall-60.xml"));
-			cmd.importTranslation("eng_shakir", new File("/home/ceefour/git/qurandatabase/English-Shakir-58.xml"));
-			cmd.importTranslation("eng_yusufali", new File("/home/ceefour/git/qurandatabase/English-Yusuf-Ali-59.xml"));
-			cmd.importTranslation("ind", new File("/home/ceefour/git/qurandatabase/Indonesian-Bahasa-Indonesia-68.xml"));
+			cmd.importTranslation("eng_pickthall", "en", new File("/home/ceefour/git/qurandatabase/English-Pickthall-60.xml"));
+			cmd.importTranslation("eng_shakir", "en", new File("/home/ceefour/git/qurandatabase/English-Shakir-58.xml"));
+			cmd.importTranslation("eng_yusufali", "en", new File("/home/ceefour/git/qurandatabase/English-Yusuf-Ali-59.xml"));
+			cmd.importTranslation("ind", "id", new File("/home/ceefour/git/qurandatabase/Indonesian-Bahasa-Indonesia-68.xml"));
 		}
 	}
 	
@@ -70,7 +70,7 @@ public class ImportQuranTranslation {
 	}
 	
 	@Transactional
-	public void importTranslation(String translationId, File file) throws JAXBException {
+	public void importTranslation(String translationId, String inLanguage, File file) throws JAXBException {
 		HolyQuran tr = (HolyQuran) unmarshaller.unmarshal(file);
 		for (Chapter chapter : tr.chapters) {
 			QuranChapter quranChapter = em.find(QuranChapter.class, "quran_" + chapter.chapterId);
@@ -90,7 +90,7 @@ public class ImportQuranTranslation {
 			chapterName.setId(quranChapter.getId() + "_" + translationId);
 			chapterName.setTranslator(tr.writer);
 			chapterName.assignAdoc(chapterNameText);
-			chapterName.setInLanguage(tr.languageIsoCode);
+			chapterName.setInLanguage(inLanguage);
 			chapterName.addToSpellings(new SpellingProperty(chapterName.getId() + "_formal", Spelling.FORMAL));
 			em.persist(chapterName);
 			
@@ -105,7 +105,7 @@ public class ImportQuranTranslation {
 				translation.setId(quranVerse.getId() + "_" + translationId);
 				translation.setTranslator(tr.writer);
 				translation.assignAdoc(verse.text);
-				translation.setInLanguage(tr.languageIsoCode);
+				translation.setInLanguage(inLanguage);
 				translation.addToSpellings(new SpellingProperty(translation.getId() + "_formal", Spelling.FORMAL));
 				em.persist(translation);
 			}

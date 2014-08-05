@@ -38,6 +38,7 @@ public class QuranPage extends GuestLayoutPage {
 				item.add(new Label("chapterNum", new PropertyModel<>(item.getModel(), "chapterNum")));
 				item.add(new Label("verseCount", new PropertyModel<>(item.getModel(), "verseCount")));
 				item.add(new Label("name", new PropertyModel<>(item.getModel(), "name")));
+				item.add(new Label("nameTransliteration", new PropertyModel<>(item.getModel(), "nameTransliteration")));
 			}
 		});
 	}

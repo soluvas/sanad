@@ -104,7 +104,7 @@ public class ImportHadithDatabase {
 		coll.setId("hadithcollection_" + SlugUtils.generateId(collectionName));
 		coll.setSlug(SlugUtils.generateSegment(coll.getId()));
 		coll.setCanonicalSlug(SlugUtils.canonicalize(coll.getSlug()));
-		coll.setInLanguage("ara");
+		coll.setInLanguage("ar");
 		coll.setName(collectionName);
 		if (authenticity.isPresent()) {
 			coll.addToAuthenticities(new AuthenticityProperty(coll.getId() + "_" + authenticity.get().getLiteral(),
@@ -131,6 +131,8 @@ public class ImportHadithDatabase {
 //			}
 //		}
 		
+		log.info("Adding hadith collection {} from {}...", coll.getName(), file);
+
 		final Splitter pipeSplitter = Splitter.on('|');
 		try (BufferedReader br = IOUtils.toBufferedReader(new InputStreamReader(new FileInputStream(file), charset))) {
 			while (true) {
@@ -142,14 +144,14 @@ public class ImportHadithDatabase {
 				int collId = Integer.parseInt(row[0]);
 				int hadithNum = Integer.parseInt(row[1]);
 				String text = row[2];
-				log.debug("Adding {} hadith {}", collectionName, hadithNum);
+				log.trace("Adding {} hadith {}", collectionName, hadithNum);
 				
 				Hadith hadith = new Hadith();
 				hadith.setCollection(coll);
 				hadith.setId(coll.getId() + "_hadith_" + hadithNum);
 				hadith.setSlug(SlugUtils.generateSegment(hadith.getId()));
 				hadith.setCanonicalSlug(SlugUtils.canonicalize(hadith.getId()));
-				hadith.setInLanguage("ara");
+				hadith.setInLanguage("ar");
 				hadith.setName(collectionName + " hadith " + hadithNum);
 				hadith.setHadithNum(hadithNum);
 //				hadith.setAuthor(authorName);
@@ -161,7 +163,7 @@ public class ImportHadithDatabase {
 				literal.setCreativeWork(hadith);
 				literal.assignAdoc(text);
 				literal.setId(hadith.getId() + "_text");
-				literal.setInLanguage("ara");
+				literal.setInLanguage("ar");
 				literal.addToSpellings(new SpellingProperty(literal.getId() + "_official", Spelling.OFFICIAL));
 				hadith.addToTexts(literal);
 				
@@ -169,7 +171,7 @@ public class ImportHadithDatabase {
 			}
 		}
 		
-		log.info("Persisting hadith collection {} with {} ahadith", 
+		log.info("Persisting hadith collection {} with {} ahadith...", 
 				coll.getName(), coll.getHadiths().size());
 		em.persist(coll);
 	}

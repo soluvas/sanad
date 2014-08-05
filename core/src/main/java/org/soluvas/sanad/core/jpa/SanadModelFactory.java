@@ -3784,7 +3784,7 @@ public class SanadModelFactory implements ModelFactory {
 				getTarget().setVerses((List<QuranVerse>) value);
 				return;
 			case SanadModelPackage.QURANCHAPTER_NAMETRANSLITERATION_FEATURE_ID:
-				getTarget().setNameTransliteration((Transliteration) value);
+				getTarget().setNameTransliteration((String) value);
 				return;
 			default:
 				super.eSet(eStructuralFeature, value);

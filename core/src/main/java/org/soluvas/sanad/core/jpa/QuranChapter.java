@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Index;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -57,8 +56,8 @@ public class QuranChapter extends CreativeWork {
 	 * 
 	 * @generated
 	 */
-	@ManyToOne(cascade = { CascadeType.ALL })
-	private Transliteration nameTransliteration = null;
+	@Basic()
+	private String nameTransliteration = null;
 
 	/**
 	 * Returns the value of '<em><b>chapterNum</b></em>' feature.
@@ -202,7 +201,7 @@ public class QuranChapter extends CreativeWork {
 	 * @return the value of '<em><b>nameTransliteration</b></em>' feature
 	 * @generated
 	 */
-	public Transliteration getNameTransliteration() {
+	public String getNameTransliteration() {
 		return nameTransliteration;
 	}
 
@@ -210,10 +209,7 @@ public class QuranChapter extends CreativeWork {
 	 * Sets the '{@link QuranChapter#getNameTransliteration()
 	 * <em>nameTransliteration</em>}' feature.
 	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * Official English transliteration of the name. Having it as a reference to
-	 * a {@link Transliteration} allows comparison between incorrect/misleading
-	 * spellings. <!-- end-model-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @param newNameTransliteration
 	 *            the new value of the '
@@ -221,7 +217,7 @@ public class QuranChapter extends CreativeWork {
 	 *            nameTransliteration}' feature.
 	 * @generated
 	 */
-	public void setNameTransliteration(Transliteration newNameTransliteration) {
+	public void setNameTransliteration(String newNameTransliteration) {
 		nameTransliteration = newNameTransliteration;
 	}
 
@@ -234,6 +230,7 @@ public class QuranChapter extends CreativeWork {
 	@Override
 	public String toString() {
 		return "QuranChapter " + " [chapterNum: " + getChapterNum() + "]"
-				+ " [nameWithTashkeel: " + getNameWithTashkeel() + "]";
+				+ " [nameWithTashkeel: " + getNameWithTashkeel() + "]"
+				+ " [nameTransliteration: " + getNameTransliteration() + "]";
 	}
 }

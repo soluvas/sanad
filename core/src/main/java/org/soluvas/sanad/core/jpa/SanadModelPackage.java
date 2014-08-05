@@ -3178,8 +3178,8 @@ public class SanadModelPackage extends ModelPackage {
 	 *         <em><b>QuranChapter.nameTransliteration</b></em>'.
 	 * @generated
 	 */
-	public EReference getQuranChapter_NameTransliteration() {
-		return (EReference) getQuranChapterEClass().getEAllStructuralFeatures()
+	public EAttribute getQuranChapter_NameTransliteration() {
+		return (EAttribute) getQuranChapterEClass().getEAllStructuralFeatures()
 				.get(QURANCHAPTER_NAMETRANSLITERATION_FEATURE_ID);
 	}
 

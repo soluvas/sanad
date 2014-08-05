@@ -16,12 +16,14 @@ public class QuranManager {
 	public static class QuranChapterSummary {
 		private final int chapterNum;
 		private final String name;
+		private final String nameTransliteration;
 		private final long verseCount;
 		
-		public QuranChapterSummary(int chapterNum, String name, long verseCount) {
+		public QuranChapterSummary(int chapterNum, String name, String nameTransliteration, long verseCount) {
 			super();
 			this.chapterNum = chapterNum;
 			this.name = name;
+			this.nameTransliteration = nameTransliteration;
 			this.verseCount = verseCount;
 		}
 		
@@ -33,6 +35,10 @@ public class QuranManager {
 			return name;
 		}
 		
+		public String getNameTransliteration() {
+			return nameTransliteration;
+		}
+		
 		public long getVerseCount() {
 			return verseCount;
 		}
@@ -41,9 +47,9 @@ public class QuranManager {
 	
 	@Transactional(readOnly=true)
 	public List<QuranChapterSummary> findAllChapterSummaries() {
-		return em.createQuery("SELECT NEW org.soluvas.sanad.core.QuranManager$QuranChapterSummary(c.chapterNum, c.name, COUNT(v))"
+		return em.createQuery("SELECT NEW org.soluvas.sanad.core.QuranManager$QuranChapterSummary(c.chapterNum, c.name, c.nameTransliteration, COUNT(v))"
 				+ " FROM QuranChapter c LEFT JOIN c.verses v"
-				+ " GROUP BY c.chapterNum, c.name"
+				+ " GROUP BY c.chapterNum, c.name, c.nameTransliteration"
 				+ " ORDER BY c.chapterNum", QuranChapterSummary.class).getResultList();
 	}
 

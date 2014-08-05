@@ -538,12 +538,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="verses" upperBound="-1"
         eType="#//QuranVerse" containment="true" eOpposite="#//QuranVerse/chapter"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="nameTransliteration" eType="#//Transliteration"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Official English transliteration of the name.&#xA;Having it as a reference to a {@link Transliteration} allows comparison between incorrect/misleading spellings."/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nameTransliteration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HadithCollection" eSuperTypes="#//CreativeWork">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hadiths" upperBound="-1"
