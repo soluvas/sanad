@@ -11,8 +11,10 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.SharedResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.soluvas.commons.AppManifest;
+import org.soluvas.sanad.web.claim.ClaimListPage;
 import org.soluvas.sanad.web.hadith.HadithCollectionListPage;
 import org.soluvas.sanad.web.quran.QuranPage;
+import org.soluvas.sanad.web.thing.TransliterationListPage;
 import org.soluvas.web.bootstrap.FontAwesome;
 import org.soluvas.web.bootstrap.Footer;
 import org.soluvas.web.bootstrap.GrowlBehavior;
@@ -51,7 +53,10 @@ public abstract class GuestLayoutPage extends WebPage {
 		navbar.setPosition(Position.TOP);
 		navbar.setBrandName(new Model<>(appManifest.getTitle()));
 		navbar.setBrandImage(new SharedResourceReference(GuestLayoutPage.class, "cloud-27.png"), new Model<>(appManifest.getTitle()));
-		navbar.addComponents(new ImmutableNavbarComponent(new NavbarButton<>(QuranPage.class, new Model<>("Quran"))),
+		navbar.addComponents(
+				new ImmutableNavbarComponent(new NavbarButton<>(TransliterationListPage.class, new Model<>("Transliterations"))),
+				new ImmutableNavbarComponent(new NavbarButton<>(ClaimListPage.class, new Model<>("Claims"))),
+				new ImmutableNavbarComponent(new NavbarButton<>(QuranPage.class, new Model<>("Quran"))),
 				new ImmutableNavbarComponent(new NavbarButton<>(HadithCollectionListPage.class, new Model<>("Hadith"))));
 		add(navbar);
 		

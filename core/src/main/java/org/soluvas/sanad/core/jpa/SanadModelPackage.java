@@ -704,7 +704,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int LITERALCLAIM_LANGUAGE_FEATURE_ID = 3;
+	public static final int LITERALCLAIM_INLANGUAGE_FEATURE_ID = 3;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2481,16 +2481,16 @@ public class SanadModelPackage extends ModelPackage {
 
 	/**
 	 * Returns the {@link EStructuralFeature} '
-	 * <em><b>LiteralClaim.language</b></em>'. <!-- begin-user-doc --> <!--
+	 * <em><b>LiteralClaim.inLanguage</b></em>'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>LiteralClaim.language</b></em>'.
+	 *         <em><b>LiteralClaim.inLanguage</b></em>'.
 	 * @generated
 	 */
-	public EAttribute getLiteralClaim_Language() {
+	public EAttribute getLiteralClaim_InLanguage() {
 		return (EAttribute) getLiteralClaimEClass().getEAllStructuralFeatures()
-				.get(LITERALCLAIM_LANGUAGE_FEATURE_ID);
+				.get(LITERALCLAIM_INLANGUAGE_FEATURE_ID);
 	}
 
 	/**

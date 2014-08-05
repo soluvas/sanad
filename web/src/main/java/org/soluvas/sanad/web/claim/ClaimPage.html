@@ -1,0 +1,21 @@
+<wicket:head>
+<style>
+.hadith-num { display: inline-block; width: 2em; text-align: right; }
+</style>
+</wicket:head>
+
+<wicket:extend>
+<div class="page-header">
+	<h1 wicket:id="collName">Al-Fatihah</h1>
+	<p wicket:id="collAuthor">author</p>
+</div>
+
+<ul class="list-group">
+	<li class="list-group-item" wicket:id="hadiths">
+		<span class="hadith-num" wicket:id="hadithNum">hadithNum</span>
+		<p dir="rtl" wicket:id="text">arabic text with tashkeel</p>
+	</li>
+</ul>
+<ul wicket:id="pagingNavigator">pagingNavigator</ul>
+
+</wicket:extend>

@@ -31,7 +31,7 @@ public class LiteralClaim extends Claim {
 	 * @generated
 	 */
 	@Basic()
-	private String language = null;
+	private String inLanguage = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> If
@@ -78,33 +78,34 @@ public class LiteralClaim extends Claim {
 	}
 
 	/**
-	 * Returns the value of '<em><b>language</b></em>' feature.
+	 * Returns the value of '<em><b>inLanguage</b></em>' feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
 	 * Only needed if {@link transliteration} is {@code false}. <!--
 	 * end-model-doc -->
 	 * 
-	 * @return the value of '<em><b>language</b></em>' feature
+	 * @return the value of '<em><b>inLanguage</b></em>' feature
 	 * @generated
 	 */
-	public String getLanguage() {
-		return language;
+	public String getInLanguage() {
+		return inLanguage;
 	}
 
 	/**
-	 * Sets the '{@link LiteralClaim#getLanguage() <em>language</em>}' feature.
+	 * Sets the '{@link LiteralClaim#getInLanguage() <em>inLanguage</em>}'
+	 * feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
 	 * Only needed if {@link transliteration} is {@code false}. <!--
 	 * end-model-doc -->
 	 * 
-	 * @param newLanguage
-	 *            the new value of the '{@link LiteralClaim#getLanguage()
-	 *            language}' feature.
+	 * @param newInLanguage
+	 *            the new value of the '{@link LiteralClaim#getInLanguage()
+	 *            inLanguage}' feature.
 	 * @generated
 	 */
-	public void setLanguage(String newLanguage) {
-		language = newLanguage;
+	public void setInLanguage(String newInLanguage) {
+		inLanguage = newInLanguage;
 	}
 
 	/**
@@ -172,7 +173,7 @@ public class LiteralClaim extends Claim {
 	@Override
 	public String toString() {
 		return "LiteralClaim " + " [spelling: " + getSpelling() + "]"
-				+ " [language: " + getLanguage() + "]" + " [adoc: " + getAdoc()
-				+ "]" + " [html: " + getHtml() + "]";
+				+ " [inLanguage: " + getInLanguage() + "]" + " [adoc: "
+				+ getAdoc() + "]" + " [html: " + getHtml() + "]";
 	}
 }

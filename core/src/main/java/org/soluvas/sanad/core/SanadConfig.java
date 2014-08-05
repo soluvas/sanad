@@ -200,4 +200,14 @@ public class SanadConfig {
 		return new HadithManager();
 	}
 	
+	@Bean
+	public ClaimManager claimMgr() {
+		return new ClaimManager();
+	}
+	
+	@Bean
+	public ThingManager thingMgr() {
+		return new ThingManager();
+	}
+	
 }

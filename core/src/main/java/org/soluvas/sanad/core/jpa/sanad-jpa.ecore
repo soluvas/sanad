@@ -237,12 +237,12 @@
         <details key="java.member" value="spelling"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Only needed if {@link transliteration} is {@code false}."/>
       </eAnnotations>
       <eAnnotations source="org.eclipse.emf.texo">
-        <details key="java.member" value="language"/>
+        <details key="java.member" value="inLanguage"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adoc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">

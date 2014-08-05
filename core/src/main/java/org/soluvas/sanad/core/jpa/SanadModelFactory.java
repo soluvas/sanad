@@ -2088,8 +2088,8 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getTestimony();
 			case SanadModelPackage.LITERALCLAIM_SPELLING_FEATURE_ID:
 				return getTarget().getSpelling();
-			case SanadModelPackage.LITERALCLAIM_LANGUAGE_FEATURE_ID:
-				return getTarget().getLanguage();
+			case SanadModelPackage.LITERALCLAIM_INLANGUAGE_FEATURE_ID:
+				return getTarget().getInLanguage();
 			case SanadModelPackage.LITERALCLAIM_ADOC_FEATURE_ID:
 				return getTarget().getAdoc();
 			case SanadModelPackage.LITERALCLAIM_HTML_FEATURE_ID:
@@ -2115,8 +2115,8 @@ public class SanadModelFactory implements ModelFactory {
 			case SanadModelPackage.LITERALCLAIM_SPELLING_FEATURE_ID:
 				getTarget().setSpelling((Spelling) value);
 				return;
-			case SanadModelPackage.LITERALCLAIM_LANGUAGE_FEATURE_ID:
-				getTarget().setLanguage((String) value);
+			case SanadModelPackage.LITERALCLAIM_INLANGUAGE_FEATURE_ID:
+				getTarget().setInLanguage((String) value);
 				return;
 			case SanadModelPackage.LITERALCLAIM_ADOC_FEATURE_ID:
 				getTarget().setAdoc((String) value);

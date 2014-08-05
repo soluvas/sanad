@@ -1,0 +1,36 @@
+<wicket:head>
+<style>
+</style>
+</wicket:head>
+
+<wicket:extend>
+<div class="page-header">
+	<h1>Claims</h1>
+</div>
+
+<div class="list-group">
+	<a class="list-group-item" wicket:id="claims">
+		<div wicket:id="fragment">fragment</div>
+		<wicket:fragment wicket:id="literal">
+			<strong wicket:id="spelling">casual</strong> spelling for:
+			<p wicket:id="literal"></p>
+		</wicket:fragment>
+		<wicket:fragment wicket:id="transliteration">
+			Transliteration
+		</wicket:fragment>
+		<wicket:fragment wicket:id="thing">
+			Thing
+		</wicket:fragment>
+		<wicket:fragment wicket:id="authenticity">
+			Authenticity
+		</wicket:fragment>
+		<wicket:fragment wicket:id="succession">
+			Succession
+		</wicket:fragment>
+		<wicket:fragment wicket:id="narrator">
+			Narrator
+		</wicket:fragment>
+	</a>
+</div>
+<ul wicket:id="pagingNavigator">pagingNavigator</ul>
+</wicket:extend>

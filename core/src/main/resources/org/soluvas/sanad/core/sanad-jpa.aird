@@ -2057,9 +2057,9 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_VwrWYBcuEeSv-PF32_cbMQ" name="language : EString" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="sanad-jpa.ecore#//LiteralClaim/language"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="sanad-jpa.ecore#//LiteralClaim/language"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_VwrWYBcuEeSv-PF32_cbMQ" name="inLanguage : EString" tooltipText="">
+          <target xmi:type="ecore:EAttribute" href="sanad-jpa.ecore#//LiteralClaim/inLanguage"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="sanad-jpa.ecore#//LiteralClaim/inLanguage"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Vwr9cBcuEeSv-PF32_cbMQ" labelAlignment="LEFT">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Vwr9cRcuEeSv-PF32_cbMQ"/>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
