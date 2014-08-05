@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
@@ -27,6 +28,8 @@ public class HadithCollectionPage extends GuestLayoutPage {
 
 	@Inject
 	HadithManager hadithMgr;
+	private LoadableDetachableModel<HadithCollection> collModel;
+	private LoadableDetachableModel<Long> hadithCountModel;
 	
 	public static PageParameters bySlug(String slug) {
 		return new PageParameters().set("slug", slug);
@@ -35,13 +38,13 @@ public class HadithCollectionPage extends GuestLayoutPage {
 	public HadithCollectionPage(PageParameters parameters) {
 		super(parameters);
 		final String upSlug = parameters.get("slug").toString();
-		LoadableDetachableModel<HadithCollection> collModel = new LoadableDetachableModel<HadithCollection>() {
+		collModel = new LoadableDetachableModel<HadithCollection>() {
 			@Override
 			protected HadithCollection load() {
 				return hadithMgr.findOneCollection(upSlug);
 			}
 		};
-		LoadableDetachableModel<Long> hadithCountModel = new LoadableDetachableModel<Long>() {
+		hadithCountModel = new LoadableDetachableModel<Long>() {
 			@Override
 			protected Long load() {
 				return hadithMgr.getCollectionHadithCount(upSlug);
@@ -86,6 +89,23 @@ public class HadithCollectionPage extends GuestLayoutPage {
 		};
 		add(hadithDv);
 		add(new BootstrapAjaxPagingNavigator("pagingNavigator", hadithDv));
+	}
+	
+	@Override
+	protected void onDetach() {
+		super.onDetach();
+		collModel.detach();
+		hadithCountModel.detach();
+	}
+	
+	@Override
+	protected IModel<String> createPageTitleModel() {
+		return new AbstractReadOnlyModel<String>() {
+			@Override
+			public String getObject() {
+				return collModel.getObject().getName() + " - Hadith - Sanad";
+			}
+		};
 	}
 
 }

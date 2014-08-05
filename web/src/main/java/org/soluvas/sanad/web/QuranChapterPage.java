@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -21,6 +23,7 @@ public class QuranChapterPage extends GuestLayoutPage {
 
 	@Inject
 	QuranManager quranMgr;
+	private LoadableDetachableModel<QuranChapter> chapterModel;
 	
 	public static PageParameters byChapterNum(int chapterNum) {
 		return new PageParameters().set("chapterNum", chapterNum);
@@ -28,7 +31,7 @@ public class QuranChapterPage extends GuestLayoutPage {
 	
 	public QuranChapterPage(PageParameters parameters) {
 		super(parameters);
-		LoadableDetachableModel<QuranChapter> chapterModel = new LoadableDetachableModel<QuranChapter>() {
+		chapterModel = new LoadableDetachableModel<QuranChapter>() {
 			@Override
 			protected QuranChapter load() {
 				return quranMgr.findOneChapter(parameters.get("chapterNum").toInt());
@@ -46,6 +49,23 @@ public class QuranChapterPage extends GuestLayoutPage {
 					.setEscapeModelStrings(false));
 			}
 		});
+	}
+	
+	@Override
+	protected void onDetach() {
+		super.onDetach();
+		chapterModel.detach();
+	}
+	
+	@Override
+	protected IModel<String> createPageTitleModel() {
+		return new AbstractReadOnlyModel<String>() {
+			@Override
+			public String getObject() {
+				QuranChapter chapter = chapterModel.getObject();
+				return chapter.getName() + " / " + chapter.getNameTransliteration() + " - Holy Quran - Sanad";
+			}
+		};		
 	}
 
 }

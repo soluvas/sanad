@@ -8,7 +8,9 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.soluvas.sanad.core.QuranManager;
@@ -41,6 +43,11 @@ public class QuranPage extends GuestLayoutPage {
 				item.add(new Label("nameTransliteration", new PropertyModel<>(item.getModel(), "nameTransliteration")));
 			}
 		});
+	}
+	
+	@Override
+	protected IModel<String> createPageTitleModel() {
+		return new Model<>("Holy Quran - Sanad");
 	}
 
 }

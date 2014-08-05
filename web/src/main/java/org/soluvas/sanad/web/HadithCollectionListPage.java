@@ -8,7 +8,9 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.soluvas.sanad.core.HadithManager;
@@ -21,10 +23,11 @@ public class HadithCollectionListPage extends GuestLayoutPage {
 
 	@Inject
 	HadithManager hadithMgr;
+	private LoadableDetachableModel<List<HadithCollectionSummary>> collSummariesModel;
 	
 	public HadithCollectionListPage(PageParameters parameters) {
 		super(parameters);
-		LoadableDetachableModel<List<HadithCollectionSummary>> collSummariesModel = new LoadableDetachableModel<List<HadithCollectionSummary>>() {
+		collSummariesModel = new LoadableDetachableModel<List<HadithCollectionSummary>>() {
 			@Override
 			protected List<HadithCollectionSummary> load() {
 				return hadithMgr.findAllCollectionSummaries();
@@ -40,6 +43,17 @@ public class HadithCollectionListPage extends GuestLayoutPage {
 				item.add(new Label("author", new PropertyModel<>(item.getModel(), "author")));
 			}
 		});
+	}
+	
+	@Override
+	protected void onDetach() {
+		super.onDetach();
+		collSummariesModel.detach();
+	}
+	
+	@Override
+	protected IModel<String> createPageTitleModel() {
+		return new Model<>("Hadith Collections - Sanad");
 	}
 
 }
