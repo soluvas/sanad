@@ -1,0 +1,42 @@
+<wicket:head>
+<style>
+.hadith-num { display: inline-block; width: 2em; text-align: right; }
+</style>
+</wicket:head>
+
+<wicket:extend>
+<div class="page-header">
+	<h1><wicket:container wicket:id="testimonyPerson">Hendy Irawan</wicket:container>'s Testimony</h1>
+</div>
+
+<strong wicket:id="testimonyPerson2">Hendy Irawan</strong> testified on <strong wicket:id="creationTime">24 May 2014 03:00 WIB</strong> that:
+
+<ul class="list-group">
+	<li wicket:id="claims" class="list-group-item">
+		<div wicket:id="fragment">fragment</div>
+		<wicket:fragment wicket:id="literal">
+			<div wicket:id="literal">Some amazing news</div>
+			<dl>
+				<dt>Spelling</dt>
+				<dd wicket:id="spelling" class="label">spelling</dd>
+			</dl>
+		</wicket:fragment>
+		<wicket:fragment wicket:id="transliteration">
+			Transliteration
+		</wicket:fragment>
+		<wicket:fragment wicket:id="thing">
+			Thing
+		</wicket:fragment>
+		<wicket:fragment wicket:id="authenticity">
+			Authenticity
+		</wicket:fragment>
+		<wicket:fragment wicket:id="succession">
+			Succession
+		</wicket:fragment>
+		<wicket:fragment wicket:id="narrator">
+			Narrator
+		</wicket:fragment>
+	</li>
+</ul>
+
+</wicket:extend>

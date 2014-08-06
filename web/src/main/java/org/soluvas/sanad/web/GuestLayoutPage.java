@@ -12,6 +12,8 @@ import org.apache.wicket.request.resource.SharedResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.soluvas.commons.AppManifest;
 import org.soluvas.sanad.web.claim.ClaimListPage;
+import org.soluvas.sanad.web.claim.TestimonyListPage;
+import org.soluvas.sanad.web.claim.TestimonyLiteralAddPage;
 import org.soluvas.sanad.web.hadith.HadithCollectionListPage;
 import org.soluvas.sanad.web.quran.QuranPage;
 import org.soluvas.sanad.web.thing.TransliterationListPage;
@@ -20,13 +22,16 @@ import org.soluvas.web.bootstrap.Footer;
 import org.soluvas.web.bootstrap.GrowlBehavior;
 
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.button.Buttons;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.HtmlTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.MetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.html.OptimizedMobileViewportMetaTag;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar.ComponentPosition;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar.Position;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.icon.FontAwesomeIconType;
 import de.agilecoders.wicket.less.LessResourceReference;
 
 /**
@@ -55,12 +60,17 @@ public abstract class GuestLayoutPage extends WebPage {
 		navbar.setBrandImage(new SharedResourceReference(GuestLayoutPage.class, "cloud-27.png"), new Model<>(appManifest.getTitle()));
 		navbar.addComponents(
 				new ImmutableNavbarComponent(new NavbarButton<>(TransliterationListPage.class, new Model<>("Transliterations"))),
+				new ImmutableNavbarComponent(new NavbarButton<>(TestimonyListPage.class, new Model<>("Testimonies"))),
 				new ImmutableNavbarComponent(new NavbarButton<>(ClaimListPage.class, new Model<>("Claims"))),
 				new ImmutableNavbarComponent(new NavbarButton<>(QuranPage.class, new Model<>("Quran"))),
-				new ImmutableNavbarComponent(new NavbarButton<>(HadithCollectionListPage.class, new Model<>("Hadith"))));
+				new ImmutableNavbarComponent(new NavbarButton<>(HadithCollectionListPage.class, new Model<>("Hadith"))),
+				new ImmutableNavbarComponent(new NavbarButton<>(TestimonyLiteralAddPage.class, new Model<>("Add Testimony"))
+						.setType(Buttons.Type.Default).setIconType(FontAwesomeIconType.pencil), 
+						ComponentPosition.RIGHT)
+			);
 		add(navbar);
 		
-		add(new Footer("footer"));
+		add(new Footer("Sanad &copy; 2014 Soluvas"));
 	}
 	
 	protected IModel<String> createPageTitleModel() {

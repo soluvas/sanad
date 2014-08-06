@@ -4,7 +4,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.soluvas.web.login.DedicatedLoginPage;
 
 @SuppressWarnings("serial")
 public abstract class AuthenticatedLayoutPage extends GuestLayoutPage {

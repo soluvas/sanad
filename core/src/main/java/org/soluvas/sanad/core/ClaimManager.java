@@ -1,10 +1,14 @@
 package org.soluvas.sanad.core;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.soluvas.data.domain.Page;
 import org.soluvas.data.domain.PageImpl;
 import org.soluvas.data.domain.Pageable;
@@ -19,34 +23,68 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public class ClaimManager {
 
-	public static class TestimonySummary {
-		private final String slug;
-		private final String name;
-		private final String author;
-		private final long hadithCount;
+	public static class TestimonySummary implements Serializable {
+		private static final long serialVersionUID = 1L;
+		private final UUID id;
+		private final String description;
+		private final String personId;
+		private final DateTime creationTime;
+		private final LocalDate validStartDate;
+		private final LocalDate validEndDate;
+		private final DateTime validStartTime;
+		private final DateTime validEndTime;
+		private final long claimCount;
 		
-		public TestimonySummary(String slug, String name, String author, long hadithCount) {
+		public TestimonySummary(UUID id, String description, String personId,
+				DateTime creationTime, LocalDate validStartDate,
+				LocalDate validEndDate, DateTime validStartTime,
+				DateTime validEndTime, long claimCount) {
 			super();
-			this.slug = slug;
-			this.name = name;
-			this.author = author;
-			this.hadithCount = hadithCount;
+			this.id = id;
+			this.description = description;
+			this.personId = personId;
+			this.creationTime = creationTime;
+			this.validStartDate = validStartDate;
+			this.validEndDate = validEndDate;
+			this.validStartTime = validStartTime;
+			this.validEndTime = validEndTime;
+			this.claimCount = claimCount;
 		}
-		
-		public String getSlug() {
-			return slug;
+
+		public UUID getId() {
+			return id;
 		}
-		
-		public String getName() {
-			return name;
+
+		public String getDescription() {
+			return description;
 		}
-		
-		public String getAuthor() {
-			return author;
+
+		public String getPersonId() {
+			return personId;
 		}
-		
-		public long getHadithCount() {
-			return hadithCount;
+
+		public DateTime getCreationTime() {
+			return creationTime;
+		}
+
+		public LocalDate getValidStartDate() {
+			return validStartDate;
+		}
+
+		public LocalDate getValidEndDate() {
+			return validEndDate;
+		}
+
+		public DateTime getValidStartTime() {
+			return validStartTime;
+		}
+
+		public DateTime getValidEndTime() {
+			return validEndTime;
+		}
+
+		public long getClaimCount() {
+			return claimCount;
 		}
 		
 	}
@@ -56,20 +94,20 @@ public class ClaimManager {
 	
 	@Transactional(readOnly=true)
 	public Page<TestimonySummary> findAllTestimonySummaries(Pageable pageable) {
-		long testimonyCount = em.createQuery("SELECT COUNT(t) FROM Testimony t", Long.class).getSingleResult();
+		long testimonyCount = getTestimonyCount();
 		final Order firstOrder = pageable.getSort().iterator().next();
 		List<TestimonySummary> summaries = em.createQuery(
-				"SELECT NEW org.soluvas.sanad.core.ClaimManager$TestimonySummary(c.slug, c.name, c.author, COUNT(h))"
-				+ " FROM Testimony t LEFT JOIN c.hadiths h"
-				+ " GROUP BY c.slug, c.name, c.author"
+				"SELECT NEW org.soluvas.sanad.core.ClaimManager$TestimonySummary(t.id, t.description, t.personId, t.creationTime, t.validStartDate, t.validEndDate, t.validStartTime, t.validEndTime, COUNT(c))"
+				+ " FROM Testimony t LEFT JOIN c.claims c"
+				+ " GROUP BY t.id, t.description, t.personId, t.creationTime, t.validStartDate, t.validEndDate, t.validStartTime, t.validEndTime"
 				+ " ORDER BY t." + firstOrder.getProperty() + " " + firstOrder.getDirection(),
 				TestimonySummary.class).getResultList();
 		return new PageImpl<>(summaries, pageable, testimonyCount);
 	}
 
 	@Transactional(readOnly=true)
-	public Testimony findOneTestimony(String id) {
-		return em.createQuery("SELECT t FROM Testimony t"
+	public Testimony findOneTestimony(UUID id) {
+		return em.createQuery("SELECT t FROM Testimony t LEFT JOIN FETCH t.claims"
 				+ " WHERE t.id = :id", Testimony.class)
 				.setParameter("id", id)
 				.getSingleResult();
@@ -106,6 +144,16 @@ public class ClaimManager {
 	@Transactional(readOnly=true)
 	public long getClaimCount() {
 		return em.createQuery("SELECT COUNT(c) FROM Claim c", Long.class).getSingleResult();
+	}
+
+	@Transactional(readOnly=true)
+	public long getTestimonyCount() {
+		return em.createQuery("SELECT COUNT(t) FROM Testimony t", Long.class).getSingleResult();
+	}
+	
+	@Transactional
+	public Testimony addTestimony(Testimony testimony) {
+		return em.merge(testimony);
 	}
 
 }

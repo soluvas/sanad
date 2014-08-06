@@ -72,19 +72,19 @@ public class ClaimListPage extends GuestLayoutPage {
 					fragment.add(new Label("spelling", literalClaim.getSpelling()));
 					fragment.add(new Label("literal", literalClaim.getHtml()).setEscapeModelStrings(false));
 					item.add(fragment);
-				} if (claim instanceof TransliterationClaim) {
+				} else if (claim instanceof TransliterationClaim) {
 					final Fragment fragment = new Fragment("fragment", "transliteration", this);
 					item.add(fragment);
-				} if (claim instanceof AuthenticityClaim) {
+				} else if (claim instanceof AuthenticityClaim) {
 					final Fragment fragment = new Fragment("fragment", "authenticity", this);
 					item.add(fragment);
-				} if (claim instanceof SuccessionClaim) {
+				} else if (claim instanceof SuccessionClaim) {
 					final Fragment fragment = new Fragment("fragment", "succession", this);
 					item.add(fragment);
-				} if (claim instanceof ThingClaim) {
+				} else if (claim instanceof ThingClaim) {
 					final Fragment fragment = new Fragment("fragment", "thing", this);
 					item.add(fragment);
-				} if (claim instanceof NarratorClaim) {
+				} else if (claim instanceof NarratorClaim) {
 					final Fragment fragment = new Fragment("fragment", "narrator", this);
 					item.add(fragment);
 				} else {

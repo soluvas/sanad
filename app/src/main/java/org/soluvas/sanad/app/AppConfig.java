@@ -1,6 +1,7 @@
 package org.soluvas.sanad.app;
 
 import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,12 +15,18 @@ import org.soluvas.commons.config.MultiTenantWebConfig;
 import org.soluvas.commons.config.TenantSelector;
 import org.soluvas.commons.tenant.TenantBeans;
 import org.soluvas.commons.tenant.TenantUtils;
+import org.soluvas.data.repository.CrudRepository;
 import org.soluvas.sanad.core.mvc.SanadMvcConfig;
+import org.soluvas.web.site.CssLink;
+import org.soluvas.web.site.JavaScriptLink;
+import org.soluvas.web.site.JavaScriptSource;
 import org.soluvas.web.site.PageMetaProvider;
 import org.soluvas.web.site.PermalinkConfig;
 import org.soluvas.web.site.RulesPageMetaProvider;
 import org.soluvas.web.site.SimpleSite;
 import org.soluvas.web.site.Site;
+import org.soluvas.web.site.compose.EmfGenericRepository;
+import org.soluvas.web.site.compose.LiveContributor;
 import org.soluvas.web.site.pagemeta.PageMetaCatalog;
 import org.soluvas.web.site.pagemeta.PagemetaFactory;
 import org.soluvas.web.site.pagemeta.PagemetaPackage;
@@ -99,6 +106,33 @@ public class AppConfig {
 		@Bean @Scope("prototype")
 		public PageMetaProvider pageMetaProvider() {
 			return pageMetaProviderBeans().getCurrent();
+		}
+		
+		// Temporary workaround for strange BootstrapPage
+		
+		@Bean
+		public List<CssLink> cssLinks() {
+			return ImmutableList.of();
+		}
+		
+		@Bean
+		public List<JavaScriptLink> headJavaScripts() {
+			return ImmutableList.of();
+		}
+		
+		@Bean
+		public List<JavaScriptLink> footerJavaScripts() {
+			return ImmutableList.of();
+		}
+		
+		@Bean
+		public List<JavaScriptSource> footerJavaScriptSources() {
+			return ImmutableList.of();
+		}
+		
+		@Bean
+		public CrudRepository<LiveContributor, Integer> contributorRepo() {
+			return new EmfGenericRepository<>();
 		}
 		
 	}

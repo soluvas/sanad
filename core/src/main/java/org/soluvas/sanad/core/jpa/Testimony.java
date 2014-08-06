@@ -1,8 +1,10 @@
 package org.soluvas.sanad.core.jpa;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
@@ -13,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Index;
@@ -24,11 +27,18 @@ import org.joda.time.LocalDate;
  * A representation of the model object '<em><b>Testimony</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  * 
- * @generated
  */
 @Entity()
-@Table(schema = "sanad")
-public class Testimony {
+@Table(schema = "sanad", indexes={
+		@javax.persistence.Index(name="testimony_creationtime_idx", columnList="creationtime"),
+		@javax.persistence.Index(name="testimony_creationtime_creationtimezone_idx", columnList="creationtime, creationtimezone"),
+		@javax.persistence.Index(name="testimony_validstarttime_idx", columnList="validstarttime"),
+		@javax.persistence.Index(name="testimony_validstarttime_validstarttimezone_idx", columnList="validstarttime, validstarttimezone"),
+		@javax.persistence.Index(name="testimony_validendtime_validendtimezone_idx", columnList="validendtime, validendtimezone"),
+		@javax.persistence.Index(name="testimony_validstartdate_idx", columnList="validstartdate"),
+		@javax.persistence.Index(name="testimony_validenddate_idx", columnList="validenddate")
+})
+public class Testimony implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -55,8 +65,7 @@ public class Testimony {
 	 */
 	@Basic()
 	@Index(name = "testimony_validstarttime_idx")
-	@Columns(columns = { @Column(name = "validstarttime", nullable = false),
-			@Column(name = "validstarttimezone", nullable = false) })
+	@Columns(columns = { @Column(name = "validstarttime"), @Column(name = "validstarttimezone") })
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
 	private DateTime validStartTime = null;
 	/**
@@ -66,9 +75,7 @@ public class Testimony {
 	 * 
 	 */
 	@Basic()
-	@Index(name = "testimony_validendtime_idx")
-	@Columns(columns = { @Column(name = "validendtime", nullable = false),
-			@Column(name = "validendtimezone", nullable = false) })
+	@Columns(columns = { @Column(name = "validendtime"), @Column(name = "validendtimezone") })
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
 	private DateTime validEndTime = null;
 	/**
@@ -80,7 +87,6 @@ public class Testimony {
 	 * 
 	 */
 	@Basic()
-	@Index(name = "testimony_validstartdate_idx")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate validStartDate = null;
 	/**
@@ -88,7 +94,6 @@ public class Testimony {
 	 * 
 	 */
 	@Basic()
-	@Index(name = "testimony_validenddate_idx")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate validEndDate = null;
 	/**
@@ -103,7 +108,6 @@ public class Testimony {
 	 * 
 	 */
 	@Basic()
-	@Index(name = "testimony_creationtime_idx")
 	@Columns(columns = { @Column(name = "creationtime", nullable = false),
 			@Column(name = "creationtimezone", nullable = false) })
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
@@ -118,7 +122,7 @@ public class Testimony {
 	 */
 	@Basic()
 	@Access(AccessType.FIELD)
-	private long schemaVersion = 1;
+	private final long schemaVersion = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
