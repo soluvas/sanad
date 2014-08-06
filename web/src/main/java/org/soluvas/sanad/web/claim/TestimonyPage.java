@@ -24,6 +24,7 @@ import org.soluvas.sanad.core.jpa.Testimony;
 import org.soluvas.sanad.core.jpa.ThingClaim;
 import org.soluvas.sanad.core.jpa.TransliterationClaim;
 import org.soluvas.sanad.web.GuestLayoutPage;
+import org.soluvas.web.site.widget.DateTimeLabel2;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import com.google.common.collect.ImmutableList;
@@ -53,7 +54,7 @@ public class TestimonyPage extends GuestLayoutPage {
 		};
 		add(new Label("testimonyPerson", new PropertyModel<>(testimonyModel, "personId")));
 		add(new Label("testimonyPerson2", new PropertyModel<>(testimonyModel, "personId")));
-		add(new Label("creationTime", new PropertyModel<>(testimonyModel, "creationTime")));
+		add(new DateTimeLabel2("creationTime", new PropertyModel<>(testimonyModel, "creationTime")));
 		
 		AbstractReadOnlyModel<List<Claim>> claimsModel = new AbstractReadOnlyModel<List<Claim>>() {
 			@Override
