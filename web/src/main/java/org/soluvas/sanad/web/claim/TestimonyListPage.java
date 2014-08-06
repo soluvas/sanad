@@ -63,7 +63,7 @@ public class TestimonyListPage extends GuestLayoutPage {
 				item.add(new AttributeModifier("href", testimonyUrl));
 				String descriptionAbbr = StringUtils.abbreviate(testimony.getDescription(), 160);
 				item.add(new Label("descriptionAbbr", descriptionAbbr));
-				item.add(new Label("personId", testimony.getPersonId()));
+				item.add(new Label("personId", testimony.getPerson().getName()));
 				item.add(new DateTimeLabel("creationTime", testimony.getCreationTime(), new StyleDateConverter("MS", false)));
 			}
 		};

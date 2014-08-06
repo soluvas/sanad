@@ -21,6 +21,12 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.joda.time.DateTime;
 import org.soluvas.commons.AppManifest;
+import org.soluvas.commons.Person;
+import org.soluvas.data.EntityLookupException;
+import org.soluvas.data.LookupKey;
+import org.soluvas.data.StatusMask;
+import org.soluvas.data.person.PersonRepository;
+import org.soluvas.jpa.jpa.PersonInfo;
 import org.soluvas.sanad.core.ClaimManager;
 import org.soluvas.sanad.core.jpa.Claim;
 import org.soluvas.sanad.core.jpa.LiteralClaim;
@@ -31,6 +37,7 @@ import org.soluvas.web.site.Interaction;
 import org.soluvas.web.site.widget.AutoDisableAjaxButton;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import com.google.common.base.Throwables;
 import com.google.common.collect.ImmutableList;
 import com.google.common.html.HtmlEscapers;
 
@@ -82,6 +89,9 @@ public class TestimonyLiteralAddPage extends AuthenticatedLayoutPage {
 	ClaimManager claimMgr;
 	@Inject
 	AppManifest appManifest;
+	@Inject
+	PersonRepository personRepo;
+	
 	private final Model<TestimonyInput> testimonyModel = new Model<>(new TestimonyInput());
 	
 	public class AddForm extends Form<TestimonyInput> {
@@ -115,7 +125,12 @@ public class TestimonyLiteralAddPage extends AuthenticatedLayoutPage {
 					TestimonyInput testimonyInput = testimonyModel.getObject();
 					Testimony testimony = new Testimony();
 					testimony.setId(UUID.randomUUID());
-					testimony.setPersonId((String) SecurityUtils.getSubject().getPrincipal());
+					try {
+						Person personInfo = personRepo.lookupOne(StatusMask.RAW, LookupKey.ID, (String) SecurityUtils.getSubject().getPrincipal());
+						testimony.setPerson(PersonInfo.fromPerson(personInfo, appManifest.getDomain()));
+					} catch (EntityLookupException e) {
+						Throwables.propagate(e);
+					}
 					testimony.setCreationTime(new DateTime(appManifest.getDefaultTimeZone()));
 					
 					// spelling

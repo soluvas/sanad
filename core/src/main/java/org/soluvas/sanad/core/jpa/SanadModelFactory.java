@@ -14,6 +14,7 @@ import org.eclipse.emf.texo.model.ModelObject;
 import org.eclipse.emf.texo.model.ModelPackage;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
+import org.soluvas.jpa.jpa.PersonInfo;
 
 /**
  * The <b>{@link ModelFactory}</b> for the types of this model: sanad-jpa. It
@@ -888,14 +889,14 @@ public class SanadModelFactory implements ModelFactory {
 				return getTarget().getValidStartDate();
 			case SanadModelPackage.TESTIMONY_VALIDENDDATE_FEATURE_ID:
 				return getTarget().getValidEndDate();
-			case SanadModelPackage.TESTIMONY_PERSONID_FEATURE_ID:
-				return getTarget().getPersonId();
 			case SanadModelPackage.TESTIMONY_CREATIONTIME_FEATURE_ID:
 				return getTarget().getCreationTime();
 			case SanadModelPackage.TESTIMONY_DESCRIPTION_FEATURE_ID:
 				return getTarget().getDescription();
 			case SanadModelPackage.TESTIMONY_DESCRIPTIONHTML_FEATURE_ID:
 				return getTarget().getDescriptionHtml();
+			case SanadModelPackage.TESTIMONY_PERSON_FEATURE_ID:
+				return getTarget().getPerson();
 			case SanadModelPackage.TESTIMONY_CLAIMS_FEATURE_ID:
 				return getTarget().getClaims();
 			default:
@@ -929,9 +930,6 @@ public class SanadModelFactory implements ModelFactory {
 			case SanadModelPackage.TESTIMONY_VALIDENDDATE_FEATURE_ID:
 				getTarget().setValidEndDate((LocalDate) value);
 				return;
-			case SanadModelPackage.TESTIMONY_PERSONID_FEATURE_ID:
-				getTarget().setPersonId((String) value);
-				return;
 			case SanadModelPackage.TESTIMONY_CREATIONTIME_FEATURE_ID:
 				getTarget().setCreationTime((DateTime) value);
 				return;
@@ -940,6 +938,9 @@ public class SanadModelFactory implements ModelFactory {
 				return;
 			case SanadModelPackage.TESTIMONY_DESCRIPTIONHTML_FEATURE_ID:
 				getTarget().setDescriptionHtml((String) value);
+				return;
+			case SanadModelPackage.TESTIMONY_PERSON_FEATURE_ID:
+				getTarget().setPerson((PersonInfo) value);
 				return;
 			case SanadModelPackage.TESTIMONY_CLAIMS_FEATURE_ID:
 				getTarget().setClaims((Set<Claim>) value);

@@ -4,24 +4,24 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Index;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
+import org.soluvas.jpa.jpa.PersonInfo;
 
 /**
  * A representation of the model object '<em><b>Testimony</b></em>'. <!--
@@ -29,15 +29,14 @@ import org.joda.time.LocalDate;
  * 
  */
 @Entity()
-@Table(schema = "sanad", indexes={
-		@javax.persistence.Index(name="testimony_creationtime_idx", columnList="creationtime"),
-		@javax.persistence.Index(name="testimony_creationtime_creationtimezone_idx", columnList="creationtime, creationtimezone"),
-		@javax.persistence.Index(name="testimony_validstarttime_idx", columnList="validstarttime"),
-		@javax.persistence.Index(name="testimony_validstarttime_validstarttimezone_idx", columnList="validstarttime, validstarttimezone"),
-		@javax.persistence.Index(name="testimony_validendtime_validendtimezone_idx", columnList="validendtime, validendtimezone"),
-		@javax.persistence.Index(name="testimony_validstartdate_idx", columnList="validstartdate"),
-		@javax.persistence.Index(name="testimony_validenddate_idx", columnList="validenddate")
-})
+@Table(schema = "sanad", indexes = {
+		@javax.persistence.Index(name = "testimony_creationtime_idx", columnList = "creationtime"),
+		@javax.persistence.Index(name = "testimony_creationtime_creationtimezone_idx", columnList = "creationtime, creationtimezone"),
+		@javax.persistence.Index(name = "testimony_validstarttime_idx", columnList = "validstarttime"),
+		@javax.persistence.Index(name = "testimony_validstarttime_validstarttimezone_idx", columnList = "validstarttime, validstarttimezone"),
+		@javax.persistence.Index(name = "testimony_validendtime_validendtimezone_idx", columnList = "validendtime, validendtimezone"),
+		@javax.persistence.Index(name = "testimony_validstartdate_idx", columnList = "validstartdate"),
+		@javax.persistence.Index(name = "testimony_validenddate_idx", columnList = "validenddate") })
 public class Testimony implements Serializable {
 
 	/**
@@ -65,7 +64,8 @@ public class Testimony implements Serializable {
 	 */
 	@Basic()
 	@Index(name = "testimony_validstarttime_idx")
-	@Columns(columns = { @Column(name = "validstarttime"), @Column(name = "validstarttimezone") })
+	@Columns(columns = { @Column(name = "validstarttime"),
+			@Column(name = "validstarttimezone") })
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
 	private DateTime validStartTime = null;
 	/**
@@ -75,7 +75,8 @@ public class Testimony implements Serializable {
 	 * 
 	 */
 	@Basic()
-	@Columns(columns = { @Column(name = "validendtime"), @Column(name = "validendtimezone") })
+	@Columns(columns = { @Column(name = "validendtime"),
+			@Column(name = "validendtimezone") })
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
 	private DateTime validEndTime = null;
 	/**
@@ -99,13 +100,6 @@ public class Testimony implements Serializable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
-	 */
-	@Basic()
-	private String personId = null;
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 */
 	@Basic()
 	@Columns(columns = { @Column(name = "creationtime", nullable = false),
@@ -122,7 +116,7 @@ public class Testimony implements Serializable {
 	 */
 	@Basic()
 	@Access(AccessType.FIELD)
-	private final long schemaVersion = 1;
+	private long schemaVersion = 1;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -150,6 +144,17 @@ public class Testimony implements Serializable {
 	 */
 	@Basic()
 	private String descriptionHtml = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * The person who made this testimony, usually a registered user. It's
+	 * possible to leave out {@link PersonInfo#setId()} {@code null}, but this
+	 * use case is still under consideration. <!-- end-model-doc -->
+	 * 
+	 * @generated
+	 */
+	@Embedded()
+	private PersonInfo person = null;
 
 	/**
 	 * Returns the value of '<em><b>claims</b></em>' feature.
@@ -380,32 +385,6 @@ public class Testimony implements Serializable {
 	}
 
 	/**
-	 * Returns the value of '<em><b>personId</b></em>' feature.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the value of '<em><b>personId</b></em>' feature
-	 * @generated
-	 */
-	public String getPersonId() {
-		return personId;
-	}
-
-	/**
-	 * Sets the '{@link Testimony#getPersonId() <em>personId</em>}' feature.
-	 *
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param newPersonId
-	 *            the new value of the '{@link Testimony#getPersonId() personId}
-	 *            ' feature.
-	 * @generated
-	 */
-	public void setPersonId(String newPersonId) {
-		personId = newPersonId;
-	}
-
-	/**
 	 * Returns the value of '<em><b>creationTime</b></em>' feature.
 	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -530,6 +509,38 @@ public class Testimony implements Serializable {
 	}
 
 	/**
+	 * Returns the value of '<em><b>person</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * The person who made this testimony, usually a registered user. It's
+	 * possible to leave out {@link PersonInfo#setId()} {@code null}, but this
+	 * use case is still under consideration. <!-- end-model-doc -->
+	 * 
+	 * @return the value of '<em><b>person</b></em>' feature
+	 * @generated
+	 */
+	public PersonInfo getPerson() {
+		return person;
+	}
+
+	/**
+	 * Sets the '{@link Testimony#getPerson() <em>person</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * The person who made this testimony, usually a registered user. It's
+	 * possible to leave out {@link PersonInfo#setId()} {@code null}, but this
+	 * use case is still under consideration. <!-- end-model-doc -->
+	 * 
+	 * @param newPerson
+	 *            the new value of the '{@link Testimony#getPerson() person}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setPerson(PersonInfo newPerson) {
+		person = newPerson;
+	}
+
+	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -542,9 +553,9 @@ public class Testimony implements Serializable {
 				+ "]" + " [validStartTime: " + getValidStartTime() + "]"
 				+ " [validEndTime: " + getValidEndTime() + "]"
 				+ " [validStartDate: " + getValidStartDate() + "]"
-				+ " [validEndDate: " + getValidEndDate() + "]" + " [personId: "
-				+ getPersonId() + "]" + " [creationTime: " + getCreationTime()
-				+ "]" + " [description: " + getDescription() + "]"
+				+ " [validEndDate: " + getValidEndDate() + "]"
+				+ " [creationTime: " + getCreationTime() + "]"
+				+ " [description: " + getDescription() + "]"
 				+ " [descriptionHtml: " + getDescriptionHtml() + "]";
 	}
 }

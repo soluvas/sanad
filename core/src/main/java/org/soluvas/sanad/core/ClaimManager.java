@@ -13,6 +13,7 @@ import org.soluvas.data.domain.Page;
 import org.soluvas.data.domain.PageImpl;
 import org.soluvas.data.domain.Pageable;
 import org.soluvas.data.domain.Sort.Order;
+import org.soluvas.jpa.jpa.PersonInfo;
 import org.soluvas.sanad.core.jpa.Claim;
 import org.soluvas.sanad.core.jpa.Testimony;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +28,7 @@ public class ClaimManager {
 		private static final long serialVersionUID = 1L;
 		private final UUID id;
 		private final String description;
-		private final String personId;
+		private final PersonInfo person;
 		private final DateTime creationTime;
 		private final LocalDate validStartDate;
 		private final LocalDate validEndDate;
@@ -35,14 +36,14 @@ public class ClaimManager {
 		private final DateTime validEndTime;
 		private final long claimCount;
 		
-		public TestimonySummary(UUID id, String description, String personId,
+		public TestimonySummary(UUID id, String description, PersonInfo person,
 				DateTime creationTime, LocalDate validStartDate,
 				LocalDate validEndDate, DateTime validStartTime,
 				DateTime validEndTime, long claimCount) {
 			super();
 			this.id = id;
 			this.description = description;
-			this.personId = personId;
+			this.person = person;
 			this.creationTime = creationTime;
 			this.validStartDate = validStartDate;
 			this.validEndDate = validEndDate;
@@ -59,8 +60,8 @@ public class ClaimManager {
 			return description;
 		}
 
-		public String getPersonId() {
-			return personId;
+		public PersonInfo getPerson() {
+			return person;
 		}
 
 		public DateTime getCreationTime() {
@@ -97,7 +98,7 @@ public class ClaimManager {
 		long testimonyCount = getTestimonyCount();
 		final Order firstOrder = pageable.getSort().iterator().next();
 		List<TestimonySummary> summaries = em.createQuery(
-				"SELECT NEW org.soluvas.sanad.core.ClaimManager$TestimonySummary(t.id, t.description, t.personId, t.creationTime, t.validStartDate, t.validEndDate, t.validStartTime, t.validEndTime, COUNT(c))"
+				"SELECT NEW org.soluvas.sanad.core.ClaimManager$TestimonySummary(t.id, t.description, t.person, t.creationTime, t.validStartDate, t.validEndDate, t.validStartTime, t.validEndTime, COUNT(c))"
 				+ " FROM Testimony t LEFT JOIN c.claims c"
 				+ " GROUP BY t.id, t.description, t.personId, t.creationTime, t.validStartDate, t.validEndDate, t.validStartTime, t.validEndTime"
 				+ " ORDER BY t." + firstOrder.getProperty() + " " + firstOrder.getDirection(),

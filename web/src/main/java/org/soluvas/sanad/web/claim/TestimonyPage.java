@@ -24,6 +24,7 @@ import org.soluvas.sanad.core.jpa.Testimony;
 import org.soluvas.sanad.core.jpa.ThingClaim;
 import org.soluvas.sanad.core.jpa.TransliterationClaim;
 import org.soluvas.sanad.web.GuestLayoutPage;
+import org.soluvas.web.bootstrap.widget.LocaleLabel;
 import org.soluvas.web.site.widget.DateTimeLabel2;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -52,8 +53,8 @@ public class TestimonyPage extends GuestLayoutPage {
 				return claimMgr.findOneTestimony(id);
 			}
 		};
-		add(new Label("testimonyPerson", new PropertyModel<>(testimonyModel, "personId")));
-		add(new Label("testimonyPerson2", new PropertyModel<>(testimonyModel, "personId")));
+		add(new Label("testimonyPerson", new PropertyModel<>(testimonyModel, "person.name")));
+		add(new Label("testimonyPerson2", new PropertyModel<>(testimonyModel, "person.name")));
 		add(new DateTimeLabel2("creationTime", new PropertyModel<>(testimonyModel, "creationTime")));
 		
 		AbstractReadOnlyModel<List<Claim>> claimsModel = new AbstractReadOnlyModel<List<Claim>>() {
@@ -71,6 +72,7 @@ public class TestimonyPage extends GuestLayoutPage {
 				if (claim instanceof LiteralClaim) {
 					final Fragment fragment = new Fragment("fragment", "literal", this);
 					final LiteralClaim literalClaim = (LiteralClaim) claim;
+					fragment.add(new LocaleLabel("inLanguage", literalClaim.getInLanguage()));
 					final Label spellingLabel = new Label("spelling", literalClaim.getSpelling());
 					if (literalClaim.getSpelling() != null) {
 						final String labelClass;
@@ -130,7 +132,7 @@ public class TestimonyPage extends GuestLayoutPage {
 		return new AbstractReadOnlyModel<String>() {
 			@Override
 			public String getObject() {
-				return testimonyModel.getObject().getPersonId() + "'s Testimony - Sanad";
+				return testimonyModel.getObject().getPerson().getName() + "'s Testimony - Sanad";
 			}
 		};
 	}

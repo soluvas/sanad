@@ -263,14 +263,7 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_PERSONID_FEATURE_ID = 7;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static final int TESTIMONY_CREATIONTIME_FEATURE_ID = 8;
+	public static final int TESTIMONY_CREATIONTIME_FEATURE_ID = 7;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -291,14 +284,21 @@ public class SanadModelPackage extends ModelPackage {
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_DESCRIPTION_FEATURE_ID = 9;
+	public static final int TESTIMONY_DESCRIPTION_FEATURE_ID = 8;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public static final int TESTIMONY_DESCRIPTIONHTML_FEATURE_ID = 10;
+	public static final int TESTIMONY_DESCRIPTIONHTML_FEATURE_ID = 9;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public static final int TESTIMONY_PERSON_FEATURE_ID = 10;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1933,20 +1933,6 @@ public class SanadModelPackage extends ModelPackage {
 
 	/**
 	 * Returns the {@link EStructuralFeature} '
-	 * <em><b>Testimony.personId</b></em>'. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @return an instance of the {@link EStructuralFeature}: '
-	 *         <em><b>Testimony.personId</b></em>'.
-	 * @generated
-	 */
-	public EAttribute getTestimony_PersonId() {
-		return (EAttribute) getTestimonyEClass().getEAllStructuralFeatures()
-				.get(TESTIMONY_PERSONID_FEATURE_ID);
-	}
-
-	/**
-	 * Returns the {@link EStructuralFeature} '
 	 * <em><b>Testimony.creationTime</b></em>'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
@@ -2012,6 +1998,19 @@ public class SanadModelPackage extends ModelPackage {
 	public EAttribute getTestimony_DescriptionHtml() {
 		return (EAttribute) getTestimonyEClass().getEAllStructuralFeatures()
 				.get(TESTIMONY_DESCRIPTIONHTML_FEATURE_ID);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature} '<em><b>Testimony.person</b></em>
+	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return an instance of the {@link EStructuralFeature}: '
+	 *         <em><b>Testimony.person</b></em>'.
+	 * @generated
+	 */
+	public EReference getTestimony_Person() {
+		return (EReference) getTestimonyEClass().getEAllStructuralFeatures()
+				.get(TESTIMONY_PERSON_FEATURE_ID);
 	}
 
 	/**
