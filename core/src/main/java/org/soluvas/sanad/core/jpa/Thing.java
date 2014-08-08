@@ -94,6 +94,7 @@ public abstract class Thing {
 	 * @generated
 	 */
 	@Basic()
+	@Column(unique = true)
 	private String slug = null;
 
 	/**

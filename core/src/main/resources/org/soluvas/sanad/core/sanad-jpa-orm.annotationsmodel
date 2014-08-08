@@ -142,7 +142,9 @@
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
         <eAttribute href="sanad-jpa.ecore#//Thing/slug"/>
         <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
-          <basic/>
+          <basic>
+            <column unique="true"/>
+          </basic>
         </eAttributeAnnotations>
       </annotatedEStructuralFeatures>
       <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
