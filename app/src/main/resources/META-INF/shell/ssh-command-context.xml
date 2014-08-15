@@ -39,14 +39,11 @@
         <property name="keyPairProvider" ref="keyPairProvider"/>
         <!-- property name="passwordAuthenticator" ref="passwordAuthenticator"/-->
         <property name="publickeyAuthenticator" ref="publickeyAuthenticator"/>
-        <property name="sessionConfig">
-        	<bean class="org.apache.mina.transport.socket.DefaultSocketSessionConfig">
-        		<!-- disconnect after 12 hours -->
-        		<property name="keepAlive" value="true"/>
-        		<property name="bothIdleTime" value="1200"/>
-        		<property name="readerIdleTime" value="1200"/>
-        		<property name="writerIdleTime" value="1200"/>
-        	</bean>
+        <property name="properties">
+        	<util:map>
+        		<!-- 12 hours timeout -->
+        		<entry key="idle-timeout" value="43200000"/>
+        	</util:map>
         </property>
     </bean>
 
