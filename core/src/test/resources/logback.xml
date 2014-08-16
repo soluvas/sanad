@@ -28,6 +28,7 @@
 	<logger name="org.springframework.cache.interceptor" level="TRACE"/>
 	<logger name="org.hibernate.SQL" level="DEBUG"/>
 	<logger name="org.hibernate.type" level="INFO"/>
+	<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="DEBUG"/>
 	<logger name="org.hibernate.tool.hbm2ddl" level="DEBUG"/>
 	<logger name="liquibase" level="DEBUG"/>
 
