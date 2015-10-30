@@ -74,6 +74,23 @@ To generate the SQL schema dump:
 
 	pg_dump -v -hlocalhost -Upostgres --schema=sanad --schema-only --no-owner -f export/sanad.schema.sql sanad_sanad_dev
 
+## Quran, Hadith, and Islamic Open Source Projects
+
+1. [ceefour/sanad-hadith](https://github.com/ceefour/sanad-hadith)
+2. [ceefour/hadith-islamware](https://github.com/ceefour/hadith-islamware)
+3. [ceefour/sanad-quran](https://github.com/ceefour/sanad-quran)
+4. [ceefour/qurandatabase](https://github.com/ceefour/qurandatabase)
+5. [ashrafuzzaman/hadith](https://github.com/ashrafuzzaman/hadith)
+6. [RabiaJaved/hadith-win8](https://github.com/RabiaJaved/hadith-win8)
+7. [QuranDev](http://qurandev.github.io/)
+8. [quran/quran.com-images](https://github.com/quran/quran.com-images)
+9. [android-quran](https://www.openhub.net/p/android-quran)
+10. [mabdurrahman/Quran-Android](https://github.com/mabdurrahman/Quran-Android)
+11. [oazabir/Quran](https://github.com/oazabir/Quran)
+12. [GlobalQuran/site](https://github.com/GlobalQuran/site)
+13. [qzaidi/quran](https://github.com/qzaidi/quran)
+14. [quran/quran_android](https://github.com/quran/quran_android)
+
 ## Credits
 
 * Stamp icon 1: [License: 	Creative Commons (Attribution 3.0 Unported) - Valera Zvonko](https://www.iconfinder.com/iconsets/free-mobile-icon-kit#readme)
