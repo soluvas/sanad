@@ -90,6 +90,9 @@ To generate the SQL schema dump:
 12. [GlobalQuran/site](https://github.com/GlobalQuran/site)
 13. [qzaidi/quran](https://github.com/qzaidi/quran)
 14. [quran/quran_android](https://github.com/quran/quran_android)
+15. [Zekr](http://zekr.org/resources.html#recitation)
+16. [EveryAyah.com](http://www.everyayah.com/data/status.php). Best: (Mushary Rasyid) Al-Afasy
+17. [VerseByVerseQuran.com](http://www.versebyversequran.com/). Best: (Mushary Rasyid) Al-Afasy
 
 ## Credits
 
