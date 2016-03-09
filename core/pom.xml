@@ -84,11 +84,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.joda</groupId>
-			<artifactId>joda-money</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
 		</dependency>

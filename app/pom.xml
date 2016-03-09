@@ -94,19 +94,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		
-		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -137,15 +126,6 @@
 			<artifactId>org.soluvas.web.bootstrap</artifactId>
 		</dependency>
 		
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-		</dependency>
-
 		<!-- <dependency> -->
 		<!-- <groupId>org.soluvas</groupId> -->
 		<!-- <artifactId>org.soluvas.web.bootstrap</artifactId> -->
@@ -162,6 +142,15 @@
 		<!-- <groupId>org.soluvas</groupId> -->
 		<!-- <artifactId>org.soluvas.mongo</artifactId> -->
 		<!-- </dependency> -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 
 		<!-- logging -->
 		<dependency>
@@ -189,11 +178,6 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
 		</dependency>
 
 		<!-- testing -->

@@ -187,7 +187,7 @@ public class SanadConfig {
 		final String tenantEnv = env.getRequiredProperty("tenantEnv");
 		final String mongoUriTemplate = env.getRequiredProperty("mongoUriTemplate");
 		String mongoUri = UriTemplate.fromTemplate(mongoUriTemplate).expand(ImmutableMap.of("tenantId", tenantId, "tenantEnv", tenantEnv));
-		return new MongoPersonRepository(mongoUri, false, true);
+		return new MongoPersonRepository(null, null, mongoUri, false, true);
 	}
 	
 	@Bean
