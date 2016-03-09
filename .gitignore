@@ -17,3 +17,15 @@ hs_err_pid*
 .settings
 .classpath
 build.properties
+
+# Intellij
+.idea/copyright
+.idea/libraries
+.idea/scopes
+.idea/.name
+.idea/*.xml
+*.iml
+*.ipr
+*.iws
+out/
+.idea_modules/
