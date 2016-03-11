@@ -94,6 +94,10 @@ To generate the SQL schema dump:
 16. [EveryAyah.com](http://www.everyayah.com/data/status.php). Best: (Mushary Rasyid) Al-Afasy
 17. [VerseByVerseQuran.com](http://www.versebyversequran.com/). Best: (Mushary Rasyid) Al-Afasy
 
+### Other Hadith Database
+
+1. [kutubuhadits-sql](https://bitbucket.org/soluvas/kutubuhadits-sql) containing 1 Quran + 9 Hadits Compilation with Indonesian translation.
+
 ## Credits
 
 * Stamp icon 1: [License: 	Creative Commons (Attribution 3.0 Unported) - Valera Zvonko](https://www.iconfinder.com/iconsets/free-mobile-icon-kit#readme)
